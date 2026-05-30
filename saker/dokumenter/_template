@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forslag om opprettelse av et norsk antikorrupsjonsorgan - HoldtDeOrd.no</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50">
+
+  <!-- NAV -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
+        <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+      </div>
+      <div class="flex gap-8 text-lg font-medium">
+        <a href="../../index.html" class="hover:text-blue-600">Hjem</a>
+        <a href="../../saker.html" class="hover:text-blue-600">Saker</a>
+        <a href="../../om-oss.html" class="hover:text-blue-600">Om oss</a>
+        <a href="../" class="hover:text-blue-600 font-semibold">Dokumenter</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-4xl font-bold mb-4">Forslag om opprettelse av et norsk antikorrupsjonsorgan</h1>
+    <p class="text-slate-500 mb-10">Publisert: 2026-02-12</p>
+    
+    <article class="prose prose-slate max-w-none leading-relaxed">
+      ## Representantforslag om opprettelse av antikorrupsjonsorgan
+
+Stortingsrepresentantene Arild Hermstad, Ingrid Liland og Julie E. Stuestøl (MDG) har fremmet forslag om å utrede opprettelse av et uavhengig norsk antikorrupsjonsorgan.
+
+## Bakgrunn
+
+De siste årenes politikerskandaler viser at inhabilitet, uformelle nettverk utenfor offentlig kontroll og mulige korrupsjonsskandaler også er en realitet i Norge. Forslagsstillerne mener dagens rutiner for habilitet og håndtering av økonomiske interesser rundt landets mektigste ikke er gode nok.
+
+Norge mangler et system som systematisk beskytter demokratiet mot maktmisbruk. Tillit er ikke et vern mot korrupsjon, men et resultat av gode systemer som tåler innsyn.
+
+### FNs konvensjon mot korrupsjon
+
+I 2006 implementerte Norge FNs konvensjon mot korrupsjon. Artikkel 6 slår fast at statene skal etablere organer som forebygger korrupsjon og styrker integritet i offentlig forvaltning. I dag har ikke Norge et slikt organ. Kontrollmekanismene setter som regel først inn etter at skaden har skjedd.
+
+### Utredning fra 2021
+
+I 2021 fikk Justis- og beredskapsdepartementet overlevert utredningen «Foretaksstraff og korrupsjon» skrevet av advokat Knut Høivik. En av anbefalingene var å innføre krav til antikorrupsjonsarbeid for større virksomheter og i offentlig sektor, forutsatt at det opprettes et særskilt tilsynsorgan med spisskompetanse på antikorrupsjon.
+
+## Den franske modellen
+
+Den franske etaten La Haute Autorité pour la transparence de la vie publique (HATVP) ble etablert i 2013 som svar på en rekke korrupsjonssaker. I løpet av sitt tiårige virke har etatens initiativ og etterforskninger resultert i at ti franske statsråder i ulike regjeringer har måttet gå, etter at det ble oppdaget at de hadde misbrukt sin posisjon.
+
+### Mandatet til HATVP
+
+- Å forhindre interessekonflikter for sentrale myndighetspersoner
+- Å inspisere eventuelle endringer i nettoformuen til myndighetspersoner i løpet av tjenesteperioden (som tiltak mot svindel)
+- Å avdekke feilaktige eller uredelige erklæringer om interessekonflikt eller eiendeler fra myndighetspersoner
+- Å føre tilsyn med «svingdørsatferd» blant tidligere og nåværende myndighetspersoner
+- Å føre tilsyn med lobbyvirksomhet
+
+### Slik fungerer organet
+
+Etaten henter inn detaljerte opplysninger om økonomien og formuen til parlamentarikere, regjeringsmedlemmer og høytstående embetspersoner (inkludert deres nærstående) før tiltredelse og når perioden er ferdig. Organet fungerer som en antikorrupsjonsetat som undersøker om det er grunnlag for å si at noe er straffbart eller på annen måte etisk problematisk. Dersom etaten identifiserer slike funn, kan materialet overleveres til relevant juridisk myndighet. I norsk sammenheng vil dette ofte være Økokrim.
+
+## Behov for et norsk organ
+
+I Norge har man per i dag ikke en tilsvarende funksjon. Verken politiet, Tolletaten, Finanstilsynet, Sivilombudet, domstolene eller kontroll- og konstitusjonskomitéen har som sitt mandat å forhindre korrupsjon, ettersom disse organene tar grep i etterkant av et mistenkt overtramp.
+
+Internasjonale erfaringer, inkludert fra Frankrike, viser at et slikt statlig organ kan både forhindre og avdekke at myndighetspersoner misbruker sine stillinger.
+
+### Tilpasset norske forhold
+
+Et norsk antikorrupsjonsorgan må være tilpasset norske forhold. For å sikre reell uavhengighet fra regjeringen kan en plassering etter modell av Riksrevisjonen og EOS-utvalget være hensiktsmessig. Et organ som kontrollerer maktutøvelse, må stå over hverdagslig politisk påvirkning og ha et eget budsjett, slik at kontrollen blir troverdig.
+
+## Forslaget
+
+Stortinget ber regjeringen innen utgangen av 2026 sette ned et utvalg for å utrede opprettelse av et norsk antikorrupsjonsorgan. Organet skal være politisk uavhengig og ha eget budsjett.
+
+Utvalget bør se nøye på erfaringer fra andre land, for eksempel Frankrike.
+    </article>
+  </main>
+
+</body>
+</html>
