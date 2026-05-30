@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saker - HoldtDeOrd.no</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body class="bg-slate-50">
+
+  <!-- NAV -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
+        <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+      </div>
+      <div class="flex gap-8 text-lg font-medium">
+        <a href="index.html" class="hover:text-blue-600">Hjem</a>
+        <a href="saker.html" class="hover:text-blue-600">Saker</a>
+        <a href="om-oss.html" class="hover:text-blue-600">Om oss</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h1 class="text-4xl font-semibold text-center mb-4">Alle saker</h1>
+      <p class="text-center text-slate-600 mb-12">Faktabasert oversikt over hva politikerne sa – og hva de gjorde</p>
+      
+      <div id="all-saker-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Fylles inn fra JSON -->
+      </div>
+    </div>
+  </section>
+
+  <script>
+    fetch('saker.json')
+      .then(res => res.json())
+      .then(saker => {
+        const grid = document.getElementById('all-saker-grid');
+        grid.innerHTML = '';
+        saker.forEach(sak => {
+          const html = `
+            <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden hover:shadow-xl transition-all">
+              <div class="h-2 bg-${sak.farge}-500"></div>
+              <div class="p-8">
+                <span class="uppercase text-${sak.farge}-600 text-sm font-medium">${sak.kategori}</span>
+                <h3 class="text-2xl font-semibold mt-4 mb-3">${sak.tittel}</h3>
+                <p class="text-slate-600 line-clamp-4">${sak.beskrivelse}</p>
+                <a href="#" class="mt-6 inline-flex items-center text-blue-600 font-medium hover:underline">
+                  Les hele saken →
+                </a>
+              </div>
+            </div>`;
+          grid.innerHTML += html;
+        });
+      });
+  </script>
+</body>
+</html>
