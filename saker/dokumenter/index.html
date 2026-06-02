@@ -29,23 +29,25 @@
     <h1 class="text-4xl font-bold mb-2">Dokumenter</h1>
     <p class="text-slate-600 mb-8">Faktabasert gjennomgang av politiske forslag og dokumenter</p>
 
-    <!-- Search Bar -->
-    <div class="relative mb-10">
+    <!-- Enhanced Search Bar -->
+    <div class="relative mb-10 group">
       <input 
         type="text" 
         id="search-input"
         placeholder="Søk etter tittel eller nøkkelord..." 
-        class="w-full px-6 py-4 pl-12 bg-white border border-slate-200 rounded-3xl focus:outline-none focus:border-blue-500 text-lg">
-      <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        class="w-full px-6 py-4 pl-12 bg-white border border-slate-200 rounded-3xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 text-lg transition-all">
+      <i id="search-icon" 
+         class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl transition-all group-focus-within:text-blue-500 group-focus-within:scale-110"></i>
     </div>
 
     <div class="space-y-8" id="documents-list">
-      <!-- Your cards go here -->
+      <!-- Your document cards go here -->
     </div>
   </main>
 
   <script>
     const searchInput = document.getElementById('search-input');
+    const searchIcon = document.getElementById('search-icon');
     const cards = document.querySelectorAll('#documents-list > div');
 
     searchInput.addEventListener('input', () => {
@@ -62,4 +64,18 @@
         }
       });
     });
- 
+
+    // Visual feedback when focused
+    searchInput.addEventListener('focus', () => {
+      searchIcon.classList.add('text-blue-500', 'scale-110');
+    });
+
+    searchInput.addEventListener('blur', () => {
+      if (!searchInput.value) {
+        searchIcon.classList.remove('text-blue-500', 'scale-110');
+      }
+    });
+  </script>
+
+</body>
+</html>
