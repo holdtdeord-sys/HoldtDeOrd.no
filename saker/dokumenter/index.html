@@ -11,7 +11,7 @@
 
   <!-- NAV -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
         <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
@@ -25,78 +25,148 @@
     </div>
   </nav>
 
-  <main class="max-w-4xl mx-auto px-6 py-12">
-    <h1 class="text-4xl font-bold mb-2">Dokumenter</h1>
-    <p class="text-slate-600 mb-8">Faktabasert gjennomgang av politiske forslag og dokumenter</p>
-
-    <!-- Enhanced Search Bar -->
-    <div class="relative mb-10 group">
-      <input 
-        type="text" 
-        id="search-input"
-        placeholder="Søk etter tittel eller nøkkelord..." 
-        class="w-full px-6 py-4 pl-12 bg-white border border-slate-200 rounded-3xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 text-lg transition-all">
-      <i id="search-icon" 
-         class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl transition-all group-focus-within:text-blue-500 group-focus-within:scale-110"></i>
+  <div class="max-w-7xl mx-auto px-6 py-8 flex gap-8">
+    
+    <!-- LEFT SIDEBAR -->
+    <div class="w-72 flex-shrink-0">
+      <div class="bg-white rounded-3xl p-6 sticky top-8">
+        <h3 class="font-semibold text-lg mb-6 flex items-center gap-3">
+          <span class="text-2xl">🦁</span>
+          Stortinget Direkte
+        </h3>
+        <div class="space-y-4 text-sm">
+          <a href="https://www.stortinget.no/" target="_blank" class="flex items-center gap-3 hover:text-blue-600">
+            <i class="fa-solid fa-house"></i> Stortinget Forside
+          </a>
+          <a href="https://www.stortinget.no/no/Saker-og-publikasjoner/Saker/" target="_blank" class="flex items-center gap-3 hover:text-blue-600">
+            <i class="fa-solid fa-file-lines"></i> Alle saker
+          </a>
+          <a href="https://www.stortinget.no/no/Saker-og-publikasjoner/Publikasjoner/" target="_blank" class="flex items-center gap-3 hover:text-blue-600">
+            <i class="fa-solid fa-book"></i> Publikasjoner
+          </a>
+          <a href="https://www.stortinget.no/no/Saker-og-publikasjoner/Saker/?q=" target="_blank" class="flex items-center gap-3 hover:text-blue-600">
+            <i class="fa-solid fa-magnifying-glass"></i> Stortingets søk
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="space-y-8" id="documents-list">
-      <!-- Your document cards go here -->
-    </div>
-  </main>
+    <!-- MAIN CONTENT -->
+    <div class="flex-1">
+      <h1 class="text-4xl font-bold mb-2">Dokumenter</h1>
+      <p class="text-slate-600 mb-10">Faktabasert gjennomgang av politiske forslag og dokumenter</p>
 
- <script>
-  // Calculate relevance score (higher = better match)
-  function getRelevanceScore(text, term) {
-    if (!term) return 100;
-    const textLower = text.toLowerCase();
-    const termLower = term.toLowerCase();
-    
-    if (textLower === termLower) return 100;                    // Exact match
-    if (textLower.includes(termLower)) return 80;               // Contains full term
-    if (termLower.includes(textLower)) return 70;
-    
-    let score = 0;
-    let termIndex = 0;
-    
-    for (let i = 0; i < textLower.length && termIndex < termLower.length; i++) {
-      if (textLower[i] === termLower[termIndex]) {
-        score += 10;
-        termIndex++;
+      <!-- Search Bar -->
+      <div class="relative mb-10 group">
+        <input 
+          type="text" 
+          id="search-input"
+          placeholder="Søk etter tittel eller nøkkelord..." 
+          class="w-full px-6 py-4 pl-12 bg-white border border-slate-200 rounded-3xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 text-lg transition-all">
+        <i id="search-icon" class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl transition-all"></i>
+      </div>
+
+      <div class="space-y-8" id="documents-list">
+        <!-- Card 1 -->
+        <div class="bg-white border border-slate-100 rounded-3xl p-8 hover:shadow-lg transition-all">
+          <div class="flex justify-between items-start">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-full">Representantforslag</span>
+              <h3 class="text-2xl font-semibold mt-3">Representantforslag om opprettelse av et antikorrupsjonsorgan</h3>
+              <p class="text-slate-600 mt-3 line-clamp-3">Stortingsrepresentantene foreslår å opprette et uavhengig organ for å forebygge og etterforske korrupsjon på høyeste nivå.</p>
+            </div>
+            <div class="text-right text-sm text-slate-500">31. mai 2026</div>
+          </div>
+          <div class="mt-6 flex gap-3">
+            <a href="pdfs/2026-05-31-representantforslag.pdf" target="_blank" class="inline-flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-2xl hover:bg-red-700">
+              <i class="fa-solid fa-file-pdf"></i> Last ned PDF
+            </a>
+            <a href="2026-05-31-representantforslag-om-antikorrupsjonsorgan.html" class="inline-flex items-center gap-2 border border-slate-300 px-5 py-2.5 rounded-2xl hover:bg-slate-50">
+              Les HTML versjon →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white border border-slate-100 rounded-3xl p-8 hover:shadow-lg transition-all">
+          <div class="flex justify-between items-start">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 text-xs font-medium bg-amber-100 text-amber-700 rounded-full">Lovforslag</span>
+              <h3 class="text-2xl font-semibold mt-3">Lov om styrking av habilitetsregler for politikere og statsråder</h3>
+              <p class="text-slate-600 mt-3 line-clamp-3">Forslag om strengere regler rundt økonomiske interesser, aksjeeiendom og habilitet for medlemmer av regjeringen og Stortinget.</p>
+            </div>
+            <div class="text-right text-sm text-slate-500">28. mai 2026</div>
+          </div>
+          <div class="mt-6 flex gap-3">
+            <a href="pdfs/2026-05-28-lov-om-habilitetsregler.pdf" target="_blank" class="inline-flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-2xl hover:bg-red-700">
+              <i class="fa-solid fa-file-pdf"></i> Last ned PDF
+            </a>
+            <a href="2026-05-28-lov-om-habilitetsregler.html" class="inline-flex items-center gap-2 border border-slate-300 px-5 py-2.5 rounded-2xl hover:bg-slate-50">
+              Les HTML versjon →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white border border-slate-100 rounded-3xl p-8 hover:shadow-lg transition-all">
+          <div class="flex justify-between items-start">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 text-xs font-medium bg-emerald-100 text-emerald-700 rounded-full">Interpellasjon</span>
+              <h3 class="text-2xl font-semibold mt-3">Interpellasjon om Norges håndtering av klimaforpliktelser</h3>
+              <p class="text-slate-600 mt-3 line-clamp-3">Spørsmål til statsministeren om hvorvidt Norge vil innfri sine internasjonale klimamål innen 2030.</p>
+            </div>
+            <div class="text-right text-sm text-slate-500">22. mai 2026</div>
+          </div>
+          <div class="mt-6 flex gap-3">
+            <a href="pdfs/2026-05-22-interpellasjon-klima.pdf" target="_blank" class="inline-flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-2xl hover:bg-red-700">
+              <i class="fa-solid fa-file-pdf"></i> Last ned PDF
+            </a>
+            <a href="2026-05-22-interpellasjon-klima.html" class="inline-flex items-center gap-2 border border-slate-300 px-5 py-2.5 rounded-2xl hover:bg-slate-50">
+              Les HTML versjon →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fuzzy Search with Relevance Scoring
+    function getRelevanceScore(text, term) {
+      if (!term) return 100;
+      const textLower = text.toLowerCase();
+      const termLower = term.toLowerCase();
+      
+      if (textLower.includes(termLower)) return 90;
+      if (termLower.includes(textLower)) return 70;
+
+      let score = 0;
+      let termIndex = 0;
+      for (let i = 0; i < textLower.length && termIndex < termLower.length; i++) {
+        if (textLower[i] === termLower[termIndex]) {
+          score += 10;
+          termIndex++;
+        }
       }
+      return score + (termIndex / termLower.length) * 30;
     }
-    
-    return score + (termIndex / termLower.length) * 30;         // Bonus for completing the term
-  }
 
-  const searchInput = document.getElementById('search-input');
-  const cardsContainer = document.getElementById('documents-list');
-  let cards = Array.from(cardsContainer.querySelectorAll('> div'));
+    const searchInput = document.getElementById('search-input');
+    const cards = document.querySelectorAll('#documents-list > div');
 
-  searchInput.addEventListener('input', () => {
-    const term = searchInput.value.trim().toLowerCase();
-    
-    // Add score to each card and sort
-    const scoredCards = cards.map(card => {
-      const title = card.querySelector('h3').textContent;
-      const description = card.querySelector('p').textContent;
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.trim().toLowerCase();
       
-      const titleScore = getRelevanceScore(title, term);
-      const descScore = getRelevanceScore(description, term);
-      const totalScore = Math.max(titleScore, descScore);
-      
-      return { card, score: totalScore };
+      cards.forEach(card => {
+        const title = card.querySelector('h3').textContent;
+        const desc = card.querySelector('p').textContent;
+        
+        const score = Math.max(getRelevanceScore(title, term), getRelevanceScore(desc, term));
+        card.style.display = score > 25 ? 'block' : 'none';
+      });
     });
+  </script>
 
-    // Sort by score (highest first)
-    scoredCards.sort((a, b) => b.score - a.score);
-
-    // Re-append cards in sorted order
-    scoredCards.forEach(({ card, score }) => {
-      card.style.display = score > 15 ? 'block' : 'none';   // Hide very poor matches
-      cardsContainer.appendChild(card);                     // Reorder
-    });
-  });
-</script>
 </body>
 </html>
