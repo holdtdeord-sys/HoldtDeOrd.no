@@ -45,37 +45,58 @@
     </div>
   </main>
 
-  <script>
-    const searchInput = document.getElementById('search-input');
-    const searchIcon = document.getElementById('search-icon');
-    const cards = document.querySelectorAll('#documents-list > div');
-
-    searchInput.addEventListener('input', () => {
-      const term = searchInput.value.toLowerCase().trim();
-
-      cards.forEach(card => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const description = card.querySelector('p').textContent.toLowerCase();
-        
-        if (title.includes(term) || description.includes(term)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-
-    // Visual feedback when focused
-    searchInput.addEventListener('focus', () => {
-      searchIcon.classList.add('text-blue-500', 'scale-110');
-    });
-
-    searchInput.addEventListener('blur', () => {
-      if (!searchInput.value) {
-        searchIcon.classList.remove('text-blue-500', 'scale-110');
+ <script>
+  // Calculate relevance score (higher = better match)
+  function getRelevanceScore(text, term) {
+    if (!term) return 100;
+    const textLower = text.toLowerCase();
+    const termLower = term.toLowerCase();
+    
+    if (textLower === termLower) return 100;                    // Exact match
+    if (textLower.includes(termLower)) return 80;               // Contains full term
+    if (termLower.includes(textLower)) return 70;
+    
+    let score = 0;
+    let termIndex = 0;
+    
+    for (let i = 0; i < textLower.length && termIndex < termLower.length; i++) {
+      if (textLower[i] === termLower[termIndex]) {
+        score += 10;
+        termIndex++;
       }
-    });
-  </script>
+    }
+    
+    return score + (termIndex / termLower.length) * 30;         // Bonus for completing the term
+  }
 
+  const searchInput = document.getElementById('search-input');
+  const cardsContainer = document.getElementById('documents-list');
+  let cards = Array.from(cardsContainer.querySelectorAll('> div'));
+
+  searchInput.addEventListener('input', () => {
+    const term = searchInput.value.trim().toLowerCase();
+    
+    // Add score to each card and sort
+    const scoredCards = cards.map(card => {
+      const title = card.querySelector('h3').textContent;
+      const description = card.querySelector('p').textContent;
+      
+      const titleScore = getRelevanceScore(title, term);
+      const descScore = getRelevanceScore(description, term);
+      const totalScore = Math.max(titleScore, descScore);
+      
+      return { card, score: totalScore };
+    });
+
+    // Sort by score (highest first)
+    scoredCards.sort((a, b) => b.score - a.score);
+
+    // Re-append cards in sorted order
+    scoredCards.forEach(({ card, score }) => {
+      card.style.display = score > 15 ? 'block' : 'none';   // Hide very poor matches
+      cardsContainer.appendChild(card);                     // Reorder
+    });
+  });
+</script>
 </body>
 </html>
