@@ -9,7 +9,7 @@
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV -->
+  <!-- NAV (same as before) -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
       <div class="flex items-center gap-3">
@@ -35,63 +35,36 @@
 
     <!-- Category Filters -->
     <div class="flex flex-wrap gap-3 justify-center mb-12">
-      <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white">Alle løfter</button>
+      <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white">Alle</button>
       <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100">Økonomi</button>
       <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100">Helse</button>
-      <button onclick="filterCategory('klima')" class="category-btn px-6 py-3 rounded-2xl hover:bg-emerald-100">Klima & Miljø</button>
+      <button onclick="filterCategory('klima')" class="category-btn px-6 py-3 rounded-2xl hover:bg-emerald-100">Klima</button>
       <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100">Utdanning</button>
       <button onclick="filterCategory('forsvar')" class="category-btn px-6 py-3 rounded-2xl hover:bg-slate-100">Forsvar</button>
       <button onclick="filterCategory('innvandring')" class="category-btn px-6 py-3 rounded-2xl hover:bg-orange-100">Innvandring</button>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="promises-grid">
-      <!-- JS populated -->
-    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="promises-grid"></div>
   </div>
 
   <script>
     const promisesData = [
-      {
-        party: "Ap",
-        name: "Jonas Gahr Støre",
-        category: "økonomi",
-        promise: "Billigere barnehage og gratis SFO for alle",
-        said: "Vi skal gjøre barnehagen billigere og innføre gratis SFO.",
-        done: "Innført maksprisreduksjon og prøveordning med gratis SFO i utvalgte kommuner.",
-        status: "Delvis oppfylt",
-        date: "2025-10-15"
-      },
-      {
-        party: "H",
-        name: "Erna Solberg",
-        category: "økonomi",
-        promise: "Lavere skatter og avgifter",
-        said: "Vi vil kutte skatter for å øke kjøpekraft og stimulere vekst.",
-        done: "Foreslått flere skattekutt fra opposisjon, men begrenset gjennomslag.",
-        status: "Ikke oppfylt",
-        date: "2025-09-20"
-      },
-      {
-        party: "SV",
-        name: "Kirsti Bergstø",
-        category: "klima",
-        promise: "Rask grønn omstilling",
-        said: "Norge må kutte utslipp raskt og rettferdig.",
-        done: "Aktiv pådriver i opposisjon, flere forslag fremmet.",
-        status: "Påbegynt",
-        date: "2025-10-05"
-      },
-      {
-        party: "Frp",
-        name: "Sylvi Listhaug",
-        category: "innvandring",
-        promise: "Strengere asyl- og innvandringspolitikk",
-        said: "Vi trenger kraftig redusert asylinnvandring.",
-        done: "Sterk opposisjonspolitikk, men lite gjennomslag.",
-        status: "Delvis oppfylt",
-        date: "2025-09-28"
-      }
-      // Add more here as we expand
+      // Arbeiderpartiet
+      { party: "Ap", name: "Jonas Gahr Støre", category: "økonomi", promise: "Billigere barnehage og gratis SFO", said: "Vi skal gjøre barnehagen billigere og innføre gratis SFO.", done: "Innført maksprisreduksjon og prøveordning i noen kommuner.", status: "Delvis oppfylt", date: "2025-10-15" },
+      { party: "Ap", name: "Jonas Gahr Støre", category: "helse", promise: "Kortere ventetider i helsetjenesten", said: "Vi skal korte ned ventetidene betydelig.", done: "Økt bemanning, men ventetider fortsatt høye.", status: "Påbegynt", date: "2025-09-28" },
+
+      // Høyre
+      { party: "H", name: "Erna Solberg", category: "økonomi", promise: "Lavere skatter og avgifter", said: "Vi vil kutte skatter for å øke kjøpekraft.", done: "Foreslått flere kutt fra opposisjon.", status: "Ikke oppfylt", date: "2025-09-20" },
+      { party: "H", name: "Erna Solberg", category: "forsvar", promise: "Sterkere forsvar og økt beredskap", said: "Norge må ruste opp forsvaret raskt.", done: "Støttet økte forsvarsbevilgninger.", status: "Delvis oppfylt", date: "2025-10-02" },
+
+      // Frp
+      { party: "Frp", name: "Sylvi Listhaug", category: "innvandring", promise: "Strengere innvandringspolitikk", said: "Betydelig redusert asylinnvandring.", done: "Sterk opposisjonspolitikk.", status: "Delvis oppfylt", date: "2025-09-25" },
+
+      // SV
+      { party: "SV", name: "Kirsti Bergstø", category: "klima", promise: "Rask grønn omstilling", said: "Norge må kutte utslipp raskt og rettferdig.", done: "Aktiv pådriver i opposisjon.", status: "Påbegynt", date: "2025-10-05" },
+
+      // Senterpartiet
+      { party: "Sp", name: "Trygve Slagsvold Vedum", category: "økonomi", promise: "Sterkere distriktspolitikk", said: "Vi skal verne om distriktene og landbruket.", done: "Fokus på distrikt i opposisjon.", status: "Delvis oppfylt", date: "2025-09-30" }
     ];
 
     function getStatusColor(status) {
@@ -126,14 +99,13 @@
             <span class="px-5 py-2 text-sm font-medium rounded-full ${getStatusColor(item.status)}">
               ${item.status}
             </span>
-            <a href="#" class="text-blue-600 hover:underline text-sm">Se dokumentasjon →</a>
+            <a href="#" class="text-blue-600 hover:underline text-sm">Se mer →</a>
           </div>
         `;
         grid.appendChild(card);
       });
     }
 
-    // Initial render
     renderPromises(promisesData);
 
     function filterCategory(cat) {
