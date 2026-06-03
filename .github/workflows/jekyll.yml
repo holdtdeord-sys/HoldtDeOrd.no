@@ -19,18 +19,13 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
-      - name: Setup Node.js 24
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-
       - name: Build Jekyll
         run: |
           bundle install
-          bundle exec jekyll build --verbose
+          bundle exec jekyll build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+          branch: gh-pages
+          folder: _site
