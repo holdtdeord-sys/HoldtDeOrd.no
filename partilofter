@@ -9,126 +9,81 @@
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV - Consistent across all pages -->
-<nav class="bg-white shadow-sm sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-    <!-- Logo -->
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-      <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+  <!-- NAV -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
+        <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+      </div>
+      
+      <div class="flex gap-8 text-lg font-medium items-center">
+        <a href="index.html" class="hover:text-blue-600 transition-colors">Hjem</a>
+        <a href="saker.html" class="hover:text-blue-600 transition-colors">Saker</a>
+        <a href="stortingsetene.html" class="hover:text-blue-600 transition-colors">Stortingsetene</a>
+        <a href="partilofter.html" class="hover:text-blue-600 transition-colors font-semibold">Partiløfter</a>
+        <a href="saker/dokumenter/" class="hover:text-blue-600 transition-colors">Dokumenter</a>
+        <a href="om-oss.html" class="hover:text-blue-600 transition-colors">Om oss</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- NAV -->
-<nav class="bg-white shadow-sm sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-      <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
-    </div>
-    
-    <div class="flex gap-8 text-lg font-medium items-center">
-      <a href="index.html" class="hover:text-blue-600 transition-colors">Hjem</a>
-      <a href="saker.html" class="hover:text-blue-600 transition-colors">Saker</a>
-      <a href="stortingsetene.html" class="hover:text-blue-600 transition-colors">Stortingsetene</a>
-      <a href="partilofter.html" class="hover:text-blue-600 transition-colors">Partiløfter</a>
-      <a href="saker/dokumenter/" class="hover:text-blue-600 transition-colors">Dokumenter</a>
-      <a href="om-oss.html" class="hover:text-blue-600 transition-colors">Om oss</a>
-    </div>
-  </div>
-</nav>
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h1 class="text-5xl font-semibold text-center mb-4">Partiløfter 2025–2029</h1>
+      <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
+        Hva lovte partiene og toppolitikerne før valget? Her følger vi opp løftene sak for sak – uten partifarge.
+      </p>
 
-  <div class="max-w-7xl mx-auto px-6 py-12">
-    <div class="text-center mb-12">
-      <h1 class="text-5xl font-bold mb-4">Partiløfter 2025–2029</h1>
-      <p class="text-2xl text-slate-600">Hva lovet de? Hva har de gjort så langt?</p>
-    </div>
+      <!-- Category Filters -->
+      <div class="flex flex-wrap gap-3 justify-center mb-12">
+        <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-medium">Alle løfter</button>
+        <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100 transition">Økonomi</button>
+        <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100 transition">Helse</button>
+        <button onclick="filterCategory('klima')" class="category-btn px-6 py-3 rounded-2xl hover:bg-emerald-100 transition">Klima</button>
+        <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100 transition">Utdanning</button>
+      </div>
 
-    <!-- Category Filters -->
-    <div class="flex flex-wrap gap-3 justify-center mb-12">
-      <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white">Alle</button>
-      <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100">Økonomi</button>
-      <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100">Helse</button>
-      <button onclick="filterCategory('klima')" class="category-btn px-6 py-3 rounded-2xl hover:bg-emerald-100">Klima</button>
-      <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100">Utdanning</button>
-      <button onclick="filterCategory('forsvar')" class="category-btn px-6 py-3 rounded-2xl hover:bg-slate-100">Forsvar</button>
-      <button onclick="filterCategory('innvandring')" class="category-btn px-6 py-3 rounded-2xl hover:bg-orange-100">Innvandring</button>
+      <!-- Promises Grid -->
+      <div id="promises-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Example cards - you can add more here -->
+        <div class="promise-card bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all" data-category="økonomi">
+          <div class="flex justify-between items-start mb-6">
+            <span class="px-4 py-1.5 bg-amber-100 text-amber-700 text-sm font-medium rounded-2xl">Økonomi</span>
+            <span class="text-emerald-600 text-sm font-medium">Delvis oppfylt</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Skattelette for vanlige folk</h3>
+          <p class="text-slate-600 mb-6">Lovet å senke skattetrykket for middelklassen med 10–15 mrd kr.</p>
+          <div class="text-sm text-slate-500">Jonas Gahr Støre • Ap</div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="promises-grid"></div>
-  </div>
+  <footer class="bg-white border-t py-12 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
+      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
+    </div>
+  </footer>
 
   <script>
-    const promisesData = [
-      // Arbeiderpartiet
-      { party: "Ap", name: "Jonas Gahr Støre", category: "økonomi", promise: "Billigere barnehage og gratis SFO", said: "Vi skal gjøre barnehagen billigere og innføre gratis SFO.", done: "Innført maksprisreduksjon og prøveordning i noen kommuner.", status: "Delvis oppfylt", date: "2025-10-15" },
-      { party: "Ap", name: "Jonas Gahr Støre", category: "helse", promise: "Kortere ventetider i helsetjenesten", said: "Vi skal korte ned ventetidene betydelig.", done: "Økt bemanning, men ventetider fortsatt høye.", status: "Påbegynt", date: "2025-09-28" },
-
-      // Høyre
-      { party: "H", name: "Erna Solberg", category: "økonomi", promise: "Lavere skatter og avgifter", said: "Vi vil kutte skatter for å øke kjøpekraft.", done: "Foreslått flere kutt fra opposisjon.", status: "Ikke oppfylt", date: "2025-09-20" },
-      { party: "H", name: "Erna Solberg", category: "forsvar", promise: "Sterkere forsvar og økt beredskap", said: "Norge må ruste opp forsvaret raskt.", done: "Støttet økte forsvarsbevilgninger.", status: "Delvis oppfylt", date: "2025-10-02" },
-
-      // Frp
-      { party: "Frp", name: "Sylvi Listhaug", category: "innvandring", promise: "Strengere innvandringspolitikk", said: "Betydelig redusert asylinnvandring.", done: "Sterk opposisjonspolitikk.", status: "Delvis oppfylt", date: "2025-09-25" },
-
-      // SV
-      { party: "SV", name: "Kirsti Bergstø", category: "klima", promise: "Rask grønn omstilling", said: "Norge må kutte utslipp raskt og rettferdig.", done: "Aktiv pådriver i opposisjon.", status: "Påbegynt", date: "2025-10-05" },
-
-      // Senterpartiet
-      { party: "Sp", name: "Trygve Slagsvold Vedum", category: "økonomi", promise: "Sterkere distriktspolitikk", said: "Vi skal verne om distriktene og landbruket.", done: "Fokus på distrikt i opposisjon.", status: "Delvis oppfylt", date: "2025-09-30" }
-    ];
-
-    function getStatusColor(status) {
-      if (status === "Oppfylt") return "bg-green-100 text-green-700";
-      if (status === "Delvis oppfylt") return "bg-amber-100 text-amber-700";
-      return "bg-red-100 text-red-700";
-    }
-
-    function renderPromises(data) {
-      const grid = document.getElementById('promises-grid');
-      grid.innerHTML = '';
-
-      data.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      data.forEach(item => {
-        const card = document.createElement('div');
-        card.className = "bg-white rounded-3xl p-8 hover:shadow-xl transition-all border border-slate-100";
-        card.innerHTML = `
-          <div class="flex justify-between items-start mb-6">
-            <span class="px-4 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700">${item.party}</span>
-            <span class="text-xs text-slate-500">${item.date}</span>
-          </div>
-          <h3 class="text-xl font-semibold mb-4">${item.promise}</h3>
-          <p class="text-slate-600 text-sm mb-6">"${item.said}"</p>
-          
-          <div class="bg-slate-50 p-5 rounded-2xl mb-6">
-            <p class="text-xs uppercase tracking-widest text-slate-500 mb-1">Hva de har gjort</p>
-            <p class="text-slate-700">${item.done}</p>
-          </div>
-
-          <div class="flex items-center justify-between">
-            <span class="px-5 py-2 text-sm font-medium rounded-full ${getStatusColor(item.status)}">
-              ${item.status}
-            </span>
-            <a href="#" class="text-blue-600 hover:underline text-sm">Se mer →</a>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    renderPromises(promisesData);
-
-    function filterCategory(cat) {
-      document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      if (cat === 'all') {
-        renderPromises(promisesData);
+    function filterCategory(category) {
+      const cards = document.querySelectorAll('.promise-card');
+      const buttons = document.querySelectorAll('.category-btn');
+      
+      buttons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+      
+      if (category === 'all') {
+        cards.forEach(card => card.style.display = 'block');
+        document.querySelector('button[onclick="filterCategory(\'all\')"]').classList.add('active', 'bg-blue-600', 'text-white');
       } else {
-        const filtered = promisesData.filter(p => p.category === cat);
-        renderPromises(filtered);
+        cards.forEach(card => {
+          card.style.display = card.dataset.category === category ? 'block' : 'none';
+        });
+        event.target.classList.add('active', 'bg-blue-600', 'text-white');
       }
     }
   </script>
+
 </body>
 </html>
