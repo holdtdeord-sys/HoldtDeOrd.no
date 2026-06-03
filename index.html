@@ -3,81 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoldtDeOrd.no – Hva sa de, hva gjorde de?</title>
+  <title>HoldtDeOrd.no - Hva sa de? Hva gjorde de?</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <style>
-    .hero-bg {
-      background: linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.85)), 
-                  url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
-    }
-  </style>
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV - Consistent across all pages -->
-<nav class="bg-white shadow-sm sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-    <!-- Logo -->
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-      <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+  <!-- NAV -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
+        <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+      </div>
+      
+      <div class="flex gap-8 text-lg font-medium items-center">
+        <a href="index.html" class="hover:text-blue-600 transition-colors font-semibold">Hjem</a>
+        <a href="saker.html" class="hover:text-blue-600 transition-colors">Saker</a>
+        <a href="stortingsetene.html" class="hover:text-blue-600 transition-colors">Stortingsetene</a>
+        <a href="partilofter.html" class="hover:text-blue-600 transition-colors">Partiløfter</a>
+        <a href="saker/dokumenter/" class="hover:text-blue-600 transition-colors">Dokumenter</a>
+        <a href="om-oss.html" class="hover:text-blue-600 transition-colors">Om oss</a>
+      </div>
     </div>
-    
-    <div class="flex gap-8 text-lg font-medium items-center">
-      <a href="index.html" class="hover:text-blue-600 transition-colors">Hjem</a>
-      <a href="saker.html" class="hover:text-blue-600 transition-colors">Saker</a>
-      <a href="stortingsetene.html" class="hover:text-blue-600 transition-colors">Stortingsetene</a>
-      <a href="partilofter.html" class="hover:text-blue-600 transition-colors">Partiløfter</a>
-      <a href="saker/dokumenter/" class="hover:text-blue-600 transition-colors">Dokumenter</a>
-      <a href="om-oss.html" class="hover:text-blue-600 transition-colors">Om oss</a>
-    </div>
-  </div>
-</nav>
-  
-  <!-- HERO -->
-  <section class="hero-bg text-white py-32">
-    <div class="max-w-4xl mx-auto text-center px-6">
-      <h1 class="text-5xl md:text-6xl font-bold mb-6">Hva sa de?<br>Hva gjorde de?</h1>
-      <p class="text-xl md:text-2xl text-slate-200">En nøytral og faktabasert oversikt over norsk politikk</p>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-700 to-blue-900 text-white py-24">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">Holdt de ord?</h1>
+      <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+        Faktabasert oversikt over hva norske politikere lover – og hva de faktisk gjør.
+      </p>
+      <div class="mt-10 flex justify-center gap-4">
+        <a href="saker.html" class="bg-white text-blue-700 px-8 py-4 rounded-2xl font-semibold hover:bg-blue-50 transition">Se alle saker</a>
+        <a href="partilofter.html" class="border border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition">Se partiløfter</a>
+      </div>
     </div>
   </section>
 
-  <!-- SAKER TEASER -->
-  <section class="py-20 bg-white">
+  <!-- Quick Links / Cards -->
+  <section class="py-16">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-semibold text-center mb-12">Aktuelle saker</h2>
-      <div id="saker-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Fylles inn fra JSON -->
-      </div>
-      <div class="text-center mt-12">
-        <a href="saker.html" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-2xl font-medium hover:bg-blue-700">Se alle saker →</a>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold mb-3">Dokumenter</h3>
+          <p class="text-slate-600 mb-6">Stortingsdokumenter, representantforslag og interpellasjoner analysert.</p>
+          <a href="saker/dokumenter/" class="text-blue-600 font-medium hover:underline">Gå til Dokumenter →</a>
+        </div>
+        
+        <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold mb-3">Stortingsetene</h3>
+          <p class="text-slate-600 mb-6">Hva lovte de største politikerne før valget?</p>
+          <a href="stortingsetene.html" class="text-blue-600 font-medium hover:underline">Se politikerprofiler →</a>
+        </div>
+        
+        <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold mb-3">Partiløfter</h3>
+          <p class="text-slate-600 mb-6">Hvor mye av valgløftene er oppfylt så langt?</p>
+          <a href="partilofter.html" class="text-blue-600 font-medium hover:underline">Se status på løftene →</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <script>
-    fetch('saker.json')
-      .then(res => res.json())
-      .then(saker => {
-        const grid = document.getElementById('saker-grid');
-        grid.innerHTML = '';
-        saker.forEach(sak => {
-          const html = `
-            <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden hover:shadow-xl transition-all">
-              <div class="h-2 bg-${sak.farge}-500"></div>
-              <div class="p-8">
-                <span class="uppercase text-${sak.farge}-600 text-sm font-medium">${sak.kategori}</span>
-                <h3 class="text-2xl font-semibold mt-4 mb-3">${sak.tittel}</h3>
-                <p class="text-slate-600 line-clamp-4">${sak.beskrivelse}</p>
-                <a href="saker.html" class="mt-6 inline-flex items-center text-blue-600 font-medium hover:underline">
-                  Les hele saken →
-                </a>
-              </div>
-            </div>`;
-          grid.innerHTML += html;
-        });
-      });
-  </script>
+  <footer class="bg-white border-t py-12 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
+      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
+    </div>
+  </footer>
+
 </body>
 </html>
