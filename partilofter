@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partiløfter 2025–2029 - HoldtDeOrd.no</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body class="bg-slate-50">
+
+  <!-- NAV -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
+        <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+      </div>
+      <div class="flex gap-8 text-lg font-medium">
+        <a href="index.html" class="hover:text-blue-600">Hjem</a>
+        <a href="saker.html" class="hover:text-blue-600">Saker</a>
+        <a href="stortingsetene.html" class="hover:text-blue-600">Stortingsetene</a>
+        <a href="partilofter.html" class="hover:text-blue-600 font-semibold">Partiløfter</a>
+        <a href="saker/dokumenter/" class="hover:text-blue-600">Dokumenter</a>
+        <a href="om-oss.html" class="hover:text-blue-600">Om oss</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-bold mb-4">Partiløfter 2025–2029</h1>
+      <p class="text-2xl text-slate-600">Hva lovet de? Hva har de gjort så langt?</p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="flex flex-wrap gap-3 justify-center mb-12">
+      <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white">Alle løfter</button>
+      <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100">Økonomi</button>
+      <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100">Helse</button>
+      <button onclick="filterCategory('klima')" class="category-btn px-6 py-3 rounded-2xl hover:bg-emerald-100">Klima & Miljø</button>
+      <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100">Utdanning</button>
+      <button onclick="filterCategory('forsvar')" class="category-btn px-6 py-3 rounded-2xl hover:bg-slate-100">Forsvar</button>
+      <button onclick="filterCategory('innvandring')" class="category-btn px-6 py-3 rounded-2xl hover:bg-orange-100">Innvandring</button>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="promises-grid">
+      <!-- JS populated -->
+    </div>
+  </div>
+
+  <script>
+    const promisesData = [
+      {
+        party: "Ap",
+        name: "Jonas Gahr Støre",
+        category: "økonomi",
+        promise: "Billigere barnehage og gratis SFO for alle",
+        said: "Vi skal gjøre barnehagen billigere og innføre gratis SFO.",
+        done: "Innført maksprisreduksjon og prøveordning med gratis SFO i utvalgte kommuner.",
+        status: "Delvis oppfylt",
+        date: "2025-10-15"
+      },
+      {
+        party: "H",
+        name: "Erna Solberg",
+        category: "økonomi",
+        promise: "Lavere skatter og avgifter",
+        said: "Vi vil kutte skatter for å øke kjøpekraft og stimulere vekst.",
+        done: "Foreslått flere skattekutt fra opposisjon, men begrenset gjennomslag.",
+        status: "Ikke oppfylt",
+        date: "2025-09-20"
+      },
+      {
+        party: "SV",
+        name: "Kirsti Bergstø",
+        category: "klima",
+        promise: "Rask grønn omstilling",
+        said: "Norge må kutte utslipp raskt og rettferdig.",
+        done: "Aktiv pådriver i opposisjon, flere forslag fremmet.",
+        status: "Påbegynt",
+        date: "2025-10-05"
+      },
+      {
+        party: "Frp",
+        name: "Sylvi Listhaug",
+        category: "innvandring",
+        promise: "Strengere asyl- og innvandringspolitikk",
+        said: "Vi trenger kraftig redusert asylinnvandring.",
+        done: "Sterk opposisjonspolitikk, men lite gjennomslag.",
+        status: "Delvis oppfylt",
+        date: "2025-09-28"
+      }
+      // Add more here as we expand
+    ];
+
+    function getStatusColor(status) {
+      if (status === "Oppfylt") return "bg-green-100 text-green-700";
+      if (status === "Delvis oppfylt") return "bg-amber-100 text-amber-700";
+      return "bg-red-100 text-red-700";
+    }
+
+    function renderPromises(data) {
+      const grid = document.getElementById('promises-grid');
+      grid.innerHTML = '';
+
+      data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl p-8 hover:shadow-xl transition-all border border-slate-100";
+        card.innerHTML = `
+          <div class="flex justify-between items-start mb-6">
+            <span class="px-4 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700">${item.party}</span>
+            <span class="text-xs text-slate-500">${item.date}</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">${item.promise}</h3>
+          <p class="text-slate-600 text-sm mb-6">"${item.said}"</p>
+          
+          <div class="bg-slate-50 p-5 rounded-2xl mb-6">
+            <p class="text-xs uppercase tracking-widest text-slate-500 mb-1">Hva de har gjort</p>
+            <p class="text-slate-700">${item.done}</p>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <span class="px-5 py-2 text-sm font-medium rounded-full ${getStatusColor(item.status)}">
+              ${item.status}
+            </span>
+            <a href="#" class="text-blue-600 hover:underline text-sm">Se dokumentasjon →</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Initial render
+    renderPromises(promisesData);
+
+    function filterCategory(cat) {
+      document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (cat === 'all') {
+        renderPromises(promisesData);
+      } else {
+        const filtered = promisesData.filter(p => p.category === cat);
+        renderPromises(filtered);
+      }
+    }
+  </script>
+</body>
+</html>
