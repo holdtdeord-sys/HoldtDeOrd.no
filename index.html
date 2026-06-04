@@ -1,6 +1,42 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
+  <style>
+  .nav-link {
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #2563eb;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover:after,
+  .nav-link.active:after {
+    width: 100%;
+  }
+</style>
+
+<script>
+  // Mobile menu functionality
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeButton = document.getElementById('close-mobile-menu');
+
+  menuButton.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+    mobileMenu.classList.add('flex', 'flex-col');
+  });
+
+  closeButton.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+  });
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HoldtDeOrd.no - Hva sa de? Hva gjorde de?</title>
