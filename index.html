@@ -27,20 +27,21 @@
       width: 100%;
     }
   </style>
-  <style>
+ <style>
   .wave {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 200%;
-    height: 100%;
-    background: linear-gradient(transparent, rgba(255,255,255,0.15));
-    animation: wave 25s linear infinite;
+    height: 120%;
+    background: linear-gradient(transparent, rgba(255,255,255,0.25));
+    animation: wave 35s linear infinite;
+    opacity: 0.6;
   }
 
   @keyframes wave {
-    0% { transform: translateX(0) rotate(0deg); }
-    100% { transform: translateX(-50%) rotate(5deg); }
+    0%   { transform: translateX(0) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(3deg); }
   }
 </style>
   
@@ -89,14 +90,14 @@
       </button>
     </div>
   </nav>
-  <!-- Hero Section with Gentle Water Effect -->
+  <!-- Hero Section - Refined Water Waves -->
 <section class="relative bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 text-white py-24 overflow-hidden">
   
-  <!-- Water Wave Animation -->
-  <div class="absolute inset-0 opacity-30">
+  <!-- Gentle Water Waves -->
+  <div class="absolute inset-0 opacity-20 pointer-events-none">
     <div class="wave"></div>
-    <div class="wave" style="animation-delay: -2s; opacity: 0.6;"></div>
-    <div class="wave" style="animation-delay: -4s; opacity: 0.4;"></div>
+    <div class="wave" style="animation-delay: -8s; opacity: 0.25;"></div>
+    <div class="wave" style="animation-delay: -15s; opacity: 0.18;"></div>
   </div>
 
   <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
@@ -104,7 +105,7 @@
     <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
       Faktabasert oversikt over hva norske politikere lover – og hva de faktisk gjør.
     </p>
-    <div class="mt-10 flex justify-center gap-4">
+    <div class="mt-10 flex justify-center gap-4 flex-wrap">
       <a href="saker.html" class="bg-white text-blue-700 px-8 py-4 rounded-2xl font-semibold hover:bg-blue-50 transition">Se alle saker</a>
       <a href="partilofter.html" class="border border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition">Se partiløfter</a>
     </div>
