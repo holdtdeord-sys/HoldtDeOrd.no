@@ -8,83 +8,98 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
-    .glass {
-      background: rgba(255, 255, 255, 0.15);
+    .hero-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.09);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    }
-    
-    .glass-card {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .glass-card:hover {
-      background: rgba(255, 255, 255, 0.22);
-      transform: translateY(-8px);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+    }
+
+    .headline {
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV (keep your current one) -->
-  <!-- ... your current nav here ... -->
+  <!-- NAV (your current one) -->
 
-  <!-- Hero with Glassmorphism + Waves -->
-  <section class="relative bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 text-white py-24 overflow-hidden">
-    <!-- Waves (keep your current wave code) -->
-    <div class="absolute inset-0 opacity-20 pointer-events-none">
-      <div class="wave"></div>
-      <div class="wave" style="animation-delay: -8s; opacity: 0.25;"></div>
-    </div>
-
+  <!-- HERO -->
+  <section class="hero-bg text-white py-28 overflow-hidden relative">
     <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
-      <div class="glass mx-auto max-w-2xl py-12 px-10 rounded-3xl">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6">Holdt de ord?</h1>
-        <p class="text-xl md:text-2xl text-blue-100">
-          Faktabasert oversikt over hva norske politikere lover – og hva de faktisk gjør.
-        </p>
-        <div class="mt-10 flex justify-center gap-4 flex-wrap">
-          <a href="saker.html" class="bg-white text-blue-700 px-8 py-4 rounded-2xl font-semibold hover:bg-blue-50 transition">Se alle saker</a>
-          <a href="partilofter.html" class="border border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition">Se partiløfter</a>
-        </div>
+      <h1 class="headline text-6xl md:text-7xl font-bold tracking-tighter mb-6">
+        Holdt de ord?
+      </h1>
+      <p class="text-2xl md:text-3xl text-blue-200 max-w-4xl mx-auto font-light">
+        Faktabasert oversikt over hva norske politikere lover – og hva de faktisk gjør.
+      </p>
+
+      <div class="mt-12 flex justify-center gap-6 flex-wrap">
+        <a href="saker.html" 
+           class="px-10 py-5 bg-white text-slate-900 rounded-3xl font-semibold text-lg hover:bg-white transition-all shadow-xl">
+          Se alle saker
+        </a>
+        <a href="partilofter.html" 
+           class="px-10 py-5 border-2 border-white/70 text-white rounded-3xl font-semibold text-lg hover:bg-white/10 transition-all">
+          Se partiløfter
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Glass Cards Section -->
-  <section class="py-16">
+  <!-- Glass Cards -->
+  <section class="py-20">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-3 gap-8">
-        
-        <div class="glass-card rounded-3xl p-8">
-          <h3 class="text-2xl font-semibold mb-3">Dokumenter</h3>
-          <p class="text-slate-600 mb-6">Stortingsdokumenter, representantforslag og interpellasjoner analysert.</p>
-          <a href="saker/dokumenter/" class="text-blue-600 font-medium hover:underline">Gå til Dokumenter →</a>
+        <div class="glass-card rounded-3xl p-10">
+          <h3 class="text-2xl font-semibold mb-4">Dokumenter</h3>
+          <p class="text-slate-300 mb-8">Stortingsdokumenter, representantforslag og interpellasjoner analysert og satt i kontekst.</p>
+          <a href="saker/dokumenter/" class="text-blue-400 hover:text-blue-300 font-medium">Gå til Dokumenter →</a>
         </div>
-        
-        <div class="glass-card rounded-3xl p-8">
-          <h3 class="text-2xl font-semibold mb-3">Stortingsetene</h3>
-          <p class="text-slate-600 mb-6">Hva lovte de største politikerne før valget?</p>
-          <a href="stortingsetene.html" class="text-blue-600 font-medium hover:underline">Se politikerprofiler →</a>
+
+        <div class="glass-card rounded-3xl p-10">
+          <h3 class="text-2xl font-semibold mb-4">Stortingsetene</h3>
+          <p class="text-slate-300 mb-8">Hva lovte de største politikerne? Vi følger opp løftene deres.</p>
+          <a href="stortingsetene.html" class="text-blue-400 hover:text-blue-300 font-medium">Se politikerprofiler →</a>
         </div>
-        
-        <div class="glass-card rounded-3xl p-8">
-          <h3 class="text-2xl font-semibold mb-3">Partiløfter</h3>
-          <p class="text-slate-600 mb-6">Hvor mye av valgløftene er oppfylt så langt?</p>
-          <a href="partilofter.html" class="text-blue-600 font-medium hover:underline">Se status på løftene →</a>
+
+        <div class="glass-card rounded-3xl p-10">
+          <h3 class="text-2xl font-semibold mb-4">Partiløfter</h3>
+          <p class="text-slate-300 mb-8">Hvor mye av valgløftene er oppfylt? Faktabasert status.</p>
+          <a href="partilofter.html" class="text-blue-400 hover:text-blue-300 font-medium">Se status på løftene →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Rest of your footer... -->
+  <!-- Footer -->
+  <footer class="bg-white border-t py-12 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
+      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
+    </div>
+  </footer>
 
 </body>
 </html>
