@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
-  <!-- Custom styles for active nav underline -->
+  <!-- Custom Nav Styles -->
   <style>
     .nav-link {
       position: relative;
@@ -34,22 +34,47 @@
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV -->
+  <!-- NAV - Fully Responsive -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-        <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+    <div class="max-w-6xl mx-auto px-6 py-5">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
+          <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-8 text-lg font-medium items-center">
+          <a href="../../index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
+          <a href="../../saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
+          <a href="../../stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
+          <a href="../../partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
+          <a href="../" class="nav-link hover:text-blue-600 transition-colors active">Dokumenter</a>
+          <a href="../../om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
+      <div class="flex flex-col gap-6 text-xl font-medium">
+        <a href="../../index.html" class="nav-link py-3 border-b">Hjem</a>
+        <a href="../../saker.html" class="nav-link py-3 border-b">Saker</a>
+        <a href="../../stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
+        <a href="../../partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
+        <a href="../" class="nav-link py-3 border-b active">Dokumenter</a>
+        <a href="../../om-oss.html" class="nav-link py-3">Om oss</a>
       </div>
       
-      <div class="flex gap-8 text-lg font-medium items-center">
-        <a href="../../index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
-        <a href="../../saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
-        <a href="../../stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
-        <a href="../../partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
-        <a href="../" class="nav-link hover:text-blue-600 transition-colors active">Dokumenter</a>
-        <a href="../../om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
-      </div>
+      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">
+        ✕
+      </button>
     </div>
   </nav>
 
@@ -67,6 +92,21 @@
       <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
     </div>
   </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeButton = document.getElementById('close-mobile-menu');
+
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+    });
+
+    closeButton.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  </script>
 
 </body>
 </html>
