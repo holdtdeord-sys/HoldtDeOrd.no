@@ -3,73 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Løftetreet - HoldtDeOrd.no</title>
+  <title>Partiløfter 2025–2029 - HoldtDeOrd.no</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  
   <style>
-    .tree-container {
-      max-width: 1100px;
-      margin: 0 auto;
+    .pyramid-level {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .tree-node {
-      transition: all 0.4s ease;
+    .pyramid-level:hover {
+      transform: scale(1.05) translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3);
     }
-    .tree-node:hover {
-      transform: scale(1.08);
-      filter: brightness(1.1);
-    }
-    .root { background: #166534; }
-    .trunk { background: #854d0e; }
-    .branch { background: #1e40af; }
-    .leaf { background: #15803d; }
   </style>
 </head>
 <body class="bg-slate-50">
 
-  <!-- Your current nav here -->
+  <!-- NAV (your current responsive nav) -->
 
-  <section class="py-20 bg-gradient-to-b from-slate-950 to-blue-950 text-white">
+  <section class="py-20 bg-gradient-to-b from-slate-900 to-blue-950 text-white">
     <div class="max-w-6xl mx-auto px-6">
-      <h1 class="text-5xl font-bold text-center mb-4">Løftetreet</h1>
-      <p class="text-center text-blue-300 text-xl mb-16">Fra rot til krone — hva ble egentlig oppfylt?</p>
+      <h1 class="text-5xl font-bold text-center mb-4">Partiløfter 2025–2029</h1>
+      <p class="text-center text-blue-300 text-xl mb-16">Hva lovte de? Hva har de gjort?</p>
 
-      <div class="tree-container">
-        <div class="flex flex-col items-center gap-8">
-          
-          <!-- Roots -->
-          <div class="grid grid-cols-3 gap-6 w-full max-w-2xl">
-            <div class="tree-node root text-white p-6 rounded-3xl text-center cursor-pointer">
-              <p class="text-sm opacity-75">Lokallag &amp; Velgere</p>
-              <p class="font-semibold">Grasrotløfter</p>
-            </div>
-            <!-- more roots -->
+      <!-- Maktpyramiden -->
+      <div class="max-w-3xl mx-auto mb-20">
+        <h2 class="text-3xl font-semibold text-center mb-8">Maktpyramiden — Hvem bestemmer egentlig?</h2>
+        
+        <div class="space-y-6">
+          <div onclick="showInfo(5)" class="pyramid-level bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 p-8 rounded-3xl cursor-pointer text-center">
+            <div class="text-sm tracking-widest font-medium">NIVÅ 5</div>
+            <div class="text-3xl font-bold">Partileder</div>
           </div>
 
-          <!-- Trunk -->
-          <div class="tree-node trunk w-96 h-40 rounded-3xl flex items-center justify-center text-center p-8 shadow-2xl">
-            <div>
-              <p class="text-sm opacity-75">Partiprogram 2025–2029</p>
-              <p class="text-2xl font-bold">Sentralt Løfte</p>
-            </div>
+          <div onclick="showInfo(4)" class="pyramid-level bg-gradient-to-r from-blue-600 to-indigo-600 p-7 rounded-3xl cursor-pointer text-center">
+            <div class="text-sm tracking-widest font-medium">NIVÅ 4</div>
+            <div class="text-2xl font-semibold">Sentralstyre</div>
           </div>
 
-          <!-- Branches -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
-            <div class="tree-node branch text-white p-8 rounded-3xl">
-              <div class="flex justify-between mb-4">
-                <span class="text-emerald-400">● Oppfylt</span>
-                <span class="text-amber-400">● Delvis</span>
-              </div>
-              <h3 class="font-semibold mb-2">Skattelette for middelklassen</h3>
-              <p class="text-sm opacity-80">Lovet 12 mrd — levert 4,8 mrd</p>
-            </div>
+          <div onclick="showInfo(3)" class="pyramid-level bg-gradient-to-r from-blue-700 to-blue-800 p-7 rounded-3xl cursor-pointer text-center">
+            <div class="text-sm tracking-widest font-medium">NIVÅ 3</div>
+            <div class="text-2xl font-semibold">Landsmøte</div>
+          </div>
 
-            <!-- Add more branches here -->
+          <div onclick="showInfo(1)" class="pyramid-level bg-gradient-to-r from-emerald-700 to-teal-700 p-6 rounded-3xl cursor-pointer text-center">
+            <div class="text-sm tracking-widest font-medium">NIVÅ 1</div>
+            <div class="text-xl font-semibold">Lokallag & Medlemmer</div>
           </div>
         </div>
       </div>
+
+      <!-- Your existing Category Filters and Promises Grid -->
+      <div class="flex flex-wrap gap-3 justify-center mb-12">
+        <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-medium">Alle løfter</button>
+        <!-- your other buttons -->
+      </div>
+
+      <div id="promises-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Your existing promise cards stay here -->
+      </div>
     </div>
   </section>
+
+  <!-- Info Modal -->
+  <div id="info-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+    <div class="bg-white text-slate-900 max-w-lg mx-4 rounded-3xl p-8">
+      <h2 id="modal-title" class="text-3xl font-bold mb-4"></h2>
+      <p id="modal-text" class="text-lg leading-relaxed"></p>
+      <button onclick="closeModal()" class="mt-8 px-8 py-3 bg-blue-600 text-white rounded-2xl font-medium">Lukk</button>
+    </div>
+  </div>
+
+  <!-- Your existing script for filtering + new modal script -->
+  <script>
+    // Your existing filterCategory function...
+
+    function showInfo(level) {
+      const modal = document.getElementById('info-modal');
+      const title = document.getElementById('modal-title');
+      const text = document.getElementById('modal-text');
+
+      if (level === 5) {
+        title.textContent = "Partileder";
+        text.textContent = "Den mest synlige figuren. Har stor innflytelse over mediabildet og daglig politikk, men er formelt underlagt Landsmøtet.";
+      } else if (level === 4) {
+        title.textContent = "Sentralstyre";
+        text.textContent = "Tar de daglige strategiske beslutningene mellom landsmøtene.";
+      } else if (level === 3) {
+        title.textContent = "Landsmøte";
+        text.textContent = "Partiets høyeste organ. Velger ledelse og vedtar partiprogrammet.";
+      } else if (level === 1) {
+        title.textContent = "Lokallag & Medlemmer";
+        text.textContent = "Grasrota. Her starter de fleste ideer og løfter fra folket.";
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('info-modal').classList.add('hidden');
+    }
+  </script>
 
 </body>
 </html>
