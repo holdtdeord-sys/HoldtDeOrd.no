@@ -72,19 +72,27 @@
       </button>
     </div>
   </nav>
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-blue-700 to-blue-900 text-white py-24">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h1 class="text-5xl md:text-6xl font-bold mb-6">Holdt de ord?</h1>
-      <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
-        Faktabasert oversikt over hva norske politikere lover – og hva de faktisk gjør.
-      </p>
-      <div class="mt-10 flex justify-center gap-4">
-        <a href="saker.html" class="bg-white text-blue-700 px-8 py-4 rounded-2xl font-semibold hover:bg-blue-50 transition">Se alle saker</a>
-        <a href="partilofter.html" class="border border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition">Se partiløfter</a>
-      </div>
+  <!-- Hero Section with Gentle Water Effect -->
+<section class="relative bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 text-white py-24 overflow-hidden">
+  
+  <!-- Water Wave Animation -->
+  <div class="absolute inset-0 opacity-30">
+    <div class="wave"></div>
+    <div class="wave" style="animation-delay: -2s; opacity: 0.6;"></div>
+    <div class="wave" style="animation-delay: -4s; opacity: 0.4;"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6">Holdt de ord?</h1>
+    <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+      Faktabasert oversikt over hva norske politikere lover – og hva de faktisk gjør.
+    </p>
+    <div class="mt-10 flex justify-center gap-4">
+      <a href="saker.html" class="bg-white text-blue-700 px-8 py-4 rounded-2xl font-semibold hover:bg-blue-50 transition">Se alle saker</a>
+      <a href="partilofter.html" class="border border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition">Se partiløfter</a>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Quick Links / Cards -->
   <section class="py-16">
