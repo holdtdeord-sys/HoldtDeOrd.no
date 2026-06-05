@@ -1,137 +1,85 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <style>
-  .nav-link {
-    position: relative;
-    padding-bottom: 4px;
-  }
-  .nav-link:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 3px;
-    bottom: 0;
-    left: 0;
-    background-color: #2563eb;
-    transition: width 0.3s ease;
-  }
-  .nav-link:hover:after,
-  .nav-link.active:after {
-    width: 100%;
-  }
-</style>
-
-<script>
-  // Mobile menu functionality
-  const menuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const closeButton = document.getElementById('close-mobile-menu');
-
-  menuButton.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-    mobileMenu.classList.add('flex', 'flex-col');
-  });
-
-  closeButton.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-  });
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dokumenter - HoldtDeOrd.no</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  
+  <style>
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: #2563eb;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
+    }
+  </style>
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV - Fully Responsive with Hamburger -->
-<nav class="bg-white shadow-sm sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-5">
-    <div class="flex justify-between items-center">
-      <!-- Logo -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-        <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
-      </div>
-
-     <!-- Desktop Menu -->
-<div class="hidden md:flex gap-8 text-lg font-medium items-center">
-  <a href="../../index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
-  <a href="../../saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
-  <a href="../../stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
-  <a href="../../partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
-  <a href="../" class="nav-link hover:text-blue-600 transition-colors active">Dokumenter</a>
-  <a href="../../om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
-</div>
-
-      <!-- Mobile Hamburger -->
-      <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">
-        ☰
-      </button>
-    </div>
-  </div>
-
-  <!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
-  <div class="flex flex-col gap-6 text-xl font-medium">
-    <a href="../../index.html" class="nav-link py-3 border-b">Hjem</a>
-    <a href="../../saker.html" class="nav-link py-3 border-b">Saker</a>
-    <a href="../../stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
-    <a href="../../partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
-    <a href="../" class="nav-link py-3 border-b active">Dokumenter</a>
-    <a href="../../om-oss.html" class="nav-link py-3">Om oss</a>
-  </div>
-  
-  <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">
-    ✕
-  </button>
-</div>
-</nav>
-
-  <div class="max-w-7xl mx-auto px-6 py-8 flex gap-8">
-    
-    <!-- LEFT SIDEBAR -->
-    <div class="w-72 flex-shrink-0">
-      <div class="bg-white rounded-3xl p-6 sticky top-8">
-        <h3 class="font-semibold text-lg mb-6 flex items-center gap-3">
-          <span class="text-2xl">🦁</span>
-          Stortinget Direkte
-        </h3>
-        <div class="space-y-4 text-sm">
-          <a href="https://www.stortinget.no/" target="_blank" class="flex items-center gap-3 hover:text-blue-600">
-            <i class="fa-solid fa-house"></i> Stortinget Forside
-          </a>
-          <a href="https://www.stortinget.no/no/Saker-og-publikasjoner/Saker/" target="_blank" class="flex items-center gap-3 hover:text-blue-600">
-            <i class="fa-solid fa-file-lines"></i> Alle saker
-          </a>
-          <a href="https://www.stortinget.no/no/Saker-og-publikasjoner/Publikasjoner/" target="_blank" class="flex items-center gap-3 hover:text-blue-600">
-            <i class="fa-solid fa-book"></i> Publikasjoner
-          </a>
-          <a href="https://www.stortinget.no/no/Saker-og-publikasjoner/Saker/?q=" target="_blank" class="flex items-center gap-3 hover:text-blue-600">
-            <i class="fa-solid fa-magnifying-glass"></i> Stortingets søk
-          </a>
+  <!-- NAV (using document version) -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-5">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
+          <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
         </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-8 text-lg font-medium items-center">
+          <a href="../../index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
+          <a href="../../saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
+          <a href="../../stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
+          <a href="../../partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
+          <a href="../" class="nav-link hover:text-blue-600 transition-colors active">Dokumenter</a>
+          <a href="../../om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">
+          ☰
+        </button>
       </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div class="flex-1">
-      <h1 class="text-4xl font-bold mb-2">Dokumenter</h1>
-      <p class="text-slate-600 mb-10">Faktabasert gjennomgang av politiske forslag og dokumenter</p>
-
-      <!-- Search Bar -->
-      <div class="relative mb-10 group">
-        <input 
-          type="text" 
-          id="search-input"
-          placeholder="Søk etter tittel eller nøkkelord..." 
-          class="w-full px-6 py-4 pl-12 bg-white border border-slate-200 rounded-3xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 text-lg transition-all">
-        <i id="search-icon" class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl transition-all"></i>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
+      <div class="flex flex-col gap-6 text-xl font-medium">
+        <a href="../../index.html" class="nav-link py-3 border-b">Hjem</a>
+        <a href="../../saker.html" class="nav-link py-3 border-b">Saker</a>
+        <a href="../../stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
+        <a href="../../partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
+        <a href="../" class="nav-link py-3 border-b active">Dokumenter</a>
+        <a href="../../om-oss.html" class="nav-link py-3">Om oss</a>
       </div>
+      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">✕</button>
+    </div>
+  </nav>
 
-      <div class="space-y-8" id="documents-list">
-        <!-- Card 1 -->
+  <section class="py-12 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h1 class="text-4xl sm:text-5xl font-semibold text-center mb-4">Dokumenter</h1>
+      <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+        Faktabasert gjennomgang av politiske forslag og dokumenter fra Stortinget
+      </p>
+
+      <!-- Documents Grid -->
+      <div id="documents-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Your document cards go here -->
         <div class="bg-white border border-slate-100 rounded-3xl p-8 hover:shadow-lg transition-all">
           <div class="flex justify-between items-start">
             <div class="flex-1">
@@ -190,12 +138,7 @@
             </a>
           </div>
         </div>
-
-      </div>
-    </div>
-  </div>
-
-  <script>
+        <script>
     // Fuzzy Search with Relevance Scoring
     function getRelevanceScore(text, term) {
       if (!term) return 100;
@@ -230,6 +173,25 @@
         card.style.display = score > 25 ? 'block' : 'none';
       });
     });
+  </script>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-white border-t py-12 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
+      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeButton = document.getElementById('close-mobile-menu');
+
+    menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+    closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
   </script>
 
 </body>
