@@ -3,142 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Partiløfter 2025-2029 - HoldtDeOrd.no</title>
+  <title>Løftetreet - HoldtDeOrd.no</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  
   <style>
-    .nav-link {
-      position: relative;
-      padding-bottom: 4px;
+    .tree-container {
+      max-width: 1100px;
+      margin: 0 auto;
     }
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: 0;
-      left: 0;
-      background-color: #2563eb;
-      transition: width 0.3s ease;
+    .tree-node {
+      transition: all 0.4s ease;
     }
-    .nav-link:hover:after,
-    .nav-link.active:after {
-      width: 100%;
+    .tree-node:hover {
+      transform: scale(1.08);
+      filter: brightness(1.1);
     }
+    .root { background: #166534; }
+    .trunk { background: #854d0e; }
+    .branch { background: #1e40af; }
+    .leaf { background: #15803d; }
   </style>
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV - Full Responsive -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-5">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-          <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
-        </div>
+  <!-- Your current nav here -->
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex gap-8 text-lg font-medium items-center">
-          <a href="index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
-          <a href="saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
-          <a href="stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
-          <a href="partilofter.html" class="nav-link hover:text-blue-600 transition-colors active">Partiløfter</a>
-          <a href="saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
-          <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
-        </div>
-
-        <!-- Mobile Hamburger -->
-        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">
-          ☰
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
-      <div class="flex flex-col gap-6 text-xl font-medium">
-        <a href="index.html" class="nav-link py-3 border-b">Hjem</a>
-        <a href="saker.html" class="nav-link py-3 border-b">Saker</a>
-        <a href="stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
-        <a href="partilofter.html" class="nav-link py-3 border-b active">Partiløfter</a>
-        <a href="saker/dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
-        <a href="om-oss.html" class="nav-link py-3">Om oss</a>
-      </div>
-      
-      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">
-        ✕
-      </button>
-    </div>
-  </nav>
-
-  <section class="py-20">
+  <section class="py-20 bg-gradient-to-b from-slate-950 to-blue-950 text-white">
     <div class="max-w-6xl mx-auto px-6">
-      <h1 class="text-5xl font-semibold text-center mb-4">Partiløfter 2025–2029</h1>
-      <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
-        Hva lovte partiene og toppolitikerne før valget? Her følger vi opp løftene sak for sak – uten partifarge.
-      </p>
+      <h1 class="text-5xl font-bold text-center mb-4">Løftetreet</h1>
+      <p class="text-center text-blue-300 text-xl mb-16">Fra rot til krone — hva ble egentlig oppfylt?</p>
 
-      <!-- Category Filters -->
-      <div class="flex flex-wrap gap-3 justify-center mb-12">
-        <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-medium">Alle løfter</button>
-        <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100 transition">Økonomi</button>
-        <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100 transition">Helse</button>
-        <button onclick="filterCategory('klima')" class="category-btn px-6 py-3 rounded-2xl hover:bg-emerald-100 transition">Klima</button>
-        <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100 transition">Utdanning</button>
-      </div>
-
-      <!-- Promises Grid -->
-      <div id="promises-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Example cards - you can add more here -->
-        <div class="promise-card bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all" data-category="økonomi">
-          <div class="flex justify-between items-start mb-6">
-            <span class="px-4 py-1.5 bg-amber-100 text-amber-700 text-sm font-medium rounded-2xl">Økonomi</span>
-            <span class="text-emerald-600 text-sm font-medium">Delvis oppfylt</span>
+      <div class="tree-container">
+        <div class="flex flex-col items-center gap-8">
+          
+          <!-- Roots -->
+          <div class="grid grid-cols-3 gap-6 w-full max-w-2xl">
+            <div class="tree-node root text-white p-6 rounded-3xl text-center cursor-pointer">
+              <p class="text-sm opacity-75">Lokallag &amp; Velgere</p>
+              <p class="font-semibold">Grasrotløfter</p>
+            </div>
+            <!-- more roots -->
           </div>
-          <h3 class="text-xl font-semibold mb-3">Skattelette for vanlige folk</h3>
-          <p class="text-slate-600 mb-6">Lovet å senke skattetrykket for middelklassen med 10–15 mrd kr.</p>
-          <div class="text-sm text-slate-500">Jonas Gahr Støre • Ap</div>
+
+          <!-- Trunk -->
+          <div class="tree-node trunk w-96 h-40 rounded-3xl flex items-center justify-center text-center p-8 shadow-2xl">
+            <div>
+              <p class="text-sm opacity-75">Partiprogram 2025–2029</p>
+              <p class="text-2xl font-bold">Sentralt Løfte</p>
+            </div>
+          </div>
+
+          <!-- Branches -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+            <div class="tree-node branch text-white p-8 rounded-3xl">
+              <div class="flex justify-between mb-4">
+                <span class="text-emerald-400">● Oppfylt</span>
+                <span class="text-amber-400">● Delvis</span>
+              </div>
+              <h3 class="font-semibold mb-2">Skattelette for middelklassen</h3>
+              <p class="text-sm opacity-80">Lovet 12 mrd — levert 4,8 mrd</p>
+            </div>
+
+            <!-- Add more branches here -->
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <footer class="bg-white border-t py-12 mt-20">
-    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
-      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
-    </div>
-  </footer>
-
-  <script>
-    function filterCategory(category) {
-      const cards = document.querySelectorAll('.promise-card');
-      const buttons = document.querySelectorAll('.category-btn');
-      
-      buttons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
-      
-      if (category === 'all') {
-        cards.forEach(card => card.style.display = 'block');
-        document.querySelector('button[onclick="filterCategory(\'all\')"]').classList.add('active', 'bg-blue-600', 'text-white');
-      } else {
-        cards.forEach(card => {
-          card.style.display = card.dataset.category === category ? 'block' : 'none';
-        });
-        event.target.classList.add('active', 'bg-blue-600', 'text-white');
-      }
-    }
-  </script>
-
-  <!-- Mobile Menu Script --> 
-  <script>
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeButton = document.getElementById('close-mobile-menu');
-
-    menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-    closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-  </script>
 
 </body>
 </html>
