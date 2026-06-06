@@ -8,9 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     #bg-particles {
       opacity: 0.25;
@@ -23,6 +21,20 @@
       backdrop-filter: blur(20px);
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
       border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .politician-img {
+      width: 80px;
+      height: 80px;
+      background: #e2e8f0;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      flex-shrink: 0;
+      border: 3px solid white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .nav-link {
@@ -100,7 +112,7 @@
           <!-- Jonas Gahr Støre -->
           <div class="content-box rounded-3xl p-7 hover:shadow-xl transition-all">
             <div class="flex items-start gap-5">
-              <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">🧔</div>
+              <div class="politician-img">🧔</div>
               <div class="flex-1 min-w-0">
                 <div class="font-semibold text-lg">Jonas Gahr Støre</div>
                 <div class="text-sm text-red-600">Arbeiderpartiet • Statsminister</div>
@@ -115,7 +127,7 @@
           <!-- Erna Solberg -->
           <div class="content-box rounded-3xl p-7 hover:shadow-xl transition-all">
             <div class="flex items-start gap-5">
-              <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">👩‍💼</div>
+              <div class="politician-img">👩‍💼</div>
               <div class="flex-1 min-w-0">
                 <div class="font-semibold text-lg">Erna Solberg</div>
                 <div class="text-sm text-blue-600">Høyre</div>
@@ -130,7 +142,7 @@
           <!-- Sylvi Listhaug -->
           <div class="content-box rounded-3xl p-7 hover:shadow-xl transition-all">
             <div class="flex items-start gap-5">
-              <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">👩</div>
+              <div class="politician-img">👩</div>
               <div class="flex-1 min-w-0">
                 <div class="font-semibold text-lg">Sylvi Listhaug</div>
                 <div class="text-sm text-orange-600">Frp • Partileder</div>
@@ -145,7 +157,7 @@
           <!-- Trygve Slagsvold Vedum -->
           <div class="content-box rounded-3xl p-7 hover:shadow-xl transition-all">
             <div class="flex items-start gap-5">
-              <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">👨‍🌾</div>
+              <div class="politician-img">👨‍🌾</div>
               <div class="flex-1 min-w-0">
                 <div class="font-semibold text-lg">Trygve Slagsvold Vedum</div>
                 <div class="text-sm text-green-600">Senterpartiet</div>
