@@ -8,35 +8,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
-    .nav-link {
-      position: relative;
-      padding-bottom: 4px;
-    }
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: 0;
-      left: 0;
-      background-color: #2563eb;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover:after,
-    .nav-link.active:after {
-      width: 100%;
-    }
-    
     #bg-particles {
-      opacity: 0.22;
+      opacity: 0.18;
       mix-blend-mode: screen;
+      z-index: -1;
     }
   </style>
 </head>
-<body class="bg-slate-50">
+<body class="bg-slate-50 relative">
 
-  <!-- Fixed Particle Background (Desktop Only) -->
-  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none z-[-1] hidden lg:block"></canvas>
+  <!-- Fixed Subtle Particle Background (Desktop Only) -->
+  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block"></canvas>
 
   <!-- NAV -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
@@ -61,11 +43,11 @@
     </div>
   </nav>
 
-  <section class="py-20">
+  <section class="py-20 relative z-10">
     <div class="max-w-4xl mx-auto px-6">
       <h1 class="text-5xl font-semibold text-center mb-8">Om HoldtDeOrd.no</h1>
       
-      <div class="prose prose-slate max-w-none text-lg">
+      <div class="prose prose-slate max-w-none text-lg leading-relaxed">
         <p class="text-xl text-slate-600">
           HoldtDeOrd.no er et uavhengig, faktabasert nettsted som holder norske politikere ansvarlige for det de lover velgerne.
         </p>
@@ -92,13 +74,13 @@
     </div>
   </section>
 
-  <footer class="bg-white border-t py-12 mt-20">
+  <footer class="bg-white border-t py-12 mt-20 relative z-10">
     <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
       <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
     </div>
   </footer>
 
-  <!-- Fixed Background Particles Script -->
+  <!-- Fixed Background Particles -->
   <script>
     const canvas = document.getElementById('bg-particles');
     const ctx = canvas.getContext('2d');
@@ -116,15 +98,15 @@
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2.2 + 0.5;
-        this.speedY = Math.random() * 0.8 + 0.3;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedY = Math.random() * 0.7 + 0.3;
       }
       update() {
         this.y += this.speedY;
         if (this.y > canvas.height) this.reset();
       }
       draw() {
-        ctx.fillStyle = 'rgba(147, 197, 253, 0.6)';
+        ctx.fillStyle = 'rgba(147, 197, 253, 0.55)';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -133,7 +115,7 @@
 
     function initParticles() {
       particles = [];
-      for (let i = 0; i < 85; i++) {
+      for (let i = 0; i < 80; i++) {
         particles.push(new Particle());
       }
     }
@@ -150,7 +132,7 @@
     initParticles();
     animate();
 
-    // Mobile Menu Script
+    // Mobile Menu
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeButton = document.getElementById('close-mobile-menu');
