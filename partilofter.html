@@ -22,25 +22,6 @@
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
-
-    .nav-link {
-      position: relative;
-      padding-bottom: 4px;
-    }
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: 0;
-      left: 0;
-      background-color: #2563eb;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover:after,
-    .nav-link.active:after {
-      width: 100%;
-    }
   </style>
 </head>
 <body class="bg-slate-950 relative min-h-screen overflow-x-hidden">
@@ -57,7 +38,6 @@
           <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
         </div>
 
-        <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 text-lg font-medium items-center">
           <a href="../index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
           <a href="../saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
@@ -67,7 +47,6 @@
           <a href="../om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
         </div>
 
-        <!-- Mobile Hamburger -->
         <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
       </div>
     </div>
@@ -92,7 +71,7 @@
       <div class="content-box rounded-3xl p-10 md:p-16">
         <h1 class="text-4xl md:text-5xl font-semibold text-center mb-6">Partiløfter 2025–2029</h1>
         <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
-          Hva lovte partiene og toppolitikerne før valget? Her følger vi opp løftene sak for sak.
+          Hva lovte partiene før valget? Her følger vi opp løftene sak for sak – faktabasert.
         </p>
 
         <!-- Category Filters -->
@@ -100,13 +79,13 @@
           <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-medium">Alle løfter</button>
           <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100 transition">Økonomi</button>
           <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100 transition">Helse</button>
-          <button onclick="filterCategory('klima')" class="category-btn px-6 py-3 rounded-2xl hover:bg-emerald-100 transition">Klima</button>
+          <button onclick="filterCategory('forsvar')" class="category-btn px-6 py-3 rounded-2xl hover:bg-sky-100 transition">Forsvar</button>
           <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100 transition">Utdanning</button>
         </div>
 
-        <!-- Promises Grid -->
+        <!-- Dynamic Promises Grid -->
         <div id="promises-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Cards will be populated by JS or you can add manually -->
+          <!-- Populated by JavaScript -->
         </div>
       </div>
     </div>
@@ -118,8 +97,91 @@
     </div>
   </footer>
 
-  <!-- Particle + Mobile Menu Script -->
   <script>
+    const promisesData = [
+      {
+        title: "Skattelette for middelklassen",
+        party: "Arbeiderpartiet",
+        category: "økonomi",
+        said: "Senke skattetrykket med 10–15 mrd kr",
+        done: "Levert ca. 5 mrd kr i lettelser",
+        status: "delvis"
+      },
+      {
+        title: "Gratis SFO og billigere barnehage",
+        party: "Arbeiderpartiet",
+        category: "helse",
+        said: "Fullt ut gratis SFO og sterkt reduserte barnehagepriser",
+        done: "Delvis innført i 2026-budsjettet",
+        status: "delvis"
+      },
+      {
+        title: "Sterkere forsvar og økt beredskap",
+        party: "Høyre",
+        category: "forsvar",           // ← Korrigert
+        said: "Øke forsvarsbudsjettet betydelig",
+        done: "Økt med 15 % i 2026",
+        status: "oppfylt"
+      },
+      {
+        title: "Strengere innvandringspolitikk",
+        party: "Fremskrittspartiet",
+        category: "utdanning",
+        said: "Redusere asylinnvandring og øke returer",
+        done: "Innført flere tiltak i 2026",
+        status: "delvis"
+      },
+      {
+        title: "Bedre vilkår for bønder og distrikt",
+        party: "Senterpartiet",
+        category: "økonomi",
+        said: "Styrke distriktspolitikken og jordbruket",
+        done: "Økte tilskudd i statsbudsjettet",
+        status: "oppfylt"
+      }
+    ];
+
+    function renderPromises(filteredData) {
+      const grid = document.getElementById('promises-grid');
+      grid.innerHTML = '';
+
+      filteredData.forEach(item => {
+        const statusColor = item.status === 'oppfylt' ? 'emerald' : item.status === 'delvis' ? 'amber' : 'red';
+        
+        const card = document.createElement('div');
+        card.className = `content-box rounded-3xl p-8 hover:shadow-xl transition-all`;
+        card.innerHTML = `
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-4 py-1 bg-${statusColor}-100 text-${statusColor}-700 text-sm font-medium rounded-2xl">${item.category}</span>
+            <span class="text-xs font-medium text-${statusColor}-600">${item.status === 'oppfylt' ? 'Oppfylt' : item.status === 'delvis' ? 'Delvis oppfylt' : 'Ikke oppfylt'}</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">${item.title}</h3>
+          <p class="text-slate-600 mb-4">"${item.said}"</p>
+          <p class="text-sm text-slate-500"><strong>Gjort:</strong> ${item.done}</p>
+          <div class="mt-6 text-sm text-blue-600 font-medium">${item.party}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterCategory(category) {
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+
+      if (category === 'all') {
+        renderPromises(promisesData);
+        document.querySelector('button[onclick="filterCategory(\'all\')"]').classList.add('active', 'bg-blue-600', 'text-white');
+      } else {
+        const filtered = promisesData.filter(p => p.category === category);
+        renderPromises(filtered);
+        event.target.classList.add('active', 'bg-blue-600', 'text-white');
+      }
+    }
+
+    // Initialize
+    renderPromises(promisesData);
+
+    // Particle Background + Mobile Menu (same as before)
     const canvas = document.getElementById('bg-particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -139,10 +201,7 @@
         this.size = Math.random() * 2.2 + 0.5;
         this.speedY = Math.random() * 0.8 + 0.3;
       }
-      update() {
-        this.y += this.speedY;
-        if (this.y > canvas.height) this.reset();
-      }
+      update() { this.y += this.speedY; if (this.y > canvas.height) this.reset(); }
       draw() {
         ctx.fillStyle = 'rgba(147, 197, 253, 0.65)';
         ctx.beginPath();
@@ -158,10 +217,7 @@
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
+      particles.forEach(p => { p.update(); p.draw(); });
       requestAnimationFrame(animate);
     }
 
@@ -176,12 +232,6 @@
     if (menuButton && mobileMenu && closeButton) {
       menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
       closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    }
-
-    // Example filter function (you can expand this)
-    function filterCategory(category) {
-      console.log("Filtering by:", category);
-      // Add your filtering logic here later
     }
   </script>
 
