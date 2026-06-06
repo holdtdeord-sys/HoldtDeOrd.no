@@ -6,31 +6,10 @@
   <title>Stortingsetene - HoldtDeOrd.no</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  
-  <style>
-    .nav-link {
-      position: relative;
-      padding-bottom: 4px;
-    }
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: 0;
-      left: 0;
-      background-color: #2563eb;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover:after,
-    .nav-link.active:after {
-      width: 100%;
-    }
-  </style>
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV - Full Responsive -->
+  <!-- NAV -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
@@ -39,156 +18,119 @@
           <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
         </div>
 
-        <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 text-lg font-medium items-center">
-          <a href="index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
-          <a href="saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
-          <a href="stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors active">Stortingsetene</a>
-          <a href="partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
-          <a href="saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
-          <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
+          <a href="../index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
+          <a href="../saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
+          <a href="../stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors active">Stortingsetene</a>
+          <a href="../partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
+          <a href=".." class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
+          <a href="../om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
         </div>
 
-        <!-- Mobile Hamburger -->
-        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">
-          ☰
-        </button>
+        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
       </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
-      <div class="flex flex-col gap-6 text-xl font-medium">
-        <a href="index.html" class="nav-link py-3 border-b">Hjem</a>
-        <a href="saker.html" class="nav-link py-3 border-b">Saker</a>
-        <a href="stortingsetene.html" class="nav-link py-3 border-b active">Stortingsetene</a>
-        <a href="partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
-        <a href="saker/dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
-        <a href="om-oss.html" class="nav-link py-3">Om oss</a>
-      </div>
-      
-      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">
-        ✕
-      </button>
     </div>
   </nav>
 
-  <div class="max-w-7xl mx-auto px-6 py-12">
-    <div class="text-center mb-12">
-      <h1 class="text-5xl font-bold mb-3">Stortingsetene</h1>
-      <p class="text-2xl text-slate-600">Hvilke løfter stemte vi egentlig på?</p>
-    </div>
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h1 class="text-4xl sm:text-5xl font-semibold text-center mb-4">Stortingsetene 2025–2029</h1>
+      <p class="text-center text-slate-600 mb-16 max-w-2xl mx-auto">
+        Hva lovte toppolitikerne før valget? Vi følger opp løftene deres.
+      </p>
 
-    <!-- Filters -->
-    <div class="flex flex-wrap gap-4 justify-center mb-10">
-      <button onclick="filterAll()" class="filter-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white">Alle</button>
-      <button onclick="filterCategory('økonomi')" class="filter-btn px-6 py-3 rounded-2xl hover:bg-amber-100">Økonomi</button>
-      <button onclick="filterCategory('helse')" class="filter-btn px-6 py-3 rounded-2xl hover:bg-red-100">Helse</button>
-      <button onclick="filterCategory('klima')" class="filter-btn px-6 py-3 rounded-2xl hover:bg-emerald-100">Klima</button>
-      <button onclick="filterCategory('forsvar')" class="filter-btn px-6 py-3 rounded-2xl hover:bg-slate-100">Forsvar</button>
-    </div>
+      <!-- Improved Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="politicians-grid">
-      <!-- Populated by JS -->
-    </div>
-  </div>
-
-  <script>
-    const politicians = [
-      {
-        name: "Jonas Gahr Støre",
-        party: "Ap",
-        role: "Statsminister",
-        date: "2025-09-15",
-        category: "økonomi",
-        promise: "Trygg styring av norsk økonomi, billigere barnehage og gratis SFO, kortere ventetider i helsevesenet",
-        status: "Påbegynt"
-      },
-      {
-        name: "Erna Solberg",
-        party: "H",
-        role: "Tidligere statsminister",
-        date: "2025-09-10",
-        category: "økonomi",
-        promise: "Lavere skatter, bedre eldreomsorg og et sterkere forsvar",
-        status: "Opposisjon"
-      },
-      {
-        name: "Sylvi Listhaug",
-        party: "Frp",
-        role: "Partileder",
-        date: "2025-09-12",
-        category: "helse",
-        promise: "Kortere ventetider, strengere innvandring og lavere avgifter",
-        status: "Opposisjon"
-      },
-      {
-        name: "Kirsti Bergstø",
-        party: "SV",
-        role: "Partileder",
-        date: "2025-09-08",
-        category: "klima",
-        promise: "Raskere grønn omstilling, rettferdig fordeling og sterk velferd",
-        status: "Opposisjon"
-      }
-      // Add more as needed
-    ];
-
-    function renderPoliticians(list) {
-      const grid = document.getElementById('politicians-grid');
-      grid.innerHTML = '';
-
-      list.sort((a, b) => new Date(b.date) - new Date(a.date)); // Newest first
-
-      list.forEach(p => {
-        const card = document.createElement('div');
-        card.className = `bg-white rounded-3xl p-8 hover:shadow-xl transition-all border border-slate-100`;
-        card.innerHTML = `
-          <div class="flex gap-4">
-            <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center text-5xl">👤</div>
+        <!-- Jonas Gahr Støre -->
+        <div class="bg-white border border-slate-200 rounded-3xl p-7 hover:shadow-xl transition-all">
+          <div class="flex items-start gap-5">
+            <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">🧔</div>
             <div class="flex-1">
               <div class="flex justify-between">
-                <span class="px-4 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700">${p.party}</span>
-                <span class="text-sm text-slate-500">${p.date}</span>
+                <div>
+                  <div class="font-semibold text-lg">Jonas Gahr Støre</div>
+                  <div class="text-sm text-red-600">Arbeiderpartiet • Statsminister</div>
+                </div>
+                <span class="text-xs bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full h-fit">Påbegynt</span>
               </div>
-              <h3 class="text-2xl font-semibold mt-4">${p.name}</h3>
-              <p class="text-slate-500">${p.role}</p>
-              <div class="mt-6 bg-slate-50 p-5 rounded-2xl">
-                <p class="italic text-slate-700">"${p.promise}"</p>
-              </div>
-              <div class="mt-6 flex justify-between items-center">
-                <span class="text-sm font-medium text-green-600">${p.status}</span>
-                <a href="#" class="text-blue-600 hover:underline text-sm">Se alle løfter →</a>
-              </div>
+              <p class="text-slate-600 mt-4 text-[15px] leading-relaxed">
+                "Trygg styring av norsk økonomi, billigere barnehage og gratis SFO, kortere ventetider i helsesenenet"
+              </p>
+              <a href="#" class="text-blue-600 hover:underline text-sm font-medium mt-5 inline-block">Se alle løfter →</a>
             </div>
           </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
+        </div>
 
-    // Initial render
-    renderPoliticians(politicians);
+        <!-- Erna Solberg -->
+        <div class="bg-white border border-slate-200 rounded-3xl p-7 hover:shadow-xl transition-all">
+          <div class="flex items-start gap-5">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">👩‍💼</div>
+            <div class="flex-1">
+              <div class="flex justify-between">
+                <div>
+                  <div class="font-semibold text-lg">Erna Solberg</div>
+                  <div class="text-sm text-blue-600">Høyre</div>
+                </div>
+                <span class="text-xs bg-amber-100 text-amber-700 px-3 py-1 rounded-full h-fit">Opposisjon</span>
+              </div>
+              <p class="text-slate-600 mt-4 text-[15px] leading-relaxed">
+                "Mer privat initiativ, lavere skatter, bedre eldreomsorg og sterkere forsvar"
+              </p>
+              <a href="#" class="text-blue-600 hover:underline text-sm font-medium mt-5 inline-block">Se alle løfter →</a>
+            </div>
+          </div>
+        </div>
 
-    function filterAll() {
-      renderPoliticians(politicians);
-    }
+        <!-- Sylvi Listhaug -->
+        <div class="bg-white border border-slate-200 rounded-3xl p-7 hover:shadow-xl transition-all">
+          <div class="flex items-start gap-5">
+            <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">👩</div>
+            <div class="flex-1">
+              <div class="flex justify-between">
+                <div>
+                  <div class="font-semibold text-lg">Sylvi Listhaug</div>
+                  <div class="text-sm text-orange-600">Frp • Partileder</div>
+                </div>
+                <span class="text-xs bg-amber-100 text-amber-700 px-3 py-1 rounded-full h-fit">Opposisjon</span>
+              </div>
+              <p class="text-slate-600 mt-4 text-[15px] leading-relaxed">
+                "Kortere ventetider, strengere innvandring og lavere avgifter"
+              </p>
+              <a href="#" class="text-blue-600 hover:underline text-sm font-medium mt-5 inline-block">Se alle løfter →</a>
+            </div>
+          </div>
+        </div>
 
-    function filterCategory(cat) {
-      const filtered = politicians.filter(p => p.category === cat);
-      renderPoliticians(filtered);
-    }
-  </script>
-  
-  <!-- Mobile Menu Script --> 
-  <script>
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeButton = document.getElementById('close-mobile-menu');
+        <!-- Trygve Slagsvold Vedum -->
+        <div class="bg-white border border-slate-200 rounded-3xl p-7 hover:shadow-xl transition-all">
+          <div class="flex items-start gap-5">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0">👨‍🌾</div>
+            <div class="flex-1">
+              <div class="flex justify-between">
+                <div>
+                  <div class="font-semibold text-lg">Trygve Slagsvold Vedum</div>
+                  <div class="text-sm text-green-600">Senterpartiet</div>
+                </div>
+                <span class="text-xs bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full h-fit">Påbegynt</span>
+              </div>
+              <p class="text-slate-600 mt-4 text-[15px] leading-relaxed">
+                "Sterkere distriktspolitikk, lavere drivstoffpriser og bedre vilkår for bønder"
+              </p>
+              <a href="#" class="text-blue-600 hover:underline text-sm font-medium mt-5 inline-block">Se alle løfter →</a>
+            </div>
+          </div>
+        </div>
 
-    menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-    closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-  </script>
-  
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-white border-t py-12 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
+      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
+    </div>
+  </footer>
+
 </body>
 </html>
