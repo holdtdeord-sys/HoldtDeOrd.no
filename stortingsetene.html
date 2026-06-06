@@ -6,6 +6,31 @@
   <title>Stortingsetene - HoldtDeOrd.no</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  
+ <style>
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: #2563eb;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-slate-50">
+
+  
 </head>
 <body class="bg-slate-50">
 
