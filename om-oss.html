@@ -8,45 +8,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
-    .hero-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
-    }
-
     #bg-particles {
-      opacity: 0.25;
+      opacity: 0.28;
       mix-blend-mode: screen;
       z-index: -1;
     }
-  </style>
 
-  <style>
-    .nav-link {
-      position: relative;
-      padding-bottom: 4px;
-    }
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: 0;
-      left: 0;
-      background-color: #2563eb;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover:after,
-    .nav-link.active:after {
-      width: 100%;
+    .content-box {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
   </style>
-  
 </head>
-<body class="bg-slate-950 relative min-h-screen">
+<body class="bg-slate-950 relative min-h-screen overflow-x-hidden">
 
   <!-- Fixed Particle Background -->
   <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block"></canvas>
 
-  <!-- NAV - Full Responsive -->
+  <!-- NAV -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
@@ -55,68 +36,48 @@
           <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
         </div>
 
-        <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 text-lg font-medium items-center">
-          <a href="index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
-          <a href="saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
-          <a href="stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
-          <a href="partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
-          <a href="saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
-          <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors active">Om oss</a>
+          <a href="../index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
+          <a href="../saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
+          <a href="../stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
+          <a href="../partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
+          <a href="../saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
+          <a href="../om-oss.html" class="nav-link hover:text-blue-600 transition-colors active">Om oss</a>
         </div>
 
-        <!-- Mobile Hamburger -->
-        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">
-          ☰
-        </button>
+        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
       </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
-      <div class="flex flex-col gap-6 text-xl font-medium">
-        <a href="index.html" class="nav-link py-3 border-b">Hjem</a>
-        <a href="saker.html" class="nav-link py-3 border-b">Saker</a>
-        <a href="stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
-        <a href="partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
-        <a href="saker/dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
-        <a href="om-oss.html" class="nav-link py-3 active">Om oss</a>
-      </div>
-      
-      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">
-        ✕
-      </button>
     </div>
   </nav>
 
-  <!-- Hero Content -->
-  <section class="hero-bg py-20 relative z-10 min-h-screen flex items-center">
-    <div class="max-w-4xl mx-auto px-6 w-full">
-      <div class="bg-white rounded-3xl shadow-2xl p-10 md:p-16 max-w-3xl mx-auto">
+  <!-- Main Content -->
+  <section class="py-20 relative z-10">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="content-box rounded-3xl p-10 md:p-16">
         <h1 class="text-4xl md:text-5xl font-semibold text-center mb-10 text-slate-900">Om HoldtDeOrd.no</h1>
         
-        <div class="prose prose-slate max-w-none text-[17px] leading-relaxed">
-          <p class="text-xl">
+        <div class="prose prose-slate max-w-none text-[17.2px] leading-relaxed">
+          <p class="text-xl text-slate-700">
             HoldtDeOrd.no er et uavhengig, faktabasert nettsted som holder norske politikere ansvarlige for det de lover velgerne.
           </p>
           
-          <h2 class="text-3xl font-semibold mt-12 mb-4">Vårt mål</h2>
-          <p>
+          <h2 class="text-3xl font-semibold mt-12 mb-4 text-slate-800">Vårt mål</h2>
+          <p class="text-slate-700">
             Vi samler inn politiske løfter, representantforslag, taler og løfter fra valgkamper – og følger opp hva som faktisk blir gjennomført i perioden 2025–2029.
           </p>
 
-          <h2 class="text-3xl font-semibold mt-12 mb-4">Hvordan vi jobber</h2>
-          <ul class="list-disc pl-6 space-y-3">
+          <h2 class="text-3xl font-semibold mt-12 mb-4 text-slate-800">Hvordan vi jobber</h2>
+          <ul class="list-disc pl-6 space-y-3 text-slate-700">
             <li>Vi henter offisielle dokumenter fra Stortinget</li>
             <li>Vi analyserer løfter nøytralt og faktabasert</li>
             <li>Vi skiller mellom det som blir sagt og det som blir gjort</li>
             <li>Ingen partipolitisk agenda – kun fakta</li>
           </ul>
 
-          <h2 class="text-3xl font-semibold mt-12 mb-4">Kontakt</h2>
-          <p>
+          <h2 class="text-3xl font-semibold mt-12 mb-4 text-slate-800">Kontakt</h2>
+          <p class="text-slate-700">
             Har du tips til saker eller dokumenter vi bør se på? 
-            Ta gjerne kontakt via e-post: <span class="font-medium">kontakt@holdtdeord.no</span>
+            Ta gjerne kontakt via e-post: <span class="font-medium text-blue-600">kontakt@holdtdeord.no</span>
           </p>
         </div>
       </div>
@@ -147,15 +108,15 @@
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2.2 + 0.5;
-        this.speedY = Math.random() * 0.8 + 0.3;
+        this.size = Math.random() * 2.3 + 0.5;
+        this.speedY = Math.random() * 0.9 + 0.4;
       }
       update() {
         this.y += this.speedY;
         if (this.y > canvas.height) this.reset();
       }
       draw() {
-        ctx.fillStyle = 'rgba(147, 197, 253, 0.65)';
+        ctx.fillStyle = 'rgba(147, 197, 253, 0.7)';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -164,7 +125,7 @@
 
     function initParticles() {
       particles = [];
-      for (let i = 0; i < 95; i++) {
+      for (let i = 0; i < 100; i++) {
         particles.push(new Particle());
       }
     }
