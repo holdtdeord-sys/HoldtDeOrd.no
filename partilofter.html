@@ -3,11 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Partiløfter 2025-2029 - HoldtDeOrd.no</title>
+  <title>Partiløfter 2025–2029 - HoldtDeOrd.no</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
+    html { scroll-behavior: smooth; }
+
+    #bg-particles {
+      opacity: 0.25;
+      mix-blend-mode: screen;
+      z-index: -1;
+    }
+
+    .content-box {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
     .nav-link {
       position: relative;
       padding-bottom: 4px;
@@ -28,9 +43,12 @@
     }
   </style>
 </head>
-<body class="bg-slate-50">
+<body class="bg-slate-950 relative min-h-screen overflow-x-hidden">
 
-  <!-- NAV - Full Responsive -->
+  <!-- Fixed Particle Background -->
+  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block"></canvas>
+
+  <!-- NAV -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
@@ -41,103 +59,130 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 text-lg font-medium items-center">
-          <a href="index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
-          <a href="saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
-          <a href="stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
-          <a href="partilofter.html" class="nav-link hover:text-blue-600 transition-colors active">Partiløfter</a>
-          <a href="saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
-          <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
+          <a href="../index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
+          <a href="../saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
+          <a href="../stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
+          <a href="../partilofter.html" class="nav-link hover:text-blue-600 transition-colors active">Partiløfter</a>
+          <a href="dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
+          <a href="../om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
         </div>
 
         <!-- Mobile Hamburger -->
-        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">
-          ☰
-        </button>
+        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
       <div class="flex flex-col gap-6 text-xl font-medium">
-        <a href="index.html" class="nav-link py-3 border-b">Hjem</a>
-        <a href="saker.html" class="nav-link py-3 border-b">Saker</a>
-        <a href="stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
-        <a href="partilofter.html" class="nav-link py-3 border-b active">Partiløfter</a>
-        <a href="saker/dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
-        <a href="om-oss.html" class="nav-link py-3">Om oss</a>
+        <a href="../index.html" class="nav-link py-3 border-b">Hjem</a>
+        <a href="../saker.html" class="nav-link py-3 border-b">Saker</a>
+        <a href="../stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
+        <a href="../partilofter.html" class="nav-link py-3 border-b active">Partiløfter</a>
+        <a href="dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
+        <a href="../om-oss.html" class="nav-link py-3">Om oss</a>
       </div>
-      
-      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">
-        ✕
-      </button>
+      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">✕</button>
     </div>
   </nav>
 
-  <section class="py-20">
+  <!-- Main Content -->
+  <section class="py-20 relative z-10">
     <div class="max-w-6xl mx-auto px-6">
-      <h1 class="text-5xl font-semibold text-center mb-4">Partiløfter 2025–2029</h1>
-      <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
-        Hva lovte partiene og toppolitikerne før valget? Her følger vi opp løftene sak for sak – uten partifarge.
-      </p>
+      <div class="content-box rounded-3xl p-10 md:p-16">
+        <h1 class="text-4xl md:text-5xl font-semibold text-center mb-6">Partiløfter 2025–2029</h1>
+        <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
+          Hva lovte partiene og toppolitikerne før valget? Her følger vi opp løftene sak for sak.
+        </p>
 
-      <!-- Category Filters -->
-      <div class="flex flex-wrap gap-3 justify-center mb-12">
-        <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-medium">Alle løfter</button>
-        <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100 transition">Økonomi</button>
-        <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100 transition">Helse</button>
-        <button onclick="filterCategory('klima')" class="category-btn px-6 py-3 rounded-2xl hover:bg-emerald-100 transition">Klima</button>
-        <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100 transition">Utdanning</button>
-      </div>
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-3 justify-center mb-12">
+          <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-medium">Alle løfter</button>
+          <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100 transition">Økonomi</button>
+          <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100 transition">Helse</button>
+          <button onclick="filterCategory('klima')" class="category-btn px-6 py-3 rounded-2xl hover:bg-emerald-100 transition">Klima</button>
+          <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100 transition">Utdanning</button>
+        </div>
 
-      <!-- Promises Grid -->
-      <div id="promises-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Example cards - you can add more here -->
-        <div class="promise-card bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all" data-category="økonomi">
-          <div class="flex justify-between items-start mb-6">
-            <span class="px-4 py-1.5 bg-amber-100 text-amber-700 text-sm font-medium rounded-2xl">Økonomi</span>
-            <span class="text-emerald-600 text-sm font-medium">Delvis oppfylt</span>
-          </div>
-          <h3 class="text-xl font-semibold mb-3">Skattelette for vanlige folk</h3>
-          <p class="text-slate-600 mb-6">Lovet å senke skattetrykket for middelklassen med 10–15 mrd kr.</p>
-          <div class="text-sm text-slate-500">Jonas Gahr Støre • Ap</div>
+        <!-- Promises Grid -->
+        <div id="promises-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Cards will be populated by JS or you can add manually -->
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-white border-t py-12 mt-20">
+  <footer class="bg-white border-t py-12 mt-20 relative z-10">
     <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
       <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
     </div>
   </footer>
 
+  <!-- Particle + Mobile Menu Script -->
   <script>
-    function filterCategory(category) {
-      const cards = document.querySelectorAll('.promise-card');
-      const buttons = document.querySelectorAll('.category-btn');
-      
-      buttons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
-      
-      if (category === 'all') {
-        cards.forEach(card => card.style.display = 'block');
-        document.querySelector('button[onclick="filterCategory(\'all\')"]').classList.add('active', 'bg-blue-600', 'text-white');
-      } else {
-        cards.forEach(card => {
-          card.style.display = card.dataset.category === category ? 'block' : 'none';
-        });
-        event.target.classList.add('active', 'bg-blue-600', 'text-white');
+    const canvas = document.getElementById('bg-particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.2 + 0.5;
+        this.speedY = Math.random() * 0.8 + 0.3;
+      }
+      update() {
+        this.y += this.speedY;
+        if (this.y > canvas.height) this.reset();
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(147, 197, 253, 0.65)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
       }
     }
-  </script>
 
-  <!-- Mobile Menu Script --> 
-  <script>
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 95; i++) particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+
+    // Mobile Menu
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeButton = document.getElementById('close-mobile-menu');
 
-    menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-    closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    if (menuButton && mobileMenu && closeButton) {
+      menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+      closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    }
+
+    // Example filter function (you can expand this)
+    function filterCategory(category) {
+      console.log("Filtering by:", category);
+      // Add your filtering logic here later
+    }
   </script>
 
 </body>
