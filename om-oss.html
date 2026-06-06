@@ -9,24 +9,24 @@
   
   <style>
     #bg-particles {
-      opacity: 0.18;
+      opacity: 0.35;
       mix-blend-mode: screen;
       z-index: -1;
     }
   </style>
 </head>
-<body class="bg-slate-50 relative">
+<body class="bg-slate-950 relative min-h-screen">
 
-  <!-- Fixed Subtle Particle Background (Desktop Only) -->
+  <!-- Fixed Particle Background -->
   <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block"></canvas>
 
   <!-- NAV -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-          <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+          <h1 class="text-2xl font-semibold text-slate-900">HoldtDeOrd.no</h1>
         </div>
 
         <div class="hidden md:flex gap-8 text-lg font-medium items-center">
@@ -44,11 +44,11 @@
   </nav>
 
   <section class="py-20 relative z-10">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="max-w-4xl mx-auto px-6 text-slate-100">
       <h1 class="text-5xl font-semibold text-center mb-8">Om HoldtDeOrd.no</h1>
       
-      <div class="prose prose-slate max-w-none text-lg leading-relaxed">
-        <p class="text-xl text-slate-600">
+      <div class="prose prose-invert max-w-none text-lg leading-relaxed">
+        <p class="text-xl">
           HoldtDeOrd.no er et uavhengig, faktabasert nettsted som holder norske politikere ansvarlige for det de lover velgerne.
         </p>
         
@@ -74,13 +74,13 @@
     </div>
   </section>
 
-  <footer class="bg-white border-t py-12 mt-20 relative z-10">
-    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
+  <footer class="bg-white/10 backdrop-blur-md border-t border-white/10 py-12 mt-20 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-400">
       <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
     </div>
   </footer>
 
-  <!-- Fixed Background Particles -->
+  <!-- Particle Script -->
   <script>
     const canvas = document.getElementById('bg-particles');
     const ctx = canvas.getContext('2d');
@@ -98,15 +98,15 @@
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedY = Math.random() * 0.7 + 0.3;
+        this.size = Math.random() * 2.2 + 0.5;
+        this.speedY = Math.random() * 0.8 + 0.3;
       }
       update() {
         this.y += this.speedY;
         if (this.y > canvas.height) this.reset();
       }
       draw() {
-        ctx.fillStyle = 'rgba(147, 197, 253, 0.55)';
+        ctx.fillStyle = 'rgba(147, 197, 253, 0.65)';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -115,7 +115,7 @@
 
     function initParticles() {
       particles = [];
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 95; i++) {
         particles.push(new Particle());
       }
     }
