@@ -118,7 +118,7 @@
       {
         title: "Sterkere forsvar og økt beredskap",
         party: "Høyre",
-        category: "forsvar",           // ← Korrigert
+        category: "forsvar",
         said: "Øke forsvarsbudsjettet betydelig",
         done: "Økt med 15 % i 2026",
         status: "oppfylt"
@@ -138,6 +138,14 @@
         said: "Styrke distriktspolitikken og jordbruket",
         done: "Økte tilskudd i statsbudsjettet",
         status: "oppfylt"
+      },
+      {
+        title: "Full elektrifisering av sokkelen innen 2030",
+        party: "Arbeiderpartiet",
+        category: "klima",
+        said: "Full elektrifisering av sokkelen innen 2030",
+        done: "Ingen konkrete tiltak iverksatt",
+        status: "ikke"
       }
     ];
 
@@ -146,14 +154,25 @@
       grid.innerHTML = '';
 
       filteredData.forEach(item => {
-        const statusColor = item.status === 'oppfylt' ? 'emerald' : item.status === 'delvis' ? 'amber' : 'red';
+        let statusColor, statusText;
+        
+        if (item.status === 'oppfylt') {
+          statusColor = 'emerald';
+          statusText = 'Oppfylt';
+        } else if (item.status === 'delvis') {
+          statusColor = 'amber';
+          statusText = 'Delvis oppfylt';
+        } else {
+          statusColor = 'red';
+          statusText = 'Ikke oppfylt';
+        }
         
         const card = document.createElement('div');
         card.className = `content-box rounded-3xl p-8 hover:shadow-xl transition-all`;
         card.innerHTML = `
           <div class="flex justify-between items-start mb-4">
             <span class="px-4 py-1 bg-${statusColor}-100 text-${statusColor}-700 text-sm font-medium rounded-2xl">${item.category}</span>
-            <span class="text-xs font-medium text-${statusColor}-600">${item.status === 'oppfylt' ? 'Oppfylt' : item.status === 'delvis' ? 'Delvis oppfylt' : 'Ikke oppfylt'}</span>
+            <span class="text-xs font-medium text-${statusColor}-600">${statusText}</span>
           </div>
           <h3 class="text-xl font-semibold mb-3">${item.title}</h3>
           <p class="text-slate-600 mb-4">"${item.said}"</p>
