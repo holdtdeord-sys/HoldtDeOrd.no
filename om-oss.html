@@ -18,6 +18,28 @@
       z-index: -1;
     }
   </style>
+
+  <style>
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: #2563eb;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
+    }
+  </style>
+  
 </head>
 <body class="bg-slate-950 relative min-h-screen">
 
