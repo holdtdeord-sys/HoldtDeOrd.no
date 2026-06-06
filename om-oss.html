@@ -9,7 +9,7 @@
   
   <style>
     #bg-particles {
-      opacity: 0.28;
+      opacity: 0.25;           /* Matched to your index page */
       mix-blend-mode: screen;
       z-index: -1;
     }
@@ -43,10 +43,10 @@
     </div>
   </nav>
 
-  <!-- Content with White Background -->
+  <!-- Main Content -->
   <section class="py-20 relative z-10">
     <div class="max-w-4xl mx-auto px-6">
-      <div class="bg-white rounded-3xl shadow-xl p-10 md:p-16">
+      <div class="bg-white rounded-3xl shadow-2xl p-10 md:p-16 max-w-3xl mx-auto">
         <h1 class="text-5xl font-semibold text-center mb-10 text-slate-900">Om HoldtDeOrd.no</h1>
         
         <div class="prose prose-slate max-w-none text-lg leading-relaxed">
@@ -77,8 +77,8 @@
     </div>
   </section>
 
-  <footer class="bg-white border-t py-12 mt-20 relative z-10">
-    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
+  <footer class="bg-white/10 backdrop-blur-md border-t border-white/10 py-12 mt-20 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-400">
       <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
     </div>
   </footer>
@@ -118,7 +118,9 @@
 
     function initParticles() {
       particles = [];
-      for (let i = 0; i < 90; i++) particles.push(new Particle());
+      for (let i = 0; i < 95; i++) {
+        particles.push(new Particle());
+      }
     }
 
     function animate() {
