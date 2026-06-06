@@ -8,44 +8,29 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
-    .hero-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
     }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .glass-card:hover {
-      background: rgba(255, 255, 255, 0.13);
-      transform: translateY(-10px);
-    }
-
-    .headline {
-      animation: fadeInUp 1.4s ease forwards;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Subtle particle container */
-    #particles {
+    .nav-link:after {
+      content: '';
       position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.25;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: #2563eb;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
     }
   </style>
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV - Full Responsive -->
+  <!-- NAV -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
@@ -81,36 +66,32 @@
         <a href="saker/dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
         <a href="om-oss.html" class="nav-link py-3">Om oss</a>
       </div>
-      
-      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">
-        ✕
-      </button>
+      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">✕</button>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero-bg text-white py-28 overflow-hidden relative min-h-screen flex items-center">
-    
-    <!-- Subtle Particles -->
-    <canvas id="particles" class="absolute inset-0"></canvas>
+  <!-- Season Switcher -->
+  <div class="bg-white/90 backdrop-blur-md border-b sticky top-0 z-40 py-3 shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 flex justify-center gap-3 text-sm">
+      <button onclick="setSeason('winter')" class="px-5 py-2 rounded-2xl hover:bg-slate-100 transition">❄️ Vinter</button>
+      <button onclick="setSeason('spring')" class="px-5 py-2 rounded-2xl hover:bg-slate-100 transition">🌸 Vår</button>
+      <button onclick="setSeason('summer')" class="px-5 py-2 rounded-2xl hover:bg-slate-100 transition">☀️ Sommer</button>
+      <button onclick="setSeason('autumn')" class="px-5 py-2 rounded-2xl hover:bg-slate-100 transition">🍂 Høst</button>
+      <button onclick="autoDetectSeason()" class="px-5 py-2 rounded-2xl bg-blue-600 text-white hover:bg-blue-700 transition">Auto</button>
+    </div>
+  </div>
+
+  <!-- Seasonal Hero -->
+  <section id="seasonal-hero" class="relative text-white py-28 overflow-hidden min-h-[85vh] flex items-center">
+    <canvas id="season-canvas" class="absolute inset-0 pointer-events-none"></canvas>
 
     <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
-      <h1 class="headline text-5xl md:text-6xl font-bold tracking-tighter mb-6">
-        Holdt de ord?
-      </h1>
-      <p class="text-2xl md:text-3xl text-blue-200 max-w-4xl mx-auto font-light">
-        Faktabasert oversikt over hva norske politikere lover – og hva de faktisk gjør.
-      </p>
-
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tighter mb-6">Holdt de ord?</h1>
+      <p class="text-2xl md:text-3xl text-blue-100 max-w-4xl mx-auto">Faktabasert oversikt over hva norske politikere lover – og hva de faktisk gjør.</p>
+      
       <div class="mt-12 flex justify-center gap-6 flex-wrap">
-        <a href="saker.html" 
-           class="px-10 py-5 bg-white text-slate-900 rounded-3xl font-semibold text-lg hover:bg-white transition-all shadow-xl">
-          Se alle saker
-        </a>
-        <a href="partilofter.html" 
-           class="px-10 py-5 border-2 border-white/70 text-white rounded-3xl font-semibold text-lg hover:bg-white/10 transition-all">
-          Se partiløfter
-        </a>
+        <a href="saker.html" class="px-10 py-5 bg-white text-slate-900 rounded-3xl font-semibold text-lg hover:bg-blue-50 transition">Se alle saker</a>
+        <a href="partilofter.html" class="px-10 py-5 border-2 border-white/70 text-white rounded-3xl font-semibold text-lg hover:bg-white/10 transition">Se partiløfter</a>
       </div>
     </div>
   </section>
@@ -295,6 +276,92 @@
   }
 
   // Run on load
+  autoDetectSeason();
+</script>
+
+  <script>
+  // Mobile Menu
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeButton = document.getElementById('close-mobile-menu');
+
+  menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+  closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+
+  // Seasonal Particles
+  const canvas = document.getElementById('season-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 3 + 0.5;
+      this.speedY = Math.random() * 1.5 + 0.5;
+    }
+    update() {
+      this.y += this.speedY;
+      if (this.y > canvas.height) this.reset();
+    }
+    draw(color) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function createParticles(count) {
+    particles = [];
+    for (let i = 0; i < count; i++) particles.push(new Particle());
+  }
+
+  function animate(color) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(color); });
+    requestAnimationFrame(() => animate(color));
+  }
+
+  function setSeason(season) {
+    const hero = document.getElementById('seasonal-hero');
+    
+    if (season === 'winter') {
+      hero.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)';
+      createParticles(140);
+      animate('rgba(224, 242, 254, 0.75)');
+    } else if (season === 'spring') {
+      hero.style.background = 'linear-gradient(135deg, #166534 0%, #4ade80 100%)';
+      createParticles(90);
+      animate('rgba(163, 230, 187, 0.85)');
+    } else if (season === 'summer') {
+      hero.style.background = 'linear-gradient(135deg, #ca8a04 0%, #f59e0b 100%)';
+      createParticles(70);
+      animate('rgba(253, 230, 138, 0.8)');
+    } else if (season === 'autumn') {
+      hero.style.background = 'linear-gradient(135deg, #9f1239 0%, #f43f5e 100%)';
+      createParticles(110);
+      animate('rgba(251, 191, 36, 0.7)');
+    }
+  }
+
+  function autoDetectSeason() {
+    const month = new Date().getMonth() + 1;
+    if (month === 12 || month <= 2) setSeason('winter');
+    else if (month <= 5) setSeason('spring');
+    else if (month <= 8) setSeason('summer');
+    else setSeason('autumn');
+  }
+
+  // Start with current season
   autoDetectSeason();
 </script>
 
