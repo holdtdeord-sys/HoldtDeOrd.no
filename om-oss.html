@@ -9,7 +9,7 @@
   
   <style>
     #bg-particles {
-      opacity: 0.35;
+      opacity: 0.28;
       mix-blend-mode: screen;
       z-index: -1;
     }
@@ -21,12 +21,12 @@
   <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block"></canvas>
 
   <!-- NAV -->
-  <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-          <h1 class="text-2xl font-semibold text-slate-900">HoldtDeOrd.no</h1>
+          <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
         </div>
 
         <div class="hidden md:flex gap-8 text-lg font-medium items-center">
@@ -43,44 +43,47 @@
     </div>
   </nav>
 
+  <!-- Content with White Background -->
   <section class="py-20 relative z-10">
-    <div class="max-w-4xl mx-auto px-6 text-slate-100">
-      <h1 class="text-5xl font-semibold text-center mb-8">Om HoldtDeOrd.no</h1>
-      
-      <div class="prose prose-invert max-w-none text-lg leading-relaxed">
-        <p class="text-xl">
-          HoldtDeOrd.no er et uavhengig, faktabasert nettsted som holder norske politikere ansvarlige for det de lover velgerne.
-        </p>
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="bg-white rounded-3xl shadow-xl p-10 md:p-16">
+        <h1 class="text-5xl font-semibold text-center mb-10 text-slate-900">Om HoldtDeOrd.no</h1>
         
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Vårt mål</h2>
-        <p>
-          Vi samler inn politiske løfter, representantforslag, taler og løfter fra valgkamper – og følger opp hva som faktisk blir gjennomført i perioden 2025–2029.
-        </p>
+        <div class="prose prose-slate max-w-none text-lg leading-relaxed">
+          <p class="text-xl">
+            HoldtDeOrd.no er et uavhengig, faktabasert nettsted som holder norske politikere ansvarlige for det de lover velgerne.
+          </p>
+          
+          <h2 class="text-3xl font-semibold mt-12 mb-4">Vårt mål</h2>
+          <p>
+            Vi samler inn politiske løfter, representantforslag, taler og løfter fra valgkamper – og følger opp hva som faktisk blir gjennomført i perioden 2025–2029.
+          </p>
 
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Hvordan vi jobber</h2>
-        <ul class="list-disc pl-6 space-y-3">
-          <li>Vi henter offisielle dokumenter fra Stortinget</li>
-          <li>Vi analyserer løfter nøytralt og faktabasert</li>
-          <li>Vi skiller mellom det som blir sagt og det som blir gjort</li>
-          <li>Ingen partipolitisk agenda – kun fakta</li>
-        </ul>
+          <h2 class="text-3xl font-semibold mt-12 mb-4">Hvordan vi jobber</h2>
+          <ul class="list-disc pl-6 space-y-3">
+            <li>Vi henter offisielle dokumenter fra Stortinget</li>
+            <li>Vi analyserer løfter nøytralt og faktabasert</li>
+            <li>Vi skiller mellom det som blir sagt og det som blir gjort</li>
+            <li>Ingen partipolitisk agenda – kun fakta</li>
+          </ul>
 
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Kontakt</h2>
-        <p>
-          Har du tips til saker eller dokumenter vi bør se på? 
-          Ta gjerne kontakt via e-post: <span class="font-medium">kontakt@holdtdeord.no</span>
-        </p>
+          <h2 class="text-3xl font-semibold mt-12 mb-4">Kontakt</h2>
+          <p>
+            Har du tips til saker eller dokumenter vi bør se på? 
+            Ta gjerne kontakt via e-post: <span class="font-medium">kontakt@holdtdeord.no</span>
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-white/10 backdrop-blur-md border-t border-white/10 py-12 mt-20 relative z-10">
-    <div class="max-w-6xl mx-auto px-6 text-center text-slate-400">
+  <footer class="bg-white border-t py-12 mt-20 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
       <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
     </div>
   </footer>
 
-  <!-- Particle Script -->
+  <!-- Particle Background Script -->
   <script>
     const canvas = document.getElementById('bg-particles');
     const ctx = canvas.getContext('2d');
@@ -115,9 +118,7 @@
 
     function initParticles() {
       particles = [];
-      for (let i = 0; i < 95; i++) {
-        particles.push(new Particle());
-      }
+      for (let i = 0; i < 90; i++) particles.push(new Particle());
     }
 
     function animate() {
