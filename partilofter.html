@@ -9,13 +9,7 @@
   
   <style>
     html { scroll-behavior: smooth; }
-
-    #bg-particles {
-      opacity: 0.25;
-      mix-blend-mode: screen;
-      z-index: -1;
-    }
-
+    #bg-particles { opacity: 0.25; mix-blend-mode: screen; z-index: -1; }
     .content-box {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
@@ -26,10 +20,9 @@
 </head>
 <body class="bg-slate-950 relative min-h-screen overflow-x-hidden">
 
-  <!-- Fixed Particle Background -->
+  <!-- Particle Background + NAV (uendret) -->
   <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block"></canvas>
 
-  <!-- NAV -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
@@ -51,7 +44,7 @@
       </div>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu (uendret) -->
     <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
       <div class="flex flex-col gap-6 text-xl font-medium">
         <a href="../index.html" class="nav-link py-3 border-b">Hjem</a>
@@ -71,7 +64,7 @@
       <div class="content-box rounded-3xl p-10 md:p-16">
         <h1 class="text-4xl md:text-5xl font-semibold text-center mb-6">Partiløfter 2025–2029</h1>
         <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
-          Hva lovte partiene før valget? Her følger vi opp løftene sak for sak – faktabasert.
+          Hva lovte partiene? Her følger vi opp løftene sak for sak – faktabasert.
         </p>
 
         <!-- Category Filters -->
@@ -83,10 +76,8 @@
           <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100 transition">Utdanning</button>
         </div>
 
-        <!-- Dynamic Promises Grid -->
-        <div id="promises-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Populated by JavaScript -->
-        </div>
+        <!-- Promises Grid -->
+        <div id="promises-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
       </div>
     </div>
   </section>
@@ -101,10 +92,10 @@
     const promisesData = [
       {
         title: "Skattelette for middelklassen",
-        party: "Arbeiderpartiet",
+        party: "Flere partier",
         category: "økonomi",
-        said: "Senke skattetrykket med 10–15 mrd kr",
-        done: "Levert ca. 5 mrd kr i lettelser",
+        said: "Senke skattetrykket for vanlige folk",
+        done: "25 000 – 35 000 kr mindre skatt siden 2020",
         status: "delvis"
       },
       {
@@ -112,7 +103,7 @@
         party: "Arbeiderpartiet",
         category: "helse",
         said: "Fullt ut gratis SFO og sterkt reduserte barnehagepriser",
-        done: "Delvis innført i 2026-budsjettet",
+        done: "Delvis innført",
         status: "delvis"
       },
       {
@@ -124,27 +115,20 @@
         status: "oppfylt"
       },
       {
-        title: "Strengere innvandringspolitikk",
-        party: "Fremskrittspartiet",
-        category: "utdanning",
-        said: "Redusere asylinnvandring og øke returer",
-        done: "Innført flere tiltak i 2026",
-        status: "delvis"
-      },
-      {
-        title: "Bedre vilkår for bønder og distrikt",
-        party: "Senterpartiet",
-        category: "økonomi",
-        said: "Styrke distriktspolitikken og jordbruket",
-        done: "Økte tilskudd i statsbudsjettet",
-        status: "oppfylt"
-      },
-      {
         title: "Full elektrifisering av sokkelen innen 2030",
         party: "Arbeiderpartiet",
         category: "klima",
-        said: "Full elektrifisering av sokkelen innen 2030",
+        said: "Full elektrifisering innen 2030",
         done: "Ingen konkrete tiltak iverksatt",
+        status: "ikke"
+      },
+      // --- NYTT ÆRLIG FAKTAKORT ---
+      {
+        title: "Skatteletter vs. reelle kostnadsøkninger",
+        party: "Middelklassen (500k inntekt)",
+        category: "økonomi",
+        said: "Staten ga skatteletter",
+        done: "25–35 000 kr mindre skatt siden 2020 — men renter, drivstoff, strøm og avgifter økte med 47–101 000 kr per år",
         status: "ikke"
       }
     ];
@@ -154,19 +138,9 @@
       grid.innerHTML = '';
 
       filteredData.forEach(item => {
-        let statusColor, statusText;
-        
-        if (item.status === 'oppfylt') {
-          statusColor = 'emerald';
-          statusText = 'Oppfylt';
-        } else if (item.status === 'delvis') {
-          statusColor = 'amber';
-          statusText = 'Delvis oppfylt';
-        } else {
-          statusColor = 'red';
-          statusText = 'Ikke oppfylt';
-        }
-        
+        let statusColor = item.status === 'oppfylt' ? 'emerald' : item.status === 'delvis' ? 'amber' : 'red';
+        let statusText = item.status === 'oppfylt' ? 'Oppfylt' : item.status === 'delvis' ? 'Delvis oppfylt' : 'Ikke oppfylt';
+
         const card = document.createElement('div');
         card.className = `content-box rounded-3xl p-8 hover:shadow-xl transition-all`;
         card.innerHTML = `
@@ -200,7 +174,7 @@
     // Initialize
     renderPromises(promisesData);
 
-    // Particle Background + Mobile Menu (same as before)
+    // Particle + Mobile Menu (uendret fra før)
     const canvas = document.getElementById('bg-particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -253,6 +227,5 @@
       closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     }
   </script>
-
 </body>
 </html>
