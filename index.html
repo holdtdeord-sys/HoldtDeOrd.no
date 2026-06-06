@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     #bg-particles {
       opacity: 0.25;
       mix-blend-mode: screen;
@@ -67,7 +71,7 @@
     </div>
   </section>
 
-  <!-- Cards Section -->
+  <!-- Feature Cards -->
   <section class="py-20 bg-white relative z-10">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-3 gap-8">
@@ -98,7 +102,7 @@
     </div>
   </footer>
 
-  <!-- Particle Script -->
+  <!-- Particle Background Script -->
   <script>
     const canvas = document.getElementById('bg-particles');
     const ctx = canvas.getContext('2d');
@@ -133,7 +137,9 @@
 
     function initParticles() {
       particles = [];
-      for (let i = 0; i < 95; i++) particles.push(new Particle());
+      for (let i = 0; i < 95; i++) {
+        particles.push(new Particle());
+      }
     }
 
     function animate() {
