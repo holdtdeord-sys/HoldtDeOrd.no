@@ -36,25 +36,6 @@
       border: 3px solid white;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-
-    .nav-link {
-      position: relative;
-      padding-bottom: 4px;
-    }
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: 0;
-      left: 0;
-      background-color: #2563eb;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover:after,
-    .nav-link.active:after {
-      width: 100%;
-    }
   </style>
 </head>
 <body class="bg-slate-950 relative min-h-screen overflow-x-hidden">
@@ -107,68 +88,9 @@
           Hva lovte toppolitikerne før valget? Vi følger opp løftene deres.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-          <!-- Jonas Gahr Støre -->
-          <div class="content-box rounded-3xl p-7 hover:shadow-xl transition-all">
-            <div class="flex items-start gap-5">
-              <div class="politician-img">🧔</div>
-              <div class="flex-1 min-w-0">
-                <div class="font-semibold text-lg">Jonas Gahr Støre</div>
-                <div class="text-sm text-red-600">Arbeiderpartiet • Statsminister</div>
-                <p class="text-slate-600 mt-4 text-[15px] leading-relaxed">
-                  "Trygg styring av norsk økonomi, billigere barnehage og gratis SFO, kortere ventetider i helsesenenet"
-                </p>
-                <a href="#" class="text-blue-600 hover:underline text-sm font-medium mt-5 inline-block">Se alle løfter →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Erna Solberg -->
-          <div class="content-box rounded-3xl p-7 hover:shadow-xl transition-all">
-            <div class="flex items-start gap-5">
-              <div class="politician-img">👩‍💼</div>
-              <div class="flex-1 min-w-0">
-                <div class="font-semibold text-lg">Erna Solberg</div>
-                <div class="text-sm text-blue-600">Høyre</div>
-                <p class="text-slate-600 mt-4 text-[15px] leading-relaxed">
-                  "Mer privat initiativ, lavere skatter, bedre eldreomsorg og sterkere forsvar"
-                </p>
-                <a href="#" class="text-blue-600 hover:underline text-sm font-medium mt-5 inline-block">Se alle løfter →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sylvi Listhaug -->
-          <div class="content-box rounded-3xl p-7 hover:shadow-xl transition-all">
-            <div class="flex items-start gap-5">
-              <div class="politician-img">👩</div>
-              <div class="flex-1 min-w-0">
-                <div class="font-semibold text-lg">Sylvi Listhaug</div>
-                <div class="text-sm text-orange-600">Frp • Partileder</div>
-                <p class="text-slate-600 mt-4 text-[15px] leading-relaxed">
-                  "Kortere ventetider, strengere innvandring og lavere avgifter"
-                </p>
-                <a href="#" class="text-blue-600 hover:underline text-sm font-medium mt-5 inline-block">Se alle løfter →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Trygve Slagsvold Vedum -->
-          <div class="content-box rounded-3xl p-7 hover:shadow-xl transition-all">
-            <div class="flex items-start gap-5">
-              <div class="politician-img">👨‍🌾</div>
-              <div class="flex-1 min-w-0">
-                <div class="font-semibold text-lg">Trygve Slagsvold Vedum</div>
-                <div class="text-sm text-green-600">Senterpartiet</div>
-                <p class="text-slate-600 mt-4 text-[15px] leading-relaxed">
-                  "Sterkere distriktspolitikk, lavere drivstoffpriser og bedre vilkår for bønder"
-                </p>
-                <a href="#" class="text-blue-600 hover:underline text-sm font-medium mt-5 inline-block">Se alle løfter →</a>
-              </div>
-            </div>
-          </div>
-
+        <!-- Dynamic Politician Cards -->
+        <div id="politicians-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Populated by JavaScript -->
         </div>
       </div>
     </div>
@@ -180,8 +102,73 @@
     </div>
   </footer>
 
-  <!-- Particle + Mobile Menu Script -->
+  <!-- Dynamic Data + Scripts -->
   <script>
+    const politicians = [
+      {
+        name: "Jonas Gahr Støre",
+        party: "Arbeiderpartiet",
+        role: "Statsminister",
+        emoji: "🧔",
+        quote: "Trygg styring av norsk økonomi, billigere barnehage og gratis SFO, kortere ventetider i helsesenenet",
+        status: "Påbegynt"
+      },
+      {
+        name: "Erna Solberg",
+        party: "Høyre",
+        role: "",
+        emoji: "👩‍💼",
+        quote: "Mer privat initiativ, lavere skatter, bedre eldreomsorg og sterkere forsvar",
+        status: "Opposisjon"
+      },
+      {
+        name: "Sylvi Listhaug",
+        party: "Fremskrittspartiet",
+        role: "Partileder",
+        emoji: "👩",
+        quote: "Kortere ventetider, strengere innvandring og lavere avgifter",
+        status: "Opposisjon"
+      },
+      {
+        name: "Trygve Slagsvold Vedum",
+        party: "Senterpartiet",
+        role: "",
+        emoji: "👨‍🌾",
+        quote: "Sterkere distriktspolitikk, lavere drivstoffpriser og bedre vilkår for bønder",
+        status: "Påbegynt"
+      }
+    ];
+
+    function renderPoliticians() {
+      const grid = document.getElementById('politicians-grid');
+      grid.innerHTML = '';
+
+      politicians.forEach(p => {
+        const card = document.createElement('div');
+        card.className = `content-box rounded-3xl p-7 hover:shadow-xl transition-all`;
+        card.innerHTML = `
+          <div class="flex items-start gap-5">
+            <div class="politician-img">${p.emoji}</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-lg">${p.name}</div>
+              <div class="text-sm ${p.party.includes('Arbeiderpartiet') ? 'text-red-600' : p.party.includes('Høyre') ? 'text-blue-600' : p.party.includes('Fremskrittspartiet') ? 'text-orange-600' : 'text-green-600'}">
+                ${p.party} ${p.role ? '• ' + p.role : ''}
+              </div>
+              <p class="text-slate-600 mt-4 text-[15px] leading-relaxed">
+                "${p.quote}"
+              </p>
+              <a href="#" class="text-blue-600 hover:underline text-sm font-medium mt-5 inline-block">Se alle løfter →</a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Render on load
+    renderPoliticians();
+
+    // Particle Background (same as before)
     const canvas = document.getElementById('bg-particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -201,10 +188,7 @@
         this.size = Math.random() * 2.2 + 0.5;
         this.speedY = Math.random() * 0.8 + 0.3;
       }
-      update() {
-        this.y += this.speedY;
-        if (this.y > canvas.height) this.reset();
-      }
+      update() { this.y += this.speedY; if (this.y > canvas.height) this.reset(); }
       draw() {
         ctx.fillStyle = 'rgba(147, 197, 253, 0.65)';
         ctx.beginPath();
@@ -220,10 +204,7 @@
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
+      particles.forEach(p => { p.update(); p.draw(); });
       requestAnimationFrame(animate);
     }
 
