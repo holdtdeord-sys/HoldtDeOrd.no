@@ -15,6 +15,25 @@
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: #2563eb;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
     }
   </style>
 </head>
@@ -42,87 +61,105 @@
           <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
         </div>
 
-        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700">☰</button>
+        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
       </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
+      <div class="flex flex-col gap-6 text-xl font-medium">
+        <a href="index.html" class="nav-link py-3 border-b">Hjem</a>
+        <a href="saker.html" class="nav-link py-3 border-b">Saker</a>
+        <a href="stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
+        <a href="partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
+        <a href="økonomi.html" class="nav-link py-3 border-b active">Økonomi</a>
+        <a href="dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
+        <a href="om-oss.html" class="nav-link py-3">Om oss</a>
+      </div>
+      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">✕</button>
     </div>
   </nav>
 
   <section class="py-20 relative z-10">
     <div class="max-w-6xl mx-auto px-6">
       <div class="content-box rounded-3xl p-10 md:p-16">
-        <h1 class="text-4xl md:text-5xl font-semibold text-center mb-4">Økonomisk virkelighet for middelklassen</h1>
-        <p class="text-center text-slate-600 mb-12">500 000 kr brutto inntekt • 2020–2026</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-center mb-4">Økonomisk virkelighet 2020–2026</h1>
+        <p class="text-center text-slate-600 mb-12">Sammenligning: Middelklasse vs Høyinntekt</p>
 
-        <!-- Graph 1: Skatteletter vs Kostnadsøkninger -->
+        <!-- New Comparison Chart -->
         <div class="mb-16">
-          <h2 class="text-2xl font-semibold mb-6 text-center">Skatteletter vs. reelle kostnadsøkninger</h2>
-          <canvas id="barChart" class="w-full h-96"></canvas>
+          <h2 class="text-2xl font-semibold mb-6 text-center">Skatteletter vs Kostnadsøkninger – Hvem vant?</h2>
+          <canvas id="comparisonChart" class="w-full h-96"></canvas>
         </div>
 
-        <!-- Graph 2: Netto effekt over årene -->
+        <!-- Previous Charts -->
         <div class="mb-16">
-          <h2 class="text-2xl font-semibold mb-6 text-center">Netto effekt per år</h2>
+          <h2 class="text-2xl font-semibold mb-6 text-center">Netto effekt per år – Middelklasse (500k)</h2>
           <canvas id="lineChart" class="w-full h-96"></canvas>
         </div>
 
-        <!-- Graph 3: Kostnadsfordeling -->
         <div>
-          <h2 class="text-2xl font-semibold mb-6 text-center">Hvor har pengene gått?</h2>
+          <h2 class="text-2xl font-semibold mb-6 text-center">Hvor har pengene gått? (Middelklasse)</h2>
           <canvas id="pieChart" class="w-full h-96"></canvas>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-white border-t py-12 mt-20">
+  <footer class="bg-white border-t py-12 mt-20 relative z-10">
     <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
-      <p>Kilder: Finansdepartementet, SSB, Norges Bank, Skatteetaten • Beregninger for typisk middelklasse (500k brutto)</p>
+      <p>Kilder: Finansdepartementet, SSB, Norges Bank, Skatteetaten (2020–2026)</p>
     </div>
   </footer>
 
   <script>
-    // Chart 1 - Bar: Letter vs Økninger
-    new Chart(document.getElementById('barChart'), {
+    // 1. Sammenligning Middelklasse vs Høyinntekt
+    new Chart(document.getElementById('comparisonChart'), {
       type: 'bar',
       data: {
-        labels: ['Skatteletter totalt', 'Renter', 'Drivstoff', 'Strøm', 'Kommunale avgifter', 'Eiendomsskatt'],
-        datasets: [{
-          label: 'Beløp i kr (siden 2020)',
-          data: [30000, 180000, 45000, 50000, 25000, 15000],
-          backgroundColor: ['#10b981', '#ef4444', '#f59e0b', '#eab308', '#8b5cf6', '#ec4899']
-        }]
+        labels: ['Skatteletter', 'Renter + boutgifter', 'Drivstoff', 'Strøm + avgifter', 'Netto effekt'],
+        datasets: [
+          {
+            label: 'Middelklasse (500 000 kr)',
+            data: [30000, -180000, -45000, -40000, -235000],
+            backgroundColor: '#3b82f6'
+          },
+          {
+            label: 'Høyinntekt (1 200 000 kr)',
+            data: [65000, -220000, -38000, -35000, -228000],
+            backgroundColor: '#1e40af'
+          }
+        ]
       },
-      options: { responsive: true, plugins: { legend: { display: false } } }
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: 'Total endring 2020–2026 (kr)' }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
     });
 
-    // Chart 2 - Line: Netto effekt per år
+    // 2. Line Chart - Netto effekt per år (Middelklasse)
     new Chart(document.getElementById('lineChart'), {
       type: 'line',
       data: {
         labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026'],
         datasets: [
-          {
-            label: 'Skatteletter',
-            data: [6000, 7000, 4000, 3000, 9000, 5000, 4000],
-            borderColor: '#10b981',
-            tension: 0.4
-          },
-          {
-            label: 'Økte kostnader',
-            data: [8000, 35000, 55000, 45000, 40000, 42000, 38000],
-            borderColor: '#ef4444',
-            tension: 0.4
-          }
+          { label: 'Skatteletter', data: [6000,7000,4000,3000,9000,5000,4000], borderColor: '#10b981', tension: 0.4 },
+          { label: 'Økte kostnader', data: [8000,35000,55000,45000,40000,42000,38000], borderColor: '#ef4444', tension: 0.4 }
         ]
       },
       options: { responsive: true }
     });
 
-    // Chart 3 - Pie: Kostnadsfordeling
+    // 3. Pie Chart
     new Chart(document.getElementById('pieChart'), {
       type: 'pie',
       data: {
-        labels: ['Boliglånsrenter', 'Drivstoff', 'Strøm', 'Kommunale avgifter + eiendomsskatt', 'Andre'],
+        labels: ['Boliglånsrenter', 'Drivstoff', 'Strøm + avgifter', 'Kommunale avgifter', 'Andre'],
         datasets: [{
           data: [55, 15, 12, 10, 8],
           backgroundColor: ['#ef4444', '#f59e0b', '#eab308', '#8b5cf6', '#6b7280']
@@ -131,9 +168,58 @@
       options: { responsive: true }
     });
 
-    // Mobile Menu (same as other pages)
+    // Mobile Menu
     const menuButton = document.getElementById('mobile-menu-button');
-    // Add mobile menu HTML if needed
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeButton = document.getElementById('close-mobile-menu');
+
+    if (menuButton && mobileMenu && closeButton) {
+      menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+      closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    }
+
+    // Particle Background
+    const canvas = document.getElementById('bg-particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.2 + 0.5;
+        this.speedY = Math.random() * 0.8 + 0.3;
+      }
+      update() { this.y += this.speedY; if (this.y > canvas.height) this.reset(); }
+      draw() {
+        ctx.fillStyle = 'rgba(147, 197, 253, 0.65)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 95; i++) particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
   </script>
 </body>
 </html>
