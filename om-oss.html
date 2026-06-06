@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Om-oss - HoldtDeOrd.no</title>
+  <title>Om oss - HoldtDeOrd.no</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
@@ -26,11 +26,19 @@
     .nav-link.active:after {
       width: 100%;
     }
+    
+    #bg-particles {
+      opacity: 0.22;
+      mix-blend-mode: screen;
+    }
   </style>
 </head>
 <body class="bg-slate-50">
 
-  <!-- NAV - Full Responsive -->
+  <!-- Fixed Particle Background (Desktop Only) -->
+  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none z-[-1] hidden lg:block"></canvas>
+
+  <!-- NAV -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
@@ -39,116 +47,118 @@
           <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
         </div>
 
-        <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 text-lg font-medium items-center">
-          <a href="index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
-          <a href="saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
-          <a href="stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
-          <a href="partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
-          <a href="saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
-          <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors active">Om oss</a>
+          <a href="../index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
+          <a href="../saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
+          <a href="../stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
+          <a href="../partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
+          <a href="../saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
+          <a href="../om-oss.html" class="nav-link hover:text-blue-600 transition-colors active">Om oss</a>
         </div>
 
-        <!-- Mobile Hamburger -->
-        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">
-          ☰
-        </button>
+        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
       </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
-      <div class="flex flex-col gap-6 text-xl font-medium">
-        <a href="index.html" class="nav-link py-3 border-b">Hjem</a>
-        <a href="saker.html" class="nav-link py-3 border-b">Saker</a>
-        <a href="stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
-        <a href="partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
-        <a href="saker/dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
-        <a href="om-oss.html" class="nav-link py-3 active">Om oss</a>
-      </div>
-      
-      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">
-        ✕
-      </button>
     </div>
   </nav>
 
   <section class="py-20">
-    <div class="max-w-3xl mx-auto px-6">
-      <h1 class="text-4xl font-semibold text-center mb-10">Om HoldtDeOrd.no</h1>
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-5xl font-semibold text-center mb-8">Om HoldtDeOrd.no</h1>
       
-      <div class="prose prose-lg text-slate-700">
-        <p class="text-xl">
-          HoldtDeOrd.no er et lite, uavhengig prosjekt drevet på fritid. 
-          Jeg startet det fordi jeg selv ble lei av at politikk ofte føles utilgjengelig, komplisert og forvridd.
+      <div class="prose prose-slate max-w-none text-lg">
+        <p class="text-xl text-slate-600">
+          HoldtDeOrd.no er et uavhengig, faktabasert nettsted som holder norske politikere ansvarlige for det de lover velgerne.
         </p>
-
-        <h2 class="text-2xl font-semibold mt-12 mb-4">Hva er målet?</h2>
+        
+        <h2 class="text-3xl font-semibold mt-12 mb-4">Vårt mål</h2>
         <p>
-          Å vise hva norske politikere sa – og hva de faktisk gjorde. 
-          Uten partifarge, uten sensasjonelle overskrifter, og uten skjulte agendaer.
+          Vi samler inn politiske løfter, representantforslag, taler og løfter fra valgkamper – og følger opp hva som faktisk blir gjennomført i perioden 2025–2029.
         </p>
 
-        <h2 class="text-2xl font-semibold mt-12 mb-4">Viktig å vite</h2>
+        <h2 class="text-3xl font-semibold mt-12 mb-4">Hvordan vi jobber</h2>
         <ul class="list-disc pl-6 space-y-3">
-          <li>Dette er ikke en stor organisasjon. Det er ett menneske som jobber med dette ved siden av jobb.</li>
-          <li>Jeg tar ikke imot penger fra partier, interesseorganisasjoner eller andre med agenda.</li>
-          <li>All informasjon baseres på offentlige dokumenter fra Stortinget.</li>
-          <li>Jeg kan gjøre feil. Hvis du oppdager noe, si ifra – jeg vil gjerne rette det.</li>
+          <li>Vi henter offisielle dokumenter fra Stortinget</li>
+          <li>Vi analyserer løfter nøytralt og faktabasert</li>
+          <li>Vi skiller mellom det som blir sagt og det som blir gjort</li>
+          <li>Ingen partipolitisk agenda – kun fakta</li>
         </ul>
 
-        <h2 class="text-2xl font-semibold mt-12 mb-4">Fremtidsplaner</h2>
+        <h2 class="text-3xl font-semibold mt-12 mb-4">Kontakt</h2>
         <p>
-          Hvis HoldtDeOrd.no vokser og får nok støtte, ønsker jeg å dedikere all den tiden jeg kan til prosjektet. 
-          Politikken stopper ikke, og heller ikke spørsmålet: «Hva sa de – og hva gjorde de?»
+          Har du tips til saker eller dokumenter vi bør se på? 
+          Ta gjerne kontakt via e-post: <span class="font-medium">kontakt@holdtdeord.no</span>
         </p>
-
-        <h2 class="text-2xl font-semibold mt-12 mb-4">Økonomi og transparens</h2>
-        <p>
-          HoldtDeOrd.no drives uten sponsorer eller partistøtte. 
-          Eventuelle donasjoner går direkte til drift av siden (hosting, domene, verktøy). 
-          Jeg er åpen om at dette er et sideprosjekt, og jeg vil holde det slik.
-        </p>
-      </div>
-
-            <!-- Personlig signatur -->
-      <div class="mt-16 border-t border-slate-200 pt-10">
-        <p class="text-slate-600 italic">
-          Med ærlighet og respekt,<br>
-          <strong>Stillevakt</strong><br>
-          En vanlig nordmann blant folk i gata.<br>
-          Jeg ønsker meg mer enn bare håp om bedre tider – jeg vil ha handling der det trengs.
-        </p>
-      </div>
-    
-      <!-- Donasjon -->
-      <div class="mt-16 bg-white rounded-3xl p-10 shadow text-center">
-        <h3 class="text-2xl font-medium mb-6">Vil du støtte prosjektet?</h3>
-        <p class="text-slate-600 mb-8 max-w-md mx-auto">
-          Hvis du synes arbeidet her er verdifullt, er enhver støtte (både moralsk og økonomisk) veldig kjærkommen.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button onclick="alert('Donasjonslenke kommer snart!')" 
-                  class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-medium hover:bg-blue-700">
-            Støtt med engangsdonasjon
-          </button>
-          <button onclick="alert('Månedlig støtte kommer snart!')" 
-                  class="bg-emerald-600 text-white px-8 py-4 rounded-2xl font-medium hover:bg-emerald-700">
-            Bli månedlig støttespiller
-          </button>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Mobile Menu Script --> 
+  <footer class="bg-white border-t py-12 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
+      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
+    </div>
+  </footer>
+
+  <!-- Fixed Background Particles Script -->
   <script>
+    const canvas = document.getElementById('bg-particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.2 + 0.5;
+        this.speedY = Math.random() * 0.8 + 0.3;
+      }
+      update() {
+        this.y += this.speedY;
+        if (this.y > canvas.height) this.reset();
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(147, 197, 253, 0.6)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 85; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+
+    // Mobile Menu Script
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeButton = document.getElementById('close-mobile-menu');
 
-    menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-    closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    if (menuButton && mobileMenu && closeButton) {
+      menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+      closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    }
   </script>
 
 </body>
