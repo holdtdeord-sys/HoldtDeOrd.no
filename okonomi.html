@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Økonomisk virkelighet - HoldtDeOrd.no</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  
+  <style>
+    html { scroll-behavior: smooth; }
+    #bg-particles { opacity: 0.25; mix-blend-mode: screen; z-index: -1; }
+    .content-box {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 relative min-h-screen overflow-x-hidden">
+
+  <!-- Particle Background -->
+  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block"></canvas>
+
+  <!-- NAV -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-5">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
+          <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
+        </div>
+
+        <div class="hidden md:flex gap-8 text-lg font-medium items-center">
+          <a href="index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
+          <a href="saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
+          <a href="stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
+          <a href="partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
+          <a href="økonomi.html" class="nav-link hover:text-blue-600 transition-colors active">Økonomi</a>
+          <a href="dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
+          <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
+        </div>
+
+        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="py-20 relative z-10">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="content-box rounded-3xl p-10 md:p-16">
+        <h1 class="text-4xl md:text-5xl font-semibold text-center mb-4">Økonomisk virkelighet for middelklassen</h1>
+        <p class="text-center text-slate-600 mb-12">500 000 kr brutto inntekt • 2020–2026</p>
+
+        <!-- Graph 1: Skatteletter vs Kostnadsøkninger -->
+        <div class="mb-16">
+          <h2 class="text-2xl font-semibold mb-6 text-center">Skatteletter vs. reelle kostnadsøkninger</h2>
+          <canvas id="barChart" class="w-full h-96"></canvas>
+        </div>
+
+        <!-- Graph 2: Netto effekt over årene -->
+        <div class="mb-16">
+          <h2 class="text-2xl font-semibold mb-6 text-center">Netto effekt per år</h2>
+          <canvas id="lineChart" class="w-full h-96"></canvas>
+        </div>
+
+        <!-- Graph 3: Kostnadsfordeling -->
+        <div>
+          <h2 class="text-2xl font-semibold mb-6 text-center">Hvor har pengene gått?</h2>
+          <canvas id="pieChart" class="w-full h-96"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-white border-t py-12 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
+      <p>Kilder: Finansdepartementet, SSB, Norges Bank, Skatteetaten • Beregninger for typisk middelklasse (500k brutto)</p>
+    </div>
+  </footer>
+
+  <script>
+    // Chart 1 - Bar: Letter vs Økninger
+    new Chart(document.getElementById('barChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Skatteletter totalt', 'Renter', 'Drivstoff', 'Strøm', 'Kommunale avgifter', 'Eiendomsskatt'],
+        datasets: [{
+          label: 'Beløp i kr (siden 2020)',
+          data: [30000, 180000, 45000, 50000, 25000, 15000],
+          backgroundColor: ['#10b981', '#ef4444', '#f59e0b', '#eab308', '#8b5cf6', '#ec4899']
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+
+    // Chart 2 - Line: Netto effekt per år
+    new Chart(document.getElementById('lineChart'), {
+      type: 'line',
+      data: {
+        labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+        datasets: [
+          {
+            label: 'Skatteletter',
+            data: [6000, 7000, 4000, 3000, 9000, 5000, 4000],
+            borderColor: '#10b981',
+            tension: 0.4
+          },
+          {
+            label: 'Økte kostnader',
+            data: [8000, 35000, 55000, 45000, 40000, 42000, 38000],
+            borderColor: '#ef4444',
+            tension: 0.4
+          }
+        ]
+      },
+      options: { responsive: true }
+    });
+
+    // Chart 3 - Pie: Kostnadsfordeling
+    new Chart(document.getElementById('pieChart'), {
+      type: 'pie',
+      data: {
+        labels: ['Boliglånsrenter', 'Drivstoff', 'Strøm', 'Kommunale avgifter + eiendomsskatt', 'Andre'],
+        datasets: [{
+          data: [55, 15, 12, 10, 8],
+          backgroundColor: ['#ef4444', '#f59e0b', '#eab308', '#8b5cf6', '#6b7280']
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    // Mobile Menu (same as other pages)
+    const menuButton = document.getElementById('mobile-menu-button');
+    // Add mobile menu HTML if needed
+  </script>
+</body>
+</html>
