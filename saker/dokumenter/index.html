@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dokumenter - HoldtDeOrd.no</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
@@ -95,18 +94,20 @@
           Stortingsdokumenter, representantforslag, statsbudsjett og andre offentlige kilder vi følger opp.
         </p>
 
-        <!-- Search -->
-        <div class="max-w-md mx-auto mb-12">
-          <div class="relative">
+        <!-- Improved Search -->
+        <div class="max-w-lg mx-auto mb-12">
+          <div class="relative group">
+            <div class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors">
+              <i class="fa-solid fa-magnifying-glass text-xl"></i>
+            </div>
             <input type="text" id="searchInput" 
-                   class="w-full bg-white border border-slate-200 rounded-3xl px-6 py-4 pl-12 focus:outline-none focus:border-blue-500"
+                   class="w-full bg-white border border-slate-200 rounded-3xl px-14 py-4 text-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                    placeholder="Søk i dokumenter...">
-            <i class="fa-solid fa-magnifying-glass absolute left-5 top-4.5 text-slate-400"></i>
           </div>
         </div>
 
-        <!-- Documents Grid -->
-        <div id="documents-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Documents Grid - Better centered -->
+        <div id="documents-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <!-- Populated by JS -->
         </div>
       </div>
@@ -126,7 +127,7 @@
         date: "2026-02-26",
         category: "Stortinget",
         summary: "Forslag fra MDG, SV og Rødt om et uavhengig organ mot korrupsjon.",
-        link: "_template.html"   // Change to actual file when you add more
+        link: "_template.html"
       },
       {
         title: "Statsbudsjettet 2026 – Hoveddokument",
@@ -139,7 +140,7 @@
         title: "Innstilling til Stortinget om forsvarsbudsjettet",
         date: "2026-03-15",
         category: "Forsvar",
-        summary: "Økt bevilgning til Forsvaret.",
+        summary: "Økt bevilgning til Forsvaret og ny langtidsplan.",
         link: "#"
       }
     ];
@@ -166,14 +167,14 @@
       });
     }
 
-    // Search functionality
+    // Search
     document.getElementById('searchInput').addEventListener('input', (e) => {
       const term = e.target.value.toLowerCase();
       const filtered = documentsData.filter(doc => 
         doc.title.toLowerCase().includes(term) || 
         doc.summary.toLowerCase().includes(term)
       );
-      renderDocuments(filtered);
+      renderDocuments(filtered.length ? filtered : documentsData);
     });
 
     // Initialize
