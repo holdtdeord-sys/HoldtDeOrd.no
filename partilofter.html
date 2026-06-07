@@ -8,13 +8,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
-    html { scroll-behavior: smooth; }
-    #bg-particles { opacity: 0.25; mix-blend-mode: screen; z-index: -1; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #bg-particles {
+      opacity: 0.25;
+      mix-blend-mode: screen;
+      z-index: -1;
+    }
+
     .content-box {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
       border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: #2563eb;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
     }
   </style>
 </head>
