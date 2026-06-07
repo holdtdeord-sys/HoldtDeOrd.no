@@ -84,23 +84,34 @@
     <div class="max-w-6xl mx-auto px-6">
       <div class="content-box rounded-3xl p-10 md:p-16">
         <h1 class="text-4xl md:text-5xl font-semibold text-center mb-4">Økonomisk virkelighet 2020–2026</h1>
-        <p class="text-center text-slate-600 mb-12">Sammenligning: Middelklasse vs Høyinntekt</p>
+        <p class="text-center text-slate-600 mb-12">Sammenligning: Middelklasse (500k) vs Høyinntekt (1.2M)</p>
 
-        <!-- New Comparison Chart -->
         <div class="mb-16">
           <h2 class="text-2xl font-semibold mb-6 text-center">Skatteletter vs Kostnadsøkninger – Hvem vant?</h2>
           <canvas id="comparisonChart" class="w-full h-96"></canvas>
         </div>
 
-        <!-- Previous Charts -->
         <div class="mb-16">
           <h2 class="text-2xl font-semibold mb-6 text-center">Netto effekt per år – Middelklasse (500k)</h2>
           <canvas id="lineChart" class="w-full h-96"></canvas>
         </div>
 
-        <div>
+        <div class="mb-16">
           <h2 class="text-2xl font-semibold mb-6 text-center">Hvor har pengene gått? (Middelklasse)</h2>
           <canvas id="pieChart" class="w-full h-96"></canvas>
+        </div>
+
+        <!-- Kilder -->
+        <div class="mt-16 pt-10 border-t border-slate-200">
+          <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-book"></i> Kilder
+          </h3>
+          <div class="grid md:grid-cols-2 gap-4 text-sm">
+            <a href="https://www.regjeringen.no/no/tema/skatter-og-avgifter/skattereform/id2865322/" target="_blank" class="hover:text-blue-600 flex items-start gap-2">→ Finansdepartementet – Skatteendringer</a>
+            <a href="https://www.ssb.no/skatt" target="_blank" class="hover:text-blue-600 flex items-start gap-2">→ SSB – Skattestatistikk</a>
+            <a href="https://www.norges-bank.no/" target="_blank" class="hover:text-blue-600 flex items-start gap-2">→ Norges Bank – Rentestatistikk</a>
+            <a href="https://www.ssb.no/priser-og-prisindekser/konsumpriser" target="_blank" class="hover:text-blue-600 flex items-start gap-2">→ SSB – Prisvekst og drivstoff</a>
+          </div>
         </div>
       </div>
     </div>
@@ -108,45 +119,28 @@
 
   <footer class="bg-white border-t py-12 mt-20 relative z-10">
     <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
-      <p>Kilder: Finansdepartementet, SSB, Norges Bank, Skatteetaten (2020–2026)</p>
+      <p>HoldtDeOrd.no — Faktabasert politikkoversikt</p>
     </div>
   </footer>
 
   <script>
-    // 1. Sammenligning Middelklasse vs Høyinntekt
+    // Charts
     new Chart(document.getElementById('comparisonChart'), {
       type: 'bar',
       data: {
         labels: ['Skatteletter', 'Renter + boutgifter', 'Drivstoff', 'Strøm + avgifter', 'Netto effekt'],
         datasets: [
-          {
-            label: 'Middelklasse (500 000 kr)',
-            data: [30000, -180000, -45000, -40000, -235000],
-            backgroundColor: '#3b82f6'
-          },
-          {
-            label: 'Høyinntekt (1 200 000 kr)',
-            data: [65000, -220000, -38000, -35000, -228000],
-            backgroundColor: '#1e40af'
-          }
+          { label: 'Middelklasse (500k)', data: [30000, -180000, -45000, -40000, -235000], backgroundColor: '#3b82f6' },
+          { label: 'Høyinntekt (1.2M)', data: [65000, -220000, -38000, -35000, -228000], backgroundColor: '#1e40af' }
         ]
       },
-      options: {
-        responsive: true,
-        plugins: {
-          title: { display: true, text: 'Total endring 2020–2026 (kr)' }
-        },
-        scales: {
-          y: { beginAtZero: true }
-        }
-      }
+      options: { responsive: true }
     });
 
-    // 2. Line Chart - Netto effekt per år (Middelklasse)
     new Chart(document.getElementById('lineChart'), {
       type: 'line',
       data: {
-        labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+        labels: ['2020','2021','2022','2023','2024','2025','2026'],
         datasets: [
           { label: 'Skatteletter', data: [6000,7000,4000,3000,9000,5000,4000], borderColor: '#10b981', tension: 0.4 },
           { label: 'Økte kostnader', data: [8000,35000,55000,45000,40000,42000,38000], borderColor: '#ef4444', tension: 0.4 }
@@ -155,15 +149,11 @@
       options: { responsive: true }
     });
 
-    // 3. Pie Chart
     new Chart(document.getElementById('pieChart'), {
       type: 'pie',
       data: {
         labels: ['Boliglånsrenter', 'Drivstoff', 'Strøm + avgifter', 'Kommunale avgifter', 'Andre'],
-        datasets: [{
-          data: [55, 15, 12, 10, 8],
-          backgroundColor: ['#ef4444', '#f59e0b', '#eab308', '#8b5cf6', '#6b7280']
-        }]
+        datasets: [{ data: [55,15,12,10,8], backgroundColor: ['#ef4444','#f59e0b','#eab308','#8b5cf6','#6b7280'] }]
       },
       options: { responsive: true }
     });
@@ -173,10 +163,8 @@
     const mobileMenu = document.getElementById('mobile-menu');
     const closeButton = document.getElementById('close-mobile-menu');
 
-    if (menuButton && mobileMenu && closeButton) {
-      menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-      closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    }
+    menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+    closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
 
     // Particle Background
     const canvas = document.getElementById('bg-particles');
