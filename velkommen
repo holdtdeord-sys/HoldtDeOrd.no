@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Velkommen til siden</title>
+  <style>
+    #ai-clip {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 280px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      z-index: 1000;
+      transition: all 0.4s;
+    }
+    #ai-avatar {
+      width: 80px;
+      height: 80px;
+      background: #007bff;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      animation: bored 4s infinite;
+    }
+    @keyframes bored {
+      0%, 100% { transform: rotate(-8deg); }
+      50% { transform: rotate(8deg); }
+    }
+    .bubble {
+      background: #f1f1f1;
+      padding: 12px;
+      border-radius: 15px;
+      margin: 10px 0;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="ai-clip">
+  <div id="ai-avatar">📄</div>
+  <div class="bubble" id="greeting">
+    Hei! Jeg er litt lei meg av å bare ligge her i dokumentmappen... 
+    <strong>Hvilke tema leter du etter?</strong> Spør meg om saker, økonomi, eller hva som helst!
+  </div>
+  
+  <div id="suggestions">
+    <strong>Forslag:</strong><br>
+    <button onclick="quickAsk('Nyheter om saker')">Nyheter om saker</button>
+    <button onclick="quickAsk('Økonomi akkurat nå')">Økonomi akkurat nå</button>
+    <button onclick="quickAsk('Hvordan fungerer...?')">Noe annet</button>
+  </div>
+
+  <input type="text" id="userInput" placeholder="Skriv her og trykk Enter..." onkeypress="if(event.key==='Enter') handleInput()">
+</div>
+
+<script>
+function handleInput() {
+  const input = document.getElementById("userInput");
+  const greeting = document.getElementById("greeting");
+  
+  if (input.value.trim() === "") return;
+  
+  greeting.innerHTML = `<strong>Du spurte:</strong> ${input.value}<br><br>Jeg skal finne ut av det! 🎯`;
+  // Her kan du senere koble til ekte AI
+  
+  input.value = "";
+}
+
+function quickAsk(topic) {
+  document.getElementById("greeting").innerHTML = `Bra valg! Du vil vite om <strong>${topic}</strong>.<br><br>La meg hjelpe deg med det...`;
+}
+</script>
+
+</body>
+</html>
