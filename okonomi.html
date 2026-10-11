@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="nb">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,9 +35,11 @@
     .nav-link.active:after {
       width: 100%;
     }
+    /* Orddeling i overskrifter (lang="nb") */
+    section h1, section h2, section h3, main h1, main h2, main h3 { hyphens: auto; overflow-wrap: break-word; }
   </style>
 </head>
-<body class="bg-slate-950 relative min-h-screen overflow-x-hidden">
+<body class="bg-slate-950 relative min-h-screen overflow-x-hidden flex flex-col">
 
   <!-- Particle Background -->
   <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block"></canvas>
@@ -46,15 +48,15 @@
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
-        <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 shrink-0">
           <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-          <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
-        </div>
+          <h1 class="text-2xl font-semibold whitespace-nowrap">HoldtDeOrd.no</h1>
+        </a>
 
-        <div class="hidden lg:flex gap-8 text-lg font-medium items-center">
+        <div class="hidden lg:flex gap-6 xl:gap-8 text-lg font-medium items-center whitespace-nowrap">
           <a href="index.html" class="nav-link hover:text-blue-600 transition-colors">Hjem</a>
           <a href="saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
-          <a href="stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
+          <a href="stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingssetene</a>
           <a href="partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
           <a href="okonomi.html" class="nav-link hover:text-blue-600 transition-colors active">Økonomi</a>
           <a href="saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
@@ -70,7 +72,7 @@
       <div class="flex flex-col gap-6 text-xl font-medium">
         <a href="index.html" class="nav-link py-3 border-b">Hjem</a>
         <a href="saker.html" class="nav-link py-3 border-b">Saker</a>
-        <a href="stortingsetene.html" class="nav-link py-3 border-b">Stortingsetene</a>
+        <a href="stortingsetene.html" class="nav-link py-3 border-b">Stortingssetene</a>
         <a href="partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
         <a href="okonomi.html" class="nav-link py-3 border-b active">Økonomi</a>
         <a href="saker/dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
@@ -117,9 +119,9 @@
     </div>
   </section>
 
-  <footer class="bg-white border-t py-12 mt-20 relative z-10">
+  <footer class="bg-white border-t py-12 mt-auto relative z-10">
     <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
-      <p>HoldtDeOrd.no — Faktabasert politikkoversikt</p>
+      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
     </div>
   </footer>
 
