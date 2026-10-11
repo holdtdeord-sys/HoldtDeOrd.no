@@ -60,7 +60,7 @@
           <h1 class="text-2xl font-semibold">HoldtDeOrd.no</h1>
         </div>
 
-        <div class="hidden md:flex gap-8 text-lg font-medium items-center">
+        <div class="hidden lg:flex gap-8 text-lg font-medium items-center">
           <a href="index.html" class="nav-link hover:text-blue-600 transition-colors active">Hjem</a>
           <a href="saker.html" class="nav-link hover:text-blue-600 transition-colors">Saker</a>
           <a href="stortingsetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingsetene</a>
@@ -70,12 +70,12 @@
           <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
         </div>
 
-        <button id="mobile-menu-button" class="md:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
+        <button id="mobile-menu-button" class="lg:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
+    <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
       <div class="flex flex-col gap-6 text-xl font-medium">
         <a href="index.html" class="nav-link py-3 border-b active">Hjem</a>
         <a href="saker.html" class="nav-link py-3 border-b">Saker</a>
@@ -206,17 +206,6 @@
       closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     }
   </script>
-
-  <script>
-  const menuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const closeButton = document.getElementById('close-mobile-menu');
-
-  if (menuButton && mobileMenu && closeButton) {
-    menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-    closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-  }
-</script>
 
 </body>
 </html>
