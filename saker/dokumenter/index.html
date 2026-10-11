@@ -127,21 +127,35 @@
         date: "2026-02-26",
         category: "Stortinget",
         summary: "Forslag fra MDG, SV og Rødt om et uavhengig organ mot korrupsjon.",
-        link: "_template.html"
+        link: "2026-05-31-representantforslag-om-antikorrupsjonsorgan.html"
+      },
+      {
+        title: "Lov om styrking av habilitetsregler for politikere og statsråder",
+        date: "2026-05-28",
+        category: "Lovforslag",
+        summary: "Lovforslag om strengere regler rundt økonomiske interesser, aksjeeiendom og habilitet for medlemmer av regjeringen og Stortinget.",
+        link: "2026-05-28-lov-om-habilitetsregler.html"
+      },
+      {
+        title: "Interpellasjon om Norges håndtering av klimaforpliktelser",
+        date: "2026-05-22",
+        category: "Interpellasjon",
+        summary: "Interpellasjon til statsministeren om hvorvidt Norge vil innfri sine internasjonale klimamål innen 2030.",
+        link: "2026-05-22-interpellasjon-klima.html"
       },
       {
         title: "Statsbudsjettet 2026 – Hoveddokument",
         date: "2025-10-06",
         category: "Regjeringen",
         summary: "Regjeringens forslag til statsbudsjett for 2026.",
-        link: "#"
+        link: null // Innhold kommer snart
       },
       {
         title: "Innstilling til Stortinget om forsvarsbudsjettet",
         date: "2026-03-15",
         category: "Forsvar",
         summary: "Økt bevilgning til Forsvaret og ny langtidsplan.",
-        link: "#"
+        link: null // Innhold kommer snart
       }
     ];
 
@@ -159,9 +173,11 @@
           </div>
           <h3 class="text-xl font-semibold mb-3 line-clamp-2">${doc.title}</h3>
           <p class="text-slate-600 text-[15px] mb-6 line-clamp-3">${doc.summary}</p>
-          <a href="${doc.link}" class="inline-flex items-center text-blue-600 font-medium hover:underline">
+          ${doc.link
+            ? `<a href="${doc.link}" class="inline-flex items-center text-blue-600 font-medium hover:underline">
             Les dokument →
-          </a>
+          </a>`
+            : `<span class="inline-flex items-center text-slate-500 font-medium">Innhold kommer snart</span>`}
         `;
         grid.appendChild(card);
       });
