@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="nb">
 <head>
   <meta charset="UTF-8">
   <title>Velkommen til siden</title>
@@ -52,7 +52,7 @@
 <div id="ai-clip">
   <div id="ai-avatar">📄</div>
   <div class="bubble" id="greeting">
-    Hei! Jeg er litt lei meg av å bare ligge her i dokumentmappen... 
+    Hei! Jeg er litt lei av å bare ligge her i dokumentmappen... 
     <strong>Hvilke tema leter du etter?</strong> Spør meg om saker, økonomi, eller hva som helst!
   </div>
   
