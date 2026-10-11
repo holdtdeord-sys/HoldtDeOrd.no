@@ -1,0 +1,50 @@
+/* HoldtDeOrd.no – felles stil for alle sider (lastes etter sidens egen <style>). */
+:root {
+  --hdo-duration: 200ms;
+  --hdo-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Én felles varighet og kurve for overganger */
+.nav-link { transition: color var(--hdo-duration) var(--hdo-ease); }
+.nav-link:after { transition: width var(--hdo-duration) var(--hdo-ease); }
+
+/* Kort løftes ved hover (sterkere skygge, ikke svakere) */
+.card-lift,
+.document-card {
+  transition: transform var(--hdo-duration) var(--hdo-ease), box-shadow var(--hdo-duration) var(--hdo-ease);
+}
+.card-lift:hover,
+.document-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 64px -12px rgb(0 0 0 / 0.5);
+}
+
+/* Hopp til hovedinnhold */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  background: #fff;
+  color: #1d4ed8;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.3);
+}
+.skip-link:focus { top: 1rem; }
+main:focus { outline: none; }
+
+/* Redusert bevegelse: ingen partikler, ingen animasjoner/overganger */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-lift:hover,
+  .document-card:hover { transform: none; }
+  #bg-particles { display: none !important; }
+}
