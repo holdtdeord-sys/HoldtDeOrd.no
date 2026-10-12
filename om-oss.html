@@ -4,8 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Om oss - HoldtDeOrd.no</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <meta name="description" content="Om HoldtDeOrd.no: formålet med nettstedet, hvordan vi jobber og hvordan du tar kontakt.">
+  <link rel="canonical" href="https://holdtdeord-sys.github.io/HoldtDeOrd.no/om-oss.html">
+  <meta property="og:site_name" content="HoldtDeOrd.no">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Om oss - HoldtDeOrd.no">
+  <meta property="og:description" content="Om HoldtDeOrd.no: formålet med nettstedet, hvordan vi jobber og hvordan du tar kontakt.">
+  <meta property="og:url" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/om-oss.html">
+  <meta property="og:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="HoldtDeOrd.no – Faktabasert politikkoversikt">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Om oss - HoldtDeOrd.no">
+  <meta name="twitter:description" content="Om HoldtDeOrd.no: formålet med nettstedet, hvordan vi jobber og hvordan du tar kontakt.">
+  <meta name="twitter:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>tailwind.config = { theme: { extend: { transitionDuration: { DEFAULT: '200ms' }, transitionTimingFunction: { DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)' } } } };</script>
   
   <style>
     #bg-particles {
@@ -43,19 +62,21 @@
     /* Orddeling i overskrifter (lang="nb") */
     section h1, section h2, section h3, main h1, main h2, main h3 { hyphens: auto; overflow-wrap: break-word; }
   </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body class="bg-slate-950 relative min-h-screen overflow-x-hidden flex flex-col">
+  <a href="#main" class="skip-link">Hopp til hovedinnhold</a>
 
   <!-- Fixed Particle Background -->
-  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block"></canvas>
+  <canvas id="bg-particles" class="fixed inset-0 pointer-events-none hidden lg:block" aria-hidden="true" data-count="100" data-size="2.3" data-speed="0.9" data-min-speed="0.4" data-color="rgba(147, 197, 253, 0.7)"></canvas>
 
   <!-- NAV -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="bg-white shadow-sm sticky top-0 z-50" aria-label="Hovedmeny">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
         <a href="index.html" class="flex items-center gap-3 shrink-0">
-          <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-          <h1 class="text-2xl font-semibold whitespace-nowrap">HoldtDeOrd.no</h1>
+          <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl" aria-hidden="true">H</div>
+          <span class="text-2xl font-semibold whitespace-nowrap">HoldtDeOrd.no</span>
         </a>
 
         <div class="hidden lg:flex gap-6 xl:gap-8 text-lg font-medium items-center whitespace-nowrap">
@@ -65,15 +86,15 @@
           <a href="partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
           <a href="okonomi.html" class="nav-link hover:text-blue-600 transition-colors">Økonomi</a>
           <a href="saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors">Dokumenter</a>
-          <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors active">Om oss</a>
+          <a href="om-oss.html" class="nav-link hover:text-blue-600 transition-colors active" aria-current="page">Om oss</a>
         </div>
 
-        <button id="mobile-menu-button" class="lg:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
+        <button id="mobile-menu-button" type="button" class="lg:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobile-menu"><span aria-hidden="true">☰</span></button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
+    <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto" role="dialog" aria-modal="true" aria-label="Meny">
       <div class="flex flex-col gap-6 text-xl font-medium">
         <a href="index.html" class="nav-link py-3 border-b">Hjem</a>
         <a href="saker.html" class="nav-link py-3 border-b">Saker</a>
@@ -81,11 +102,13 @@
         <a href="partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
         <a href="okonomi.html" class="nav-link py-3 border-b">Økonomi</a>
         <a href="saker/dokumenter/" class="nav-link py-3 border-b">Dokumenter</a>
-        <a href="om-oss.html" class="nav-link py-3 active">Om oss</a>
+        <a href="om-oss.html" class="nav-link py-3 active" aria-current="page">Om oss</a>
       </div>
-      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">✕</button>
+      <button id="close-mobile-menu" type="button" class="absolute top-6 right-6 text-4xl text-slate-500 hover:text-slate-700" aria-label="Lukk meny"><span aria-hidden="true">✕</span></button>
     </div>
   </nav>
+
+  <main id="main" tabindex="-1" class="flex-1">
 
   <!-- Main Content -->
   <section class="py-20 relative z-10">
@@ -121,74 +144,15 @@
     </div>
   </section>
 
+  </main>
+
   <footer class="bg-white border-t py-12 mt-auto relative z-10">
     <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
       <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
     </div>
   </footer>
 
-  <!-- Particle Background Script -->
-  <script>
-    const canvas = document.getElementById('bg-particles');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2.3 + 0.5;
-        this.speedY = Math.random() * 0.9 + 0.4;
-      }
-      update() {
-        this.y += this.speedY;
-        if (this.y > canvas.height) this.reset();
-      }
-      draw() {
-        ctx.fillStyle = 'rgba(147, 197, 253, 0.7)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      particles = [];
-      for (let i = 0; i < 100; i++) {
-        particles.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    initParticles();
-    animate();
-
-    // Mobile Menu
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeButton = document.getElementById('close-mobile-menu');
-
-    if (menuButton && mobileMenu && closeButton) {
-      menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-      closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    }
-  </script>
+  <script src="assets/site.js"></script>
 
 </body>
 </html>

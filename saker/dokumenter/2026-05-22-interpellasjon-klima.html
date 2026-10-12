@@ -4,8 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interpellasjon om Norges håndtering av klimaforpliktelser - HoldtDeOrd.no</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <meta name="description" content="Interpellasjon om Norges håndtering av klimaforpliktelser – dokumentside på HoldtDeOrd.no.">
+  <link rel="canonical" href="https://holdtdeord-sys.github.io/HoldtDeOrd.no/saker/dokumenter/2026-05-22-interpellasjon-klima.html">
+  <meta property="og:site_name" content="HoldtDeOrd.no">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Interpellasjon om Norges håndtering av klimaforpliktelser - HoldtDeOrd.no">
+  <meta property="og:description" content="Interpellasjon om Norges håndtering av klimaforpliktelser – dokumentside på HoldtDeOrd.no.">
+  <meta property="og:url" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/saker/dokumenter/2026-05-22-interpellasjon-klima.html">
+  <meta property="og:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="HoldtDeOrd.no – Faktabasert politikkoversikt">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Interpellasjon om Norges håndtering av klimaforpliktelser - HoldtDeOrd.no">
+  <meta name="twitter:description" content="Interpellasjon om Norges håndtering av klimaforpliktelser – dokumentside på HoldtDeOrd.no.">
+  <meta name="twitter:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>tailwind.config = { theme: { extend: { transitionDuration: { DEFAULT: '200ms' }, transitionTimingFunction: { DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)' } } } };</script>
   
   <!-- Custom Nav Styles -->
   <style>
@@ -33,16 +52,18 @@
     /* Orddeling i overskrifter (lang="nb") */
     section h1, section h2, section h3, main h1, main h2, main h3 { hyphens: auto; overflow-wrap: break-word; }
   </style>
+  <link rel="stylesheet" href="../../assets/site.css">
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col">
+  <a href="#main" class="skip-link">Hopp til hovedinnhold</a>
 
   <!-- NAV - Fully Responsive -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="bg-white shadow-sm sticky top-0 z-50" aria-label="Hovedmeny">
     <div class="max-w-6xl mx-auto px-6 py-5">
       <div class="flex justify-between items-center">
         <a href="../../index.html" class="flex items-center gap-3 shrink-0">
-          <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">H</div>
-          <h1 class="text-2xl font-semibold whitespace-nowrap">HoldtDeOrd.no</h1>
+          <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl" aria-hidden="true">H</div>
+          <span class="text-2xl font-semibold whitespace-nowrap">HoldtDeOrd.no</span>
         </a>
 
         <div class="hidden lg:flex gap-6 xl:gap-8 text-lg font-medium items-center whitespace-nowrap">
@@ -51,30 +72,30 @@
           <a href="../../stortingssetene.html" class="nav-link hover:text-blue-600 transition-colors">Stortingssetene</a>
           <a href="../../partilofter.html" class="nav-link hover:text-blue-600 transition-colors">Partiløfter</a>
           <a href="../../okonomi.html" class="nav-link hover:text-blue-600 transition-colors">Økonomi</a>
-          <a href="../../saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors active">Dokumenter</a>
+          <a href="../../saker/dokumenter/" class="nav-link hover:text-blue-600 transition-colors active" aria-current="page">Dokumenter</a>
           <a href="../../om-oss.html" class="nav-link hover:text-blue-600 transition-colors">Om oss</a>
         </div>
 
-        <button id="mobile-menu-button" class="lg:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors">☰</button>
+        <button id="mobile-menu-button" type="button" class="lg:hidden text-3xl text-slate-700 hover:text-blue-600 transition-colors" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobile-menu"><span aria-hidden="true">☰</span></button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto">
+    <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 bg-white z-50 pt-20 px-6 overflow-auto" role="dialog" aria-modal="true" aria-label="Meny">
       <div class="flex flex-col gap-6 text-xl font-medium">
         <a href="../../index.html" class="nav-link py-3 border-b">Hjem</a>
         <a href="../../saker.html" class="nav-link py-3 border-b">Saker</a>
         <a href="../../stortingssetene.html" class="nav-link py-3 border-b">Stortingssetene</a>
         <a href="../../partilofter.html" class="nav-link py-3 border-b">Partiløfter</a>
         <a href="../../okonomi.html" class="nav-link py-3 border-b">Økonomi</a>
-        <a href="../../saker/dokumenter/" class="nav-link py-3 border-b active">Dokumenter</a>
+        <a href="../../saker/dokumenter/" class="nav-link py-3 border-b active" aria-current="page">Dokumenter</a>
         <a href="../../om-oss.html" class="nav-link py-3">Om oss</a>
       </div>
-      <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-slate-400 hover:text-slate-600">✕</button>
+      <button id="close-mobile-menu" type="button" class="absolute top-6 right-6 text-4xl text-slate-500 hover:text-slate-700" aria-label="Lukk meny"><span aria-hidden="true">✕</span></button>
     </div>
   </nav>
 
-  <main class="max-w-4xl mx-auto px-6 py-12 w-full">
+  <main id="main" tabindex="-1" class="max-w-4xl mx-auto px-6 py-12 w-full">
     <h1 class="text-4xl font-bold mb-4 break-words hyphens-auto">Interpellasjon om Norges håndtering av klimaforpliktelser</h1>
     <p class="text-slate-500 mb-10">Publisert: 2026-05-22</p>
     
@@ -103,20 +124,7 @@
     </div>
   </footer>
 
-  <!-- Mobile Menu Script --> 
-  <script>
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeButton = document.getElementById('close-mobile-menu');
-
-    menuButton.addEventListener('click', () => {
-      mobileMenu.classList.remove('hidden');
-    });
-
-    closeButton.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-    });
-  </script>
+  <script src="../../assets/site.js"></script>
 
 </body>
 </html>

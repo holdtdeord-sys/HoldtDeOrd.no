@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://holdtdeord-sys.github.io/HoldtDeOrd.no/sitemap.xml
