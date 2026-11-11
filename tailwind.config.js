@@ -5,10 +5,10 @@ module.exports = {
     './saker/**/*.html',
     './assets/site.js'
   ],
-  // Klasser som bygges dynamisk i JS (partilofter.html: bg-${statusColor}-100 / text-${statusColor}-700)
+  // Klasser som bygges dynamisk i JS (partilofter.html: bg-${st.color}-100 / text-${st.color}-700)
   safelist: [
-    { pattern: /^bg-(emerald|amber|red)-100$/ },
-    { pattern: /^text-(emerald|amber|red)-700$/ }
+    { pattern: /^bg-(amber)-100$/ },
+    { pattern: /^text-(amber)-700$/ }
   ],
   theme: {
     extend: {
