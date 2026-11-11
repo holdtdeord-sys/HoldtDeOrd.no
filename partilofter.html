@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partiløfter 2025–2029 - HoldtDeOrd.no</title>
-  <meta name="description" content="Oversikt over partiløfter for perioden 2025–2029, med status og filtrering etter tema.">
+  <meta name="description" content="Oversikt over partiløfter for perioden 2025–2029, med status og kilde der status er avklart, og filtrering etter tema.">
   <link rel="canonical" href="https://holdtdeord-sys.github.io/HoldtDeOrd.no/partilofter.html">
   <meta property="og:site_name" content="HoldtDeOrd.no">
   <meta property="og:locale" content="nb_NO">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Partiløfter 2025–2029 - HoldtDeOrd.no">
-  <meta property="og:description" content="Oversikt over partiløfter for perioden 2025–2029, med status og filtrering etter tema.">
+  <meta property="og:description" content="Oversikt over partiløfter for perioden 2025–2029, med status og kilde der status er avklart, og filtrering etter tema.">
   <meta property="og:url" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/partilofter.html">
   <meta property="og:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="HoldtDeOrd.no – Nettsted under arbeid">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Partiløfter 2025–2029 - HoldtDeOrd.no">
-  <meta name="twitter:description" content="Oversikt over partiløfter for perioden 2025–2029, med status og filtrering etter tema.">
+  <meta name="twitter:description" content="Oversikt over partiløfter for perioden 2025–2029, med status og kilde der status er avklart, og filtrering etter tema.">
   <meta name="twitter:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -145,57 +145,90 @@
   </footer>
 
   <script>
+    // Status kontrollert mot offisielle kilder 11.11.2026 (Janes løftestatus-kontroll).
+    // status: "oppfylt" | "delvis" | "ikke" | "uavklart". «Uavklart» = ingen offisiell kilde avgjør statusen.
     const promisesData = [
       {
         title: "Skattelette for middelklassen",
         party: "Flere partier",
         category: "økonomi",
         said: "Senke skattetrykket for vanlige folk",
-        done: "25 000 – 35 000 kr mindre skatt siden 2020",
-        status: "delvis"
+        done: "Uavklart. Ingen offisiell kilde for et beløp er funnet, og partiene er ikke navngitt. Tallet som sto her, er fjernet.",
+        status: "uavklart",
+        sources: []
       },
       {
         title: "Gratis SFO og billigere barnehage",
         party: "Arbeiderpartiet",
-        category: "helse",
+        category: "utdanning",
         said: "Fullt ut gratis SFO og sterkt reduserte barnehagepriser",
-        done: "Delvis innført",
-        status: "delvis"
+        saidNote: "Formuleringen er ikke funnet som sitat i Arbeiderpartiets kilder.",
+        done: "Delvis innført: 12 timer gratis SFO i uken for 1. trinn fra høsten 2022, utvidet til 2. trinn i 2023 og 3. trinn i 2024. Maksprisen i barnehage er 1 200 kroner per måned fra 1. august 2025.",
+        status: "delvis",
+        sources: [
+          { label: "Regjeringen: SFO", url: "https://www.regjeringen.no/no/tema/utdanning/grunnopplaring/artikler/skolefritidsordningen-sfo/id434946/" },
+          { label: "Udir: foreldrebetaling", url: "https://www.udir.no/regelverk-og-tilsyn/barnehage/foreldrebetaling" }
+        ]
       },
       {
         title: "Sterkere forsvar og økt beredskap",
         party: "Høyre",
         category: "forsvar",
         said: "Øke forsvarsbudsjettet betydelig",
-        done: "Økt med 15 % i 2026",
-        status: "oppfylt"
+        saidNote: "Formuleringen er ikke et ordrett sitat fra Høyres program.",
+        done: "Saldert ramme for Forsvarsdepartementet er 179 808 923 000 kroner i 2026, mot 125 069 526 000 kroner i 2025. Økningen var om lag 43,8 prosent nominelt i forslaget, som ble lagt fram av regjeringen Støre (Prop. 1 S (2025–2026)).",
+        status: "oppfylt",
+        sources: [
+          { label: "Saldert budsjett 2025", url: "https://www.stortinget.no/globalassets/pdf/budsjettsiden/blaabok_2025.pdf" },
+          { label: "Saldert budsjett 2026", url: "https://www.stortinget.no/globalassets/pdf/budsjettsiden/blaabok_2026.pdf" },
+          { label: "Prop. 1 S (2025–2026)", url: "https://www.regjeringen.no/contentassets/e44f7b63508f4d5a858998b6b85d63f6/no/pdfs/prp202520260001_fddddpdfs.pdf" }
+        ]
       },
       {
         title: "Full elektrifisering av sokkelen innen 2030",
         party: "Arbeiderpartiet",
         category: "klima",
         said: "Full elektrifisering innen 2030",
-        done: "Ingen konkrete tiltak iverksatt",
-        status: "ikke"
+        saidNote: "Løftet er ikke funnet i denne formen i Arbeiderpartiets kilder.",
+        done: "Uavklart. Tiltak er iverksatt: antall felt som drives helt eller delvis med kraft fra land, var 16 i 2020 og øker til 39 når prosjektene under utbygging kommer i drift (Sokkeldirektoratet, 29.10.2025). Fristen 2030 er ikke nådd.",
+        status: "uavklart",
+        sources: [
+          { label: "Sokkeldirektoratet: kraft fra land", url: "https://www.sodir.no/aktuelt/publikasjoner/rapporter/kraft-fra-land/sammendrag/" }
+        ]
       },
-      // --- NYTT ÆRLIG FAKTAKORT ---
       {
         title: "Skatteletter vs. reelle kostnadsøkninger",
         party: "Middelklassen (500k inntekt)",
         category: "økonomi",
         said: "Staten ga skatteletter",
-        done: "25–35 000 kr mindre skatt siden 2020 — men renter, drivstoff, strøm og avgifter økte med 47–101 000 kr per år",
-        status: "ikke"
+        done: "Uavklart. Dette er ikke et partiløfte. Tallene som sto her, hadde ingen offisiell kilde og er fjernet.",
+        status: "uavklart",
+        sources: []
       }
     ];
+
+    const statusStyles = {
+      oppfylt:  { color: 'emerald', text: 'Oppfylt' },
+      delvis:   { color: 'amber',   text: 'Delvis oppfylt' },
+      ikke:     { color: 'red',     text: 'Ikke oppfylt' },
+      uavklart: { color: 'slate',   text: 'Uavklart' }
+    };
 
     function renderPromises(filteredData) {
       const grid = document.getElementById('promises-grid');
       grid.innerHTML = '';
+      if (!filteredData.length) {
+        grid.innerHTML = '<p class="md:col-span-2 lg:col-span-3 text-center text-slate-500">Ingen løfter i denne kategorien ennå.</p>';
+        return;
+      }
 
       filteredData.forEach(item => {
-        let statusColor = item.status === 'oppfylt' ? 'emerald' : item.status === 'delvis' ? 'amber' : 'red';
-        let statusText = item.status === 'oppfylt' ? 'Oppfylt' : item.status === 'delvis' ? 'Delvis oppfylt' : 'Ikke oppfylt';
+        const st = statusStyles[item.status] || statusStyles.uavklart;
+        let statusColor = st.color;
+        let statusText = st.text;
+        const sourcesHtml = item.sources && item.sources.length
+          ? `<p class="text-sm text-slate-500 mt-3"><strong>Kilde:</strong> ${item.sources.map(s => `<a href="${s.url}" class="text-blue-600 hover:underline" target="_blank" rel="noopener">${s.label}</a>`).join(' · ')}</p>`
+          : `<p class="text-sm text-slate-500 mt-3"><strong>Kilde:</strong> ingen offisiell kilde funnet</p>`;
 
         const card = document.createElement('div');
         card.className = `content-box rounded-3xl p-8 card-lift`;
@@ -205,8 +238,9 @@
             <span class="text-xs font-medium text-${statusColor}-700">${statusText}</span>
           </div>
           <h2 class="text-xl font-semibold mb-3">${item.title}</h2>
-          <p class="text-slate-600 mb-4">"${item.said}"</p>
+          <p class="text-slate-600 mb-4"><strong>Løfte:</strong> ${item.said}${item.saidNote ? ` <span class="text-sm text-slate-500">(${item.saidNote})</span>` : ''}</p>
           <p class="text-sm text-slate-500"><strong>Gjort:</strong> ${item.done}</p>
+          ${sourcesHtml}
           <div class="mt-6 text-sm text-blue-600 font-medium">${item.party}</div>
         `;
         grid.appendChild(card);

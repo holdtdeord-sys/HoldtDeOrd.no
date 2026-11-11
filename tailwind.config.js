@@ -7,8 +7,8 @@ module.exports = {
   ],
   // Klasser som bygges dynamisk i JS (partilofter.html: bg-${statusColor}-100 / text-${statusColor}-700)
   safelist: [
-    { pattern: /^bg-(emerald|amber|red)-100$/ },
-    { pattern: /^text-(emerald|amber|red)-700$/ }
+    { pattern: /^bg-(emerald|amber|red|slate)-100$/ },
+    { pattern: /^text-(emerald|amber|red|slate)-700$/ }
   ],
   theme: {
     extend: {
