@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partiløfter 2025–2029 - HoldtDeOrd.no</title>
-  <meta name="description" content="Oversikt over partiløfter for perioden 2025–2029, med status og kilde der status er avklart, og filtrering etter tema.">
+  <meta name="description" content="Oversikt over partiløfter for perioden 2025–2029. Foreløpig vises bare løfter med offisiell kilde, med status og filtrering etter tema.">
   <link rel="canonical" href="https://holdtdeord-sys.github.io/HoldtDeOrd.no/partilofter.html">
   <meta property="og:site_name" content="HoldtDeOrd.no">
   <meta property="og:locale" content="nb_NO">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Partiløfter 2025–2029 - HoldtDeOrd.no">
-  <meta property="og:description" content="Oversikt over partiløfter for perioden 2025–2029, med status og kilde der status er avklart, og filtrering etter tema.">
+  <meta property="og:description" content="Oversikt over partiløfter for perioden 2025–2029. Foreløpig vises bare løfter med offisiell kilde, med status og filtrering etter tema.">
   <meta property="og:url" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/partilofter.html">
   <meta property="og:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="HoldtDeOrd.no – Nettsted under arbeid">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Partiløfter 2025–2029 - HoldtDeOrd.no">
-  <meta name="twitter:description" content="Oversikt over partiløfter for perioden 2025–2029, med status og kilde der status er avklart, og filtrering etter tema.">
+  <meta name="twitter:description" content="Oversikt over partiløfter for perioden 2025–2029. Foreløpig vises bare løfter med offisiell kilde, med status og filtrering etter tema.">
   <meta name="twitter:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -118,14 +118,12 @@
       <div class="content-box rounded-3xl p-10 md:p-16">
         <h1 class="text-4xl md:text-5xl font-semibold text-center mb-6">Partiløfter 2025–2029</h1>
         <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
-          Hva lovte partiene? Oversikten over partiløfter for perioden 2025–2029 er under arbeid.
+          Hva lovte partiene? Oversikten over partiløfter for perioden 2025–2029 er under arbeid. Foreløpig vises bare løfter med offisiell kilde.
         </p>
 
         <!-- Category Filters -->
         <div class="flex flex-wrap gap-3 justify-center mb-12">
           <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-medium">Alle løfter</button>
-          <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100 transition">Økonomi</button>
-          <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100 transition">Helse</button>
           <button onclick="filterCategory('forsvar')" class="category-btn px-6 py-3 rounded-2xl hover:bg-sky-100 transition">Forsvar</button>
           <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100 transition">Utdanning</button>
         </div>
@@ -146,17 +144,8 @@
 
   <script>
     // Status kontrollert mot offisielle kilder 11.11.2026 (Janes løftestatus-kontroll).
-    // status: "oppfylt" | "delvis" | "ikke" | "uavklart". «Uavklart» = ingen offisiell kilde avgjør statusen.
+    // Bare løfter med offisiell kilde vises (Xenstrum 11.11.2026). status: "oppfylt" | "delvis" | "ikke".
     const promisesData = [
-      {
-        title: "Skattelette for middelklassen",
-        party: "Flere partier",
-        category: "økonomi",
-        said: "Senke skattetrykket for vanlige folk",
-        done: "Uavklart. Ingen offisiell kilde for et beløp er funnet, og partiene er ikke navngitt. Tallet som sto her, er fjernet.",
-        status: "uavklart",
-        sources: []
-      },
       {
         title: "Gratis SFO og billigere barnehage",
         party: "Arbeiderpartiet",
@@ -183,52 +172,26 @@
           { label: "Saldert budsjett 2026", url: "https://www.stortinget.no/globalassets/pdf/budsjettsiden/blaabok_2026.pdf" },
           { label: "Prop. 1 S (2025–2026)", url: "https://www.regjeringen.no/contentassets/e44f7b63508f4d5a858998b6b85d63f6/no/pdfs/prp202520260001_fddddpdfs.pdf" }
         ]
-      },
-      {
-        title: "Full elektrifisering av sokkelen innen 2030",
-        party: "Arbeiderpartiet",
-        category: "klima",
-        said: "Full elektrifisering innen 2030",
-        saidNote: "Løftet er ikke funnet i denne formen i Arbeiderpartiets kilder.",
-        done: "Uavklart. Tiltak er iverksatt: antall felt som drives helt eller delvis med kraft fra land, var 16 i 2020 og øker til 39 når prosjektene under utbygging kommer i drift (Sokkeldirektoratet, 29.10.2025). Fristen 2030 er ikke nådd.",
-        status: "uavklart",
-        sources: [
-          { label: "Sokkeldirektoratet: kraft fra land", url: "https://www.sodir.no/aktuelt/publikasjoner/rapporter/kraft-fra-land/sammendrag/" }
-        ]
-      },
-      {
-        title: "Skatteletter vs. reelle kostnadsøkninger",
-        party: "Middelklassen (500k inntekt)",
-        category: "økonomi",
-        said: "Staten ga skatteletter",
-        done: "Uavklart. Dette er ikke et partiløfte. Tallene som sto her, hadde ingen offisiell kilde og er fjernet.",
-        status: "uavklart",
-        sources: []
       }
     ];
 
     const statusStyles = {
       oppfylt:  { color: 'emerald', text: 'Oppfylt' },
       delvis:   { color: 'amber',   text: 'Delvis oppfylt' },
-      ikke:     { color: 'red',     text: 'Ikke oppfylt' },
-      uavklart: { color: 'slate',   text: 'Uavklart' }
+      ikke:     { color: 'red',     text: 'Ikke oppfylt' }
     };
 
     function renderPromises(filteredData) {
       const grid = document.getElementById('promises-grid');
       grid.innerHTML = '';
-      if (!filteredData.length) {
-        grid.innerHTML = '<p class="md:col-span-2 lg:col-span-3 text-center text-slate-500">Ingen løfter i denne kategorien ennå.</p>';
-        return;
-      }
 
       filteredData.forEach(item => {
-        const st = statusStyles[item.status] || statusStyles.uavklart;
+        const st = statusStyles[item.status];
         let statusColor = st.color;
         let statusText = st.text;
         const sourcesHtml = item.sources && item.sources.length
           ? `<p class="text-sm text-slate-500 mt-3"><strong>Kilde:</strong> ${item.sources.map(s => `<a href="${s.url}" class="text-blue-600 hover:underline" target="_blank" rel="noopener">${s.label}</a>`).join(' · ')}</p>`
-          : `<p class="text-sm text-slate-500 mt-3"><strong>Kilde:</strong> ingen offisiell kilde funnet</p>`;
+          : '';
 
         const card = document.createElement('div');
         card.className = `content-box rounded-3xl p-8 card-lift`;
