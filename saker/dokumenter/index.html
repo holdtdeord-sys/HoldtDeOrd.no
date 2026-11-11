@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="HoldtDeOrd.no – Faktabasert politikkoversikt">
+  <meta property="og:image:alt" content="HoldtDeOrd.no – Nettsted under arbeid">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dokumenter - HoldtDeOrd.no">
   <meta name="twitter:description" content="Oversikt over offentlige dokumenter, med søk.">
@@ -144,46 +144,25 @@
 
   <footer class="bg-white border-t py-12 mt-auto relative z-10">
     <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
-      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
+      <p>&copy; 2026 HoldtDeOrd.no — Nettsted under arbeid</p>
     </div>
   </footer>
 
   <script>
     const documentsData = [
       {
-        title: "Representantforslag om opprettelse av antikorrupsjonsorgan",
-        date: "2026-02-26",
+        title: "Representantforslag om opprettelse av et antikorrupsjonsorgan",
+        date: "2026-02-12",
         category: "Stortinget",
-        summary: "Forslag fra MDG, SV og Rødt om et uavhengig organ mot korrupsjon.",
+        timeline: "Fremmet 12.02.2026. Votering 02.06.2026: innstillingens tilråding vedtatt 89–10 (Vedtak 840).",
+        // Offisiell status (Xenstrum 11.11 kl. 12:10; Jane: saksstatus-kontroll-2026-11-11.md)
+        status: "Stortinget har ferdigbehandlet saken. Forslaget ble ikke vedtatt.",
+        decision: "Vedtak 840 (2. juni 2026): «Dokument 8:124 S (2025–2026) – Representantforslag fra stortingsrepresentantene Arild Hermstad, Ingrid Liland og Julie E. Stuestøl om opprettelse av et antikorrupsjonsorgan – vedtas ikke.»",
+        statusSources: [{ label: "Saken på stortinget.no (sak 200043)", url: "https://www.stortinget.no/no/Saker-og-publikasjoner/Saker/Sak/?p=200043" }, { label: "Vedtak 840", url: "https://www.stortinget.no/no/Saker-og-publikasjoner/Vedtak/Vedtak/Sak/?p=200043" }],
+        summary: "Dokument 8:124 S (2025–2026) fra Arild Hermstad, Ingrid Liland og Julie E. Stuestøl (alle MDG). Forslagsstillerne ba Stortinget anmode regjeringen om, innen utgangen av 2026, å sette ned et utvalg for å utrede et politisk uavhengig norsk antikorrupsjonsorgan med eget budsjett. Justiskomiteen avga innstilling 12. mai 2026 (Innst. 298 S). Saken ble debattert 1. juni 2026. Ved voteringen 2. juni 2026 ble innstillingens tilråding vedtatt med 89 mot 10 stemmer, og forslaget ble ikke vedtatt (Vedtak 840).",
+        fullSummary: true,
+        source: "https://www.stortinget.no/no/Saker-og-publikasjoner/Saker/Sak/?p=200043",
         link: "2026-05-31-representantforslag-om-antikorrupsjonsorgan.html"
-      },
-      {
-        title: "Lov om styrking av habilitetsregler for politikere og statsråder",
-        date: "2026-05-28",
-        category: "Lovforslag",
-        summary: "Lovforslag om strengere regler rundt økonomiske interesser, aksjeeiendom og habilitet for medlemmer av regjeringen og Stortinget.",
-        link: "2026-05-28-lov-om-habilitetsregler.html"
-      },
-      {
-        title: "Interpellasjon om Norges håndtering av klimaforpliktelser",
-        date: "2026-05-22",
-        category: "Interpellasjon",
-        summary: "Interpellasjon til statsministeren om hvorvidt Norge vil innfri sine internasjonale klimamål innen 2030.",
-        link: "2026-05-22-interpellasjon-klima.html"
-      },
-      {
-        title: "Statsbudsjettet 2026 – Hoveddokument",
-        date: "2025-10-06",
-        category: "Regjeringen",
-        summary: "Regjeringens forslag til statsbudsjett for 2026.",
-        link: null // Innhold kommer snart
-      },
-      {
-        title: "Innstilling til Stortinget om forsvarsbudsjettet",
-        date: "2026-03-15",
-        category: "Forsvar",
-        summary: "Økt bevilgning til Forsvaret og ny langtidsplan.",
-        link: null // Innhold kommer snart
       }
     ];
 
@@ -199,8 +178,13 @@
             <span class="px-4 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-2xl">${doc.category}</span>
             <span class="text-xs text-slate-500">${doc.date}</span>
           </div>
-          <h2 class="text-xl font-semibold mb-3 line-clamp-2">${doc.title}</h2>
-          <p class="text-slate-600 text-[15px] mb-6 line-clamp-3">${doc.summary}</p>
+          <h2 class="text-xl font-semibold mb-3${doc.fullSummary ? '' : ' line-clamp-2'}">${doc.title}</h2>
+          ${doc.timeline ? `<p class="text-sm font-medium text-slate-700 mb-3">${doc.timeline}</p>` : ''}
+          ${doc.status ? `<p class="text-sm text-slate-700 mb-3"><strong>Status:</strong> ${doc.status}${doc.decision ? ` ${doc.decision}` : ''}${doc.statusSources ? ` <span class="text-slate-500">(Kilde: ${doc.statusSources.map(src => `<a href="${src.url}" class="text-blue-600 hover:underline" target="_blank" rel="noopener">${src.label}</a>`).join(' · ')})</span>` : ''}</p>` : ''}
+          <p class="text-slate-600 text-[15px] mb-6${doc.fullSummary ? '' : ' line-clamp-3'}">${doc.summary}</p>
+          ${doc.source
+            ? `<a href="${doc.source}" class="block mb-3 text-blue-600 font-medium hover:underline" target="_blank" rel="noopener">Saken på stortinget.no →</a>`
+            : ''}
           ${doc.link
             ? `<a href="${doc.link}" class="inline-flex items-center text-blue-600 font-medium hover:underline">
             Les dokument →

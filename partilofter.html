@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partiløfter 2025–2029 - HoldtDeOrd.no</title>
-  <meta name="description" content="Oversikt over partiløfter for perioden 2025–2029, med status og filtrering etter tema.">
+  <meta name="description" content="Oversikt over partiløfter for perioden 2025–2029. Foreløpig vises bare løfter med offisiell kilde, med filtrering etter tema.">
   <link rel="canonical" href="https://holdtdeord-sys.github.io/HoldtDeOrd.no/partilofter.html">
   <meta property="og:site_name" content="HoldtDeOrd.no">
   <meta property="og:locale" content="nb_NO">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Partiløfter 2025–2029 - HoldtDeOrd.no">
-  <meta property="og:description" content="Oversikt over partiløfter for perioden 2025–2029, med status og filtrering etter tema.">
+  <meta property="og:description" content="Oversikt over partiløfter for perioden 2025–2029. Foreløpig vises bare løfter med offisiell kilde, med filtrering etter tema.">
   <meta property="og:url" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/partilofter.html">
   <meta property="og:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="HoldtDeOrd.no – Faktabasert politikkoversikt">
+  <meta property="og:image:alt" content="HoldtDeOrd.no – Nettsted under arbeid">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Partiløfter 2025–2029 - HoldtDeOrd.no">
-  <meta name="twitter:description" content="Oversikt over partiløfter for perioden 2025–2029, med status og filtrering etter tema.">
+  <meta name="twitter:description" content="Oversikt over partiløfter for perioden 2025–2029. Foreløpig vises bare løfter med offisiell kilde, med filtrering etter tema.">
   <meta name="twitter:image" content="https://holdtdeord-sys.github.io/HoldtDeOrd.no/assets/og-image.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -118,14 +118,12 @@
       <div class="content-box rounded-3xl p-10 md:p-16">
         <h1 class="text-4xl md:text-5xl font-semibold text-center mb-6">Partiløfter 2025–2029</h1>
         <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
-          Hva lovte partiene? Her følger vi opp løftene sak for sak – faktabasert.
+          Hva lovte partiene? Oversikten over partiløfter for perioden 2025–2029 er under arbeid. Foreløpig vises bare løfter med offisiell kilde.
         </p>
 
         <!-- Category Filters -->
         <div class="flex flex-wrap gap-3 justify-center mb-12">
           <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-medium">Alle løfter</button>
-          <button onclick="filterCategory('økonomi')" class="category-btn px-6 py-3 rounded-2xl hover:bg-amber-100 transition">Økonomi</button>
-          <button onclick="filterCategory('helse')" class="category-btn px-6 py-3 rounded-2xl hover:bg-red-100 transition">Helse</button>
           <button onclick="filterCategory('forsvar')" class="category-btn px-6 py-3 rounded-2xl hover:bg-sky-100 transition">Forsvar</button>
           <button onclick="filterCategory('utdanning')" class="category-btn px-6 py-3 rounded-2xl hover:bg-purple-100 transition">Utdanning</button>
         </div>
@@ -140,73 +138,84 @@
 
   <footer class="bg-white border-t py-12 mt-auto relative z-10">
     <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
-      <p>&copy; 2026 HoldtDeOrd.no — Faktabasert politikkoversikt</p>
+      <p>&copy; 2026 HoldtDeOrd.no — Nettsted under arbeid</p>
     </div>
   </footer>
 
   <script>
+    // Status kontrollert mot offisielle kilder 11.11.2026 (Janes løftestatus-kontroll).
+    // Bare løfter med offisiell kilde vises (Xenstrum 11.11.2026). status: "delvis" (valgfri; kort uten status viser ingen statusmerke).
     const promisesData = [
-      {
-        title: "Skattelette for middelklassen",
-        party: "Flere partier",
-        category: "økonomi",
-        said: "Senke skattetrykket for vanlige folk",
-        done: "25 000 – 35 000 kr mindre skatt siden 2020",
-        status: "delvis"
-      },
       {
         title: "Gratis SFO og billigere barnehage",
         party: "Arbeiderpartiet",
-        category: "helse",
+        category: "utdanning",
         said: "Fullt ut gratis SFO og sterkt reduserte barnehagepriser",
-        done: "Delvis innført",
-        status: "delvis"
+        saidNote: "Formuleringen er ikke funnet som sitat i Arbeiderpartiets kilder.",
+        done: "Delvis innført: 12 timer gratis SFO i uken for 1. trinn fra høsten 2022, utvidet til 2. trinn i 2023 og 3. trinn i 2024. Maksprisen i barnehage er 1 200 kroner per måned fra 1. august 2025.",
+        status: "delvis",
+        sources: [
+          { label: "Regjeringen: SFO", url: "https://www.regjeringen.no/no/tema/utdanning/grunnopplaring/artikler/skolefritidsordningen-sfo/id434946/" },
+          { label: "Udir: foreldrebetaling", url: "https://www.udir.no/regelverk-og-tilsyn/barnehage/foreldrebetaling" },
+          { label: "Arbeiderpartiet: SFO", url: "https://www.arbeiderpartiet.no/politikken/sfoaktivitetsskole/" },
+          { label: "Arbeiderpartiet: barnehage", url: "https://www.arbeiderpartiet.no/politikken/barnehage/" }
+        ]
       },
       {
-        title: "Sterkere forsvar og økt beredskap",
+        title: "«Mer samarbeid og et sterkere forsvar»",
+        titleNote: "Kapitteltittel i Høyres stortingsvalgprogram 2025–2029, s. 6",
+        titleSource: { label: "Programmet (PDF)", url: "https://res.cloudinary.com/hoyre/image/upload/v1748846537/H%C3%B8yres_stortingsvalgprogram_bokmal_ensidig.pdf" },
         party: "Høyre",
         category: "forsvar",
-        said: "Øke forsvarsbudsjettet betydelig",
-        done: "Økt med 15 % i 2026",
-        status: "oppfylt"
-      },
-      {
-        title: "Full elektrifisering av sokkelen innen 2030",
-        party: "Arbeiderpartiet",
-        category: "klima",
-        said: "Full elektrifisering innen 2030",
-        done: "Ingen konkrete tiltak iverksatt",
-        status: "ikke"
-      },
-      // --- NYTT ÆRLIG FAKTAKORT ---
-      {
-        title: "Skatteletter vs. reelle kostnadsøkninger",
-        party: "Middelklassen (500k inntekt)",
-        category: "økonomi",
-        said: "Staten ga skatteletter",
-        done: "25–35 000 kr mindre skatt siden 2020 — men renter, drivstoff, strøm og avgifter økte med 47–101 000 kr per år",
-        status: "ikke"
+        // Ingen status (Xenstrum 11.11.2026 kl. 12:08): bare kildebelagte fakta om beløp, hvem som foreslo og hvem som vedtok.
+        saidLabel: "Fra Høyres stortingsvalgprogram 2025–2029",
+        saidQuote: "Derfor vil Høyre ha et massivt løft for Forsvaret.",
+        saidSources: [{ label: "Høyres stortingsvalgprogram 2025–2029, s. 3", url: "https://res.cloudinary.com/hoyre/image/upload/v1748846537/H%C3%B8yres_stortingsvalgprogram_bokmal_ensidig.pdf" }, { label: "Høyre: partiprogram", url: "https://hoyre.no/politikk/partiprogram/" }],
+        facts: [
+          { text: "Saldert ramme for Forsvarsdepartementet er 179 808 923 000 kroner i 2026, mot 125 069 526 000 kroner i 2025, en nominell økning på 54 739 397 000 kroner (om lag 43,8 prosent).", sources: [{ label: "Saldert budsjett 2025 (Blå bok)", url: "https://www.stortinget.no/globalassets/pdf/budsjettsiden/blaabok_2025.pdf" }, { label: "Saldert budsjett 2026 (Blå bok)", url: "https://www.stortinget.no/globalassets/pdf/budsjettsiden/blaabok_2026.pdf" }, { label: "Prop. 1 S (2025–2026)", url: "https://www.regjeringen.no/contentassets/e44f7b63508f4d5a858998b6b85d63f6/no/pdfs/prp202520260001_fddddpdfs.pdf" }] },
+          { text: "Økningen ble foreslått av regjeringen Støre i Prop. 1 S (2025–2026).", sources: [{ label: "Prop. 1 S (2025–2026)", url: "https://www.regjeringen.no/contentassets/e44f7b63508f4d5a858998b6b85d63f6/no/pdfs/prp202520260001_fddddpdfs.pdf" }] },
+          { text: "Netto utgiftsramme for rammeområde 8 (Forsvar) ble vedtatt av Stortinget 5. desember 2025 til 165 809 653 000 kroner, etter budsjettforlik 3. desember 2025 mellom Arbeiderpartiet, Sosialistisk Venstreparti, Senterpartiet, Rødt og Miljøpartiet De Grønne. Høyre var ikke blant partiene i forliket.", sources: [{ label: "Vedtak 5. desember 2025 (sak 104895)", url: "https://www.stortinget.no/no/Saker-og-publikasjoner/Vedtak/Vedtak/Sak/?p=104895" }, { label: "Innst. 7 S (2025–2026)", url: "https://www.stortinget.no/no/Saker-og-publikasjoner/Publikasjoner/Innstillinger/Stortinget/2025-2026/inns-202526-007s/" }, { label: "Voteringsoversikt (sak 104895)", url: "https://www.stortinget.no/no/Saker-og-publikasjoner/Saker/Sak/Voteringsoversikt/?p=104895" }] },
+          { text: "Over «Romertall I.» (rammevedtaket) ble det stemt 52 for og 47 mot (70 ikke til stede), og vedtaket ble fattet. Av 14 tilstedeværende Høyre-representanter stemte 13 mot og Ove Trellevik for.", sources: [{ label: "Voteringsdetaljer (votering 26502)", url: "https://www.stortinget.no/no/Saker-og-publikasjoner/Saker/Sak/Voteringsoversikt/votering-detaljer/?p=104895&dnid=1&vt=26502" }, { label: "Stortingets åpne data (votering 26502)", url: "https://data.stortinget.no/eksport/voteringsresultat?voteringid=26502&format=json" }, { label: "Stortingets åpne data (voteringer i sak 104895)", url: "https://data.stortinget.no/eksport/voteringer?sakid=104895" }] },
+          { text: "Det voteres ikke særskilt over rammeområde 8. Høyres eget forslag til netto ramme for rammeområde 8 var 166 893 153 000 kroner.", sources: [{ label: "Innst. 2 S (2025–2026), avsnitt 3.2", url: "https://www.stortinget.no/no/Saker-og-publikasjoner/Publikasjoner/Innstillinger/Stortinget/2025-2026/inns-202526-002s/?all=true" }] },
+          { text: "Budsjettinnstillingene for statsbudsjettet 2026 ble ferdigbehandlet 22. desember 2025.", sources: [{ label: "Stortinget: statsbudsjettet 2026", url: "https://www.stortinget.no/no/Saker-og-publikasjoner/Statsbudsjettet/statsbudsjettet-2026/" }] }
+        ]
       }
     ];
+
+    const statusStyles = {
+      delvis:   { color: 'amber',   text: 'Delvis oppfylt' }
+    };
 
     function renderPromises(filteredData) {
       const grid = document.getElementById('promises-grid');
       grid.innerHTML = '';
 
       filteredData.forEach(item => {
-        let statusColor = item.status === 'oppfylt' ? 'emerald' : item.status === 'delvis' ? 'amber' : 'red';
-        let statusText = item.status === 'oppfylt' ? 'Oppfylt' : item.status === 'delvis' ? 'Delvis oppfylt' : 'Ikke oppfylt';
+        const st = item.status ? statusStyles[item.status] : null;
+        const chipClass = st ? `bg-${st.color}-100 text-${st.color}-700` : 'bg-blue-100 text-blue-700';
+        const link = src => `<a href="${src.url}" class="text-blue-600 hover:underline" target="_blank" rel="noopener">${src.label}</a>`;
+        const saidHtml = item.saidQuote
+          ? `<p class="text-slate-600 mb-4"><strong>${item.saidLabel}:</strong> «${item.saidQuote}» <span class="text-sm text-slate-500">(Kilde: ${item.saidSources.map(link).join(' · ')})</span></p>`
+          : `<p class="text-slate-600 mb-4"><strong>Løfte:</strong> ${item.said}${item.saidNote ? ` <span class="text-sm text-slate-500">(${item.saidNote})</span>` : ''}</p>`;
+        const factsHtml = item.facts
+          ? `<p class="text-sm text-slate-500 mb-2"><strong>Fakta:</strong></p><ul class="list-disc pl-5 space-y-2 text-sm text-slate-500">${item.facts.map(f => `<li>${f.text} <span>(Kilde: ${f.sources.map(link).join(' · ')})</span></li>`).join('')}</ul>`
+          : `<p class="text-sm text-slate-500"><strong>Gjort:</strong> ${item.done}</p>`;
+        const sourcesHtml = !item.facts && item.sources && item.sources.length
+          ? `<p class="text-sm text-slate-500 mt-3"><strong>Kilde:</strong> ${item.sources.map(s => `<a href="${s.url}" class="text-blue-600 hover:underline" target="_blank" rel="noopener">${s.label}</a>`).join(' · ')}</p>`
+          : '';
 
         const card = document.createElement('div');
         card.className = `content-box rounded-3xl p-8 card-lift`;
         card.innerHTML = `
           <div class="flex justify-between items-start mb-4">
-            <span class="px-4 py-1 bg-${statusColor}-100 text-${statusColor}-700 text-sm font-medium rounded-2xl">${item.category}</span>
-            <span class="text-xs font-medium text-${statusColor}-700">${statusText}</span>
+            <span class="px-4 py-1 ${chipClass} text-sm font-medium rounded-2xl">${item.category}</span>
+            ${st ? `<span class="text-xs font-medium text-${st.color}-700">${st.text}</span>` : ''}
           </div>
-          <h2 class="text-xl font-semibold mb-3">${item.title}</h2>
-          <p class="text-slate-600 mb-4">"${item.said}"</p>
-          <p class="text-sm text-slate-500"><strong>Gjort:</strong> ${item.done}</p>
+          <h2 class="text-xl font-semibold ${item.titleNote ? 'mb-1' : 'mb-3'}">${item.title}</h2>
+          ${item.titleNote ? `<p class="text-sm text-slate-500 mb-3">${item.titleNote}${item.titleSource ? ` (Kilde: ${link(item.titleSource)})` : ''}</p>` : ''}
+          ${saidHtml}
+          ${factsHtml}
+          ${sourcesHtml}
           <div class="mt-6 text-sm text-blue-600 font-medium">${item.party}</div>
         `;
         grid.appendChild(card);
