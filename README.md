@@ -1,5 +1,5 @@
 # HoldtDeOrd.no
-HoldtDeOrd.no - Faktabasert oversikt over politikerløfter
+HoldtDeOrd.no – oversikt over politikerløfter (nettsted under arbeid)
 
 ## Bygge CSS (Tailwind)
 
